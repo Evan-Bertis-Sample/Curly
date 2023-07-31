@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e13e64acaf3a04087f4fb823b7e97b, type: 3}
   m_Name: AppConfig
   m_EditorClassIdentifier: 
-  <LevelPath>k__BackingField: 
+  <Booters>k__BackingField:
+  - {fileID: 11400000, guid: 3f20d00c5830d844faefde26c913202a, type: 2}
+  <SceneMaster>k__BackingField: {fileID: 11400000, guid: 3f20d00c5830d844faefde26c913202a, type: 2}
   PersistentObjects: []
   NonGameplayScenes: []

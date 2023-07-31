@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using Core.CurlyApp;
 
-namespace Editor.Core.CurlyApp
+namespace CurlyEditor.Core.CurlyApp
 {
     public class AppConfigEditor : EditorWindow
     {
