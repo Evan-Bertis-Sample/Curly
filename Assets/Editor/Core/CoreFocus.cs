@@ -9,12 +9,20 @@ namespace CurlyEditor
 {
     public sealed class CoreFocus
     {
-        [MenuItem("Curly/Core/SceneMaster")]
+        [MenuItem("Curly/Core/Scene Master")]
         public static void FocusSceneMaster()
         {
             if (App.Instance.SceneMaster == null) return;
 
             Selection.activeObject = App.Instance.SceneMaster;
+        }
+
+        [MenuItem("Curly/Core/Input Manager")]
+        public static void FocusInputManager()
+        {
+            if (App.Instance.InputManager == null) return;
+
+            Selection.activeObject = App.Instance.InputManager;
         }
     }
 }

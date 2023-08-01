@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetScene: TransitionScene
+  UseDefaultTransitions: 1
 --- !u!1 &506470260
 GameObject:
   m_ObjectHideFlags: 0

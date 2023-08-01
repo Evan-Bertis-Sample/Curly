@@ -1,7 +1,10 @@
 using System.Linq;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 using CurlyCore.SceneManagement;
+using CurlyCore.Input;
 
 namespace CurlyCore.CurlyApp
 {
@@ -28,6 +31,7 @@ namespace CurlyCore.CurlyApp
         public static string ConfigPath = "Core_Config/AppConfig";
         public AppConfig Config => _config;
         public SceneMaster SceneMaster => _config.SceneMaster;
+        public InputManager InputManager => _config.InputManager;
 
         private App()
         {

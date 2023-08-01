@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Booters>k__BackingField:
   - {fileID: 11400000, guid: 3f20d00c5830d844faefde26c913202a, type: 2}
+  - {fileID: 11400000, guid: 050b6b33eb36bcb42bb2174f81fb20e3, type: 2}
   <SceneMaster>k__BackingField: {fileID: 11400000, guid: 3f20d00c5830d844faefde26c913202a, type: 2}
+  <InputManager>k__BackingField: {fileID: 11400000, guid: 050b6b33eb36bcb42bb2174f81fb20e3, type: 2}
   PersistentObjects: []
   NonGameplayScenes: []
