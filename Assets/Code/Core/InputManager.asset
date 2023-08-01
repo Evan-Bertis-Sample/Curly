@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MasterActionAsset: {fileID: -944628639613478452, guid: fd7b7a027a0fc804abe4e930b42f6d37, type: 3}
   _joinButton: Player/Movement
-  _exitButton: Menu/Back
+  _exitButton: Menu/Navigate
   AllowPlayersToJoin: 1
   _devices: []
   _playerDevices: []
