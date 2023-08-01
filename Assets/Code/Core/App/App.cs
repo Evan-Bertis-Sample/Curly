@@ -1,9 +1,9 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Core.SceneManagement;
+using CurlyCore.SceneManagement;
 
-namespace Core.CurlyApp
+namespace CurlyCore.CurlyApp
 {
     /// <summary>
     /// A singleton devoted to initalizing the game no matter what scene is the first scene

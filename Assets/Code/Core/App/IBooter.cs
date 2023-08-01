@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Core.CurlyApp
+namespace CurlyCore.CurlyApp
 {
     public interface IBooter
     {

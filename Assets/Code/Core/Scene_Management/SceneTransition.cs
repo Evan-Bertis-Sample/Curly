@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 
-namespace Core.SceneManagement
+namespace CurlyCore.SceneManagement
 {
     public interface ISceneTransition
     {

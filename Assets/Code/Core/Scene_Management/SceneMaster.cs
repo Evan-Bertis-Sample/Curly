@@ -4,16 +4,18 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Core.CurlyApp;
+using CurlyCore.CurlyApp;
 using CurlyUtility;
 
-namespace Core.SceneManagement
+namespace CurlyCore.SceneManagement
 {
     [CreateAssetMenu(menuName = "Curly/Core/Scene Master", fileName = "SceneMaster")]
     public sealed class SceneMaster : BooterObject
     {
         // Configuration
         [field: SerializeField] public string ScenePath;
+
+        [field: Header("Scene Transitions")]
         [field: SerializeField] public ScreenTransitionObject DefaultInTransition;
         [field: SerializeField] public ScreenTransitionObject DefaultOutTransition;
 

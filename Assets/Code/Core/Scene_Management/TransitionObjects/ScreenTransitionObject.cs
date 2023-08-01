@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Core.SceneManagement
+namespace CurlyCore.SceneManagement
 {
     public abstract class ScreenTransitionObject : ScriptableObject, ISceneTransition
     {

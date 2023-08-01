@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using Core.SceneManagement;
+using CurlyCore.SceneManagement;
 
-namespace Core.CurlyApp
+namespace CurlyCore.CurlyApp
 {
     /// <summary>
     /// Configuration Class for App. An instance must be found under Resources for App to work

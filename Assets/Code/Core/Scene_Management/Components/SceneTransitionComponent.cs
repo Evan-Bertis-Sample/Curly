@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Core.CurlyApp;
+using CurlyCore.CurlyApp;
 
-namespace Core.SceneManagement.Components
+namespace CurlyCore.SceneManagement.Components
 {
     public class SceneTransitionComponent : MonoBehaviour
     {

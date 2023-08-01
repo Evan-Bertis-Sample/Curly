@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 
-using Core.SceneManagement;
+using CurlyCore.SceneManagement;
 using CurlyEditor;
 using CurlyUtility;
 

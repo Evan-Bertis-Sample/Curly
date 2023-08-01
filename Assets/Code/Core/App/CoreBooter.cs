@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Core.CurlyApp
+namespace CurlyCore.CurlyApp
 {
     /// <summary>
     /// A wrapper class for the common use pattern of using an IBooter ScriptableObject

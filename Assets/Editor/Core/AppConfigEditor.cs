@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEditor;
-using Core.CurlyApp;
+using CurlyCore.CurlyApp;
 
 namespace CurlyEditor.Core.CurlyApp
 {

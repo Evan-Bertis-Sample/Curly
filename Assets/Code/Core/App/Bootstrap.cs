@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Core.CurlyApp
+namespace CurlyCore.CurlyApp
 {
     /// <summary>
     // Bootstrap Class

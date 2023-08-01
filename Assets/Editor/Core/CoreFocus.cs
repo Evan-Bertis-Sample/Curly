@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using Core.CurlyApp;
+using CurlyCore.CurlyApp;
 
 #if UNITY_EDITOR
 namespace CurlyEditor

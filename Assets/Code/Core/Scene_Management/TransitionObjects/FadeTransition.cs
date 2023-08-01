@@ -3,14 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-namespace Core.SceneManagement.Transitions
+namespace CurlyCore.SceneManagement.Transitions
 {
     [CreateAssetMenu(fileName = "FadeTransition", menuName = "Curly/Scene Transitions/Fade Transition")]
     public class FadeTransition : ScreenTransitionObject
     {
         public Color color = Color.black;
-        [Range(0, 1)] public float startingOpacity = 0;
-        [Range(0, 1)] public float endingOpacity = 1;
+        [Range(0, 1)] public float StartingOpacity = 0;
+        [Range(0, 1)] public float EndingOpacity = 1;
         public float fadeDuration = 1f;
 
         private Image _fadeImage;
@@ -22,7 +22,7 @@ namespace Core.SceneManagement.Transitions
             fadeObject.transform.SetParent(screenCanvas.transform, false);
 
             _fadeImage = fadeObject.AddComponent<Image>();
-            _fadeImage.color = new Color(color.r, color.g, color.b, startingOpacity);
+            _fadeImage.color = new Color(color.r, color.g, color.b, StartingOpacity);
             _fadeImage.rectTransform.anchoredPosition = Vector2.zero;
             _fadeImage.rectTransform.sizeDelta = new Vector2(screenCanvas.pixelRect.width, screenCanvas.pixelRect.height);
             _fadeImage.rectTransform.anchorMin = Vector2.zero;
@@ -31,7 +31,7 @@ namespace Core.SceneManagement.Transitions
 
         public override async Task Transition(Canvas screenCanvas)
         {
-            _fadeTween = _fadeImage.DOFade(endingOpacity, fadeDuration);
+            _fadeTween = _fadeImage.DOFade(EndingOpacity, fadeDuration);
             await _fadeTween.AsyncWaitForCompletion();
         }
 
