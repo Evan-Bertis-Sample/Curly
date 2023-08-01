@@ -9,7 +9,7 @@ namespace CurlyEditor.Core.CurlyApp
         private AppConfig _appConfig;
         private UnityEditor.Editor _configEditor;
 
-        [MenuItem("Core/App")]
+        [MenuItem("Curly/Core/App")]
         public static void ShowWindow()
         {
             GetWindow<AppConfigEditor>("App Configuration");

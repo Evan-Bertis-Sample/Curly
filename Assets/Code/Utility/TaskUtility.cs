@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 using System;
 
-namespace Utility
+namespace CurlyUtility
 {
     public class TaskUtility
     {

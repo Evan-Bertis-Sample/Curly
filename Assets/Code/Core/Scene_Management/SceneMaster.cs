@@ -5,15 +5,32 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Core.CurlyApp;
-using Utility;
+using CurlyUtility;
 
 namespace Core.SceneManagement
 {
-    [CreateAssetMenu(menuName = "Core/Scene Master", fileName = "SceneMaster")]
+    [CreateAssetMenu(menuName = "Curly/Core/Scene Master", fileName = "SceneMaster")]
     public sealed class SceneMaster : BooterObject
-    {   
+    {
         // Configuration
         [field: SerializeField] public string ScenePath;
+        [field: SerializeField] public ScreenTransitionObject DefaultInTransition;
+        [field: SerializeField] public ScreenTransitionObject DefaultOutTransition;
+
+        // Events
+        public delegate void SceneHandler(string oldScene, string newScene);
+
+        // * CALL ORDER
+        // * OnSceneUnloadAnim -> OnSceneUnload -> OnSceneLoad -> OnSceneLoadAnim
+
+        // Occurs the moment that a scene is unloaded, disregarding animations
+        public SceneHandler OnSceneUnload;
+        // Occurs the moment that a scene is loading, disregarding animations
+        public SceneHandler OnSceneLoad;
+        // Occurs the moment that a scene begins to get unloaded, as the transition animation begins
+        public SceneHandler OnSceneUnloadAnim;
+        // Occurs the moment that a scene finishes loading, after the transition player plays
+        public SceneHandler OnSceneLoadAnim;
 
         public override void OnBoot(App app, Scene scene)
         {
@@ -22,7 +39,8 @@ namespace Core.SceneManagement
 
         public async void LoadSceneAsync(string sceneName, bool useDefault)
         {
-
+            if (useDefault) LoadSceneAsync(sceneName, DefaultInTransition, DefaultOutTransition);
+            else LoadSceneAsync(sceneName, null, null);
         }
 
         /// <summary>
@@ -34,7 +52,9 @@ namespace Core.SceneManagement
         /// <returns></returns>
         public async void LoadSceneAsync(string sceneName, ISceneTransition transitionIn = null, ISceneTransition transitionOut = null)
         {
-            Debug.Log($"Loading scene {sceneName}");
+            Scene curScene = SceneManager.GetActiveScene();
+            Debug.Log($"Loading scene {sceneName} from {curScene.name}");
+
 
             AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
             loadingOperation.allowSceneActivation = false;
@@ -45,21 +65,38 @@ namespace Core.SceneManagement
             loadingTasks.Add(TaskUtility.WaitUntil(() =>
             {
                 Debug.Log($"Loading... {loadingOperation.progress * 100}%");
-                return loadingOperation.isDone;
+                return loadingOperation.progress >= .9f;
             }));
 
+            // Play transitionIn animation
             Canvas screenCanvas = CreateScreenCanvas();
             DontDestroyOnLoad(screenCanvas);
-
             if (transitionIn != null) loadingTasks.Add(transitionIn.Play(screenCanvas));
-
+            // Event
+            OnSceneUnloadAnim?.Invoke(curScene.name, sceneName);
+            // Wait for both to finish
             await Task.WhenAll(loadingTasks);
 
-            // Finished loading! 
+            // Now the scene is basically done loading and the animation has played, now allow for scene change
+            loadingOperation.allowSceneActivation = true;
+
+            // Now wait for the scene to load
+            await TaskUtility.WaitUntil(() =>
+            {
+                Debug.Log($"Loading... {loadingOperation.progress * 100}%");
+                return loadingOperation.isDone;
+            });
+
+            OnSceneUnload?.Invoke(curScene.name, sceneName);
+            SceneManager.UnloadSceneAsync(curScene.name);
+            OnSceneLoad?.Invoke(curScene.name, sceneName);
+
+            // FINISH LOAD
             if (transitionOut != null) await transitionOut.Play(screenCanvas);
+            OnSceneLoadAnim?.Invoke(curScene.name, sceneName);
 
             // Destroy the canvas
-            Destroy(screenCanvas);
+            Destroy(screenCanvas.transform.parent);
         }
 
         private Canvas CreateScreenCanvas()

@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1aee8f52d2fd4284e33ed8515e2d5, type: 3}
   m_Name: SceneMaster
   m_EditorClassIdentifier: 
-  test: 
+  ScenePath: Assets/Scenes
+  DefaultInTransition: {fileID: 11400000, guid: 78a697d850c09d3488cea813ce875b19, type: 2}
+  DefaultOutTransition: {fileID: 11400000, guid: b9ee17547ba5ebf479c1a69362013065, type: 2}

@@ -10,7 +10,7 @@ namespace Core.CurlyApp
     /// <summary>
     /// Configuration Class for App. An instance must be found under Resources for App to work
     /// </summary>
-    [CreateAssetMenu(menuName = "Core/App Configuration", fileName = "AppConfig")]
+    [CreateAssetMenu(menuName = "Curly/Core/App Configuration", fileName = "AppConfig")]
     public class AppConfig : ScriptableObject
     {
         [field: Header("Booter Configuration")]

@@ -5,7 +5,7 @@ using System.Linq;
 using System.IO;
 using UnityEditor;
 
-namespace Utility
+namespace CurlyUtility
 {
     public class AssetUtility
     {

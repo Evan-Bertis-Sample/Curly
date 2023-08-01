@@ -8,7 +8,7 @@ using UnityEditor;
 
 using Core.SceneManagement;
 using CurlyEditor;
-using Utility;
+using CurlyUtility;
 
 namespace CurlyEditor.Core.SceneManagement
 {
@@ -42,7 +42,7 @@ namespace CurlyEditor.Core.SceneManagement
                     $"{((newScenesCount != 1) ? "scenes" : "scene")} in '{sm.ScenePath}.' \n You may need to reorder scenes after committing this change.",
                     "Yes", "No"))
                 {
-                    // SceneAdder.SetBuildScenes(sm.ScenePath);
+                    SceneAdder.SetBuildScenes(sm.ScenePath);
                 }
             }
         }
