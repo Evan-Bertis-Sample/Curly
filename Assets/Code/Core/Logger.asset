@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9db5b56fd2f15934cbb0cf63b9754a5a, type: 3}
+  m_Script: {fileID: 0}
   m_Name: Logger
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Core:CurlyCore.Debugging:GroupLogger
   <LogToFile>k__BackingField: 0
   <LoggingPath>k__BackingField: 
-  <LoggingEnumPath>k__BackingField: 
-  <LoggingGroups>k__BackingField: []
+  <LoggingEnumPath>k__BackingField: Assets/Code/Core/Logger/LoggerEnums.cs
+  <LoggingGroups>k__BackingField:
+  - GroupName: App
+    LoggingColor: {r: 0.8113208, g: 0.3329477, b: 0.3678274, a: 1}
+  - GroupName: Gameplay
+    LoggingColor: {r: 0.6040873, g: 0.47267708, b: 0.8867924, a: 1}

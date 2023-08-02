@@ -13,7 +13,8 @@ namespace CurlyEditor.Utility
     {
         protected override void ButtonClicked(Rect buttonPosition)
         {
-            _propertyValue = EditorUtility.OpenFolderPanel("Choose Directory", "", "");
+            string absolute = EditorUtility.OpenFolderPanel("Choose Directory", "", "");
+            _propertyValue = FileUtil.GetProjectRelativePath(absolute);
         }
     }
 
@@ -22,7 +23,8 @@ namespace CurlyEditor.Utility
     {
         protected override void ButtonClicked(Rect buttonPosition)
         {
-            _propertyValue = EditorUtility.OpenFilePanel("Choose File", "", "");
+            string absolute = EditorUtility.OpenFilePanel("Choose File", "", "");
+            _propertyValue = FileUtil.GetProjectRelativePath(absolute);
         }
     }
 }
