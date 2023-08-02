@@ -13,31 +13,12 @@ using CurlyEditor.Utility;
 namespace CurlyEditor.Core
 {
     [CustomPropertyDrawer(typeof(InputPathAttribute))]
-    public class InputPathDrawer : PropertyDrawer
+    public class InputPathDrawer : SearchBarDrawer
     {
-        private float _standardPropertyHeight => EditorGUIUtility.singleLineHeight;
-        private float _standardSpace = 6f;
-        private string _propertyValue = "";
-
-        private bool _initialized = false;
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            // This is really gross and I hate it
-            if (!_initialized)
-            {
-                _propertyValue = property.stringValue;
-                _initialized = true;
-            }
-
-            float buttonWidth = _standardPropertyHeight * 2f;
-            float buttonX = position.width - buttonWidth / 2f;
-            Rect buttonPosition = new Rect(buttonX, position.y, buttonWidth, _standardPropertyHeight);
-
-            Rect propertyPosition = new Rect(position.x, position.y, position.width - buttonWidth - _standardSpace, _standardPropertyHeight);
-            property.stringValue = _propertyValue;
-            EditorGUI.PropertyField(propertyPosition, property, new GUIContent(property.displayName));
-            if (GUI.Button(buttonPosition, new GUIContent(EditorGUIUtility.IconContent("Search On Icon")))) DrawInputSelect(buttonPosition);
+            base.OnGUI(position, property, label);
 
             if (!App.Instance.InputManager.IsInputAssigned(property.stringValue))
             {
@@ -52,7 +33,7 @@ namespace CurlyEditor.Core
             return _standardPropertyHeight * 3f;
         }
 
-        private void DrawInputSelect(Rect browserPosition)
+        protected override void ButtonClicked(Rect browserPosition)
         {
             Leaf<string> browserContent = GenerateBrowserContent();
             DropDownBrowser browser = new DropDownBrowser(browserContent);
