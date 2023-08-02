@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 using CurlyCore.SceneManagement;
 using CurlyCore.Input;
+using CurlyCore.Debugging;
 
 namespace CurlyCore.CurlyApp
 {
@@ -32,6 +33,7 @@ namespace CurlyCore.CurlyApp
         public AppConfig Config => _config;
         public SceneMaster SceneMaster => _config.SceneMaster;
         public InputManager InputManager => _config.InputManager;
+        public GroupLogger Logger => _config.Logger;
 
         private App()
         {
@@ -43,7 +45,7 @@ namespace CurlyCore.CurlyApp
         /// </summary>
         public void InitializeGame()
         {
-            Debug.Log("Initializing Game!");
+            Logger.Log(LoggingGroupID.APP, "Initializing Game!");
             if (_config == null)
             {
                 Debug.LogError("Could not find App Config!");
@@ -68,9 +70,17 @@ namespace CurlyCore.CurlyApp
         private void Boot()
         {
             Scene startingScene = SceneManager.GetActiveScene();
-            foreach (IBooter b in _config.Booters)
+            // Instantiate Quitter
+            GameObject quit = new GameObject("Quitter");
+            GameObject.DontDestroyOnLoad(quit.transform.root.gameObject);
+
+            Quiter quitterComponent = quit.AddComponent<Quiter>();
+
+            foreach (BooterObject b in _config.Booters)
             {
-                b?.OnBoot(this, startingScene);
+                if (b == null) continue;
+                b.OnBoot(this, startingScene);
+                quitterComponent.OnQuit += () => b.OnQuit(this, startingScene);
             }
         }
 
@@ -85,7 +95,7 @@ namespace CurlyCore.CurlyApp
             {
                 // Instantiate and put into DDOL scene
                 if (obj == null) continue;
-                Debug.Log($"Adding {obj.name}");
+                Logger.Log(LoggingGroupID.APP, $"Adding {obj.name}");
                 GameObject instance = GameObject.Instantiate(obj, Vector3.zero, Quaternion.identity);
                 GameObject.DontDestroyOnLoad(instance.transform.root.gameObject);
             }

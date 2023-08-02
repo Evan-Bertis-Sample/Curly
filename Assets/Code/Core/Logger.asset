@@ -9,14 +9,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 9db5b56fd2f15934cbb0cf63b9754a5a, type: 3}
   m_Name: Logger
-  m_EditorClassIdentifier: Core:CurlyCore.Debugging:GroupLogger
-  <LogToFile>k__BackingField: 0
-  <LoggingPath>k__BackingField: 
-  <LoggingEnumPath>k__BackingField: Assets/Code/Core/Logger/LoggerEnums.cs
+  m_EditorClassIdentifier: 
+  <LogToFile>k__BackingField: 1
+  <LoggingPath>k__BackingField: D:/Documents/Code/Personal-Projects/cat-game/Logs/CurlyLogs
+  <LoggingEnumPath>k__BackingField: Assets/Code/Core/Logger/LoggingGroupID.cs
   <LoggingGroups>k__BackingField:
   - GroupName: App
-    LoggingColor: {r: 0.8113208, g: 0.3329477, b: 0.3678274, a: 1}
+    LoggingColor: {r: 0.9716981, g: 0.31626022, b: 0.31626022, a: 1}
   - GroupName: Gameplay
-    LoggingColor: {r: 0.6040873, g: 0.47267708, b: 0.8867924, a: 1}
+    LoggingColor: {r: 0.72031546, g: 0.4963955, b: 0.9150943, a: 1}
+  _logContents: 'LOG SESSION (8/2/2023 2:12:40 PM)
+
+    App: test
+
+
+    App: Quitting
+    Sequence Started
+
+
+    App: Finishing Logging Session
+
+
+'

@@ -13,8 +13,9 @@ namespace CurlyEditor.Utility
     {
         protected override void ButtonClicked(Rect buttonPosition)
         {
+            DirectoryPath pathAttribute = attribute as DirectoryPath;
             string absolute = EditorUtility.OpenFolderPanel("Choose Directory", "", "");
-            _propertyValue = FileUtil.GetProjectRelativePath(absolute);
+            _propertyValue = (pathAttribute.IsAbsolutePath) ? absolute : FileUtil.GetProjectRelativePath(absolute);
         }
     }
 
@@ -23,8 +24,9 @@ namespace CurlyEditor.Utility
     {
         protected override void ButtonClicked(Rect buttonPosition)
         {
+            FilePath pathAttribute = attribute as FilePath;
             string absolute = EditorUtility.OpenFilePanel("Choose File", "", "");
-            _propertyValue = FileUtil.GetProjectRelativePath(absolute);
+            _propertyValue = (pathAttribute.IsAbsolutePath) ? absolute : FileUtil.GetProjectRelativePath(absolute);
         }
     }
 }

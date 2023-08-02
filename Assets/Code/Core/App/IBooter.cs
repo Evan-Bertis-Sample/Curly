@@ -15,4 +15,14 @@ namespace CurlyCore.CurlyApp
         public void OnBoot(App app, Scene scene);
     }
 
+    public interface IQuiter
+    {
+        /// <summary>
+        /// Called on game end, given that the AppConfig knows of it's existence
+        /// </summary>
+        /// <param name="app"> The App object calling the App Quit</param>
+        /// <param name="scene"> The Scene that the game is quit in</param>
+        public void OnQuit(App app, Scene scene);
+    }
+
 }

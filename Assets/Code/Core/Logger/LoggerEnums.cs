@@ -1,6 +1,6 @@
 namespace CurlyCore.Debugging
 {
-	public enum LoggerType
+	public enum LoggingGroupID
 	{
 		APP,
 		GAMEPLAY

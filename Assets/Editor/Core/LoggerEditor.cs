@@ -40,7 +40,7 @@ namespace CurlyEditor.Core
             string content =
                 "namespace CurlyCore.Debugging\n" +
                 "{\n" +
-                    "\tpublic enum LoggerType\n" +
+                    "\tpublic enum LoggingGroupID\n" +
                     "\t{\n" +
                         $"{enumValues}" +
                     "\t}\n" +

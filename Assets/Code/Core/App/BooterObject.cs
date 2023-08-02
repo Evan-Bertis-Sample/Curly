@@ -8,8 +8,9 @@ namespace CurlyCore.CurlyApp
     /// <summary>
     /// A wrapper class for the common use pattern of using an IBooter ScriptableObject
     /// </summary>
-    public abstract class BooterObject : ScriptableObject, IBooter
+    public abstract class BooterObject : ScriptableObject, IBooter, IQuiter
     {
-        public abstract void OnBoot(App app, Scene scene);
+        public virtual void OnBoot(App app, Scene scene) {}
+        public virtual void OnQuit(App app, Scene scene) {}
     }
 }

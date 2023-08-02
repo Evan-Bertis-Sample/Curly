@@ -24,6 +24,14 @@ namespace CurlyEditor
 
             Selection.activeObject = App.Instance.InputManager;
         }
+
+        [MenuItem("Curly/Core/Logger")]
+        public static void FocusLogger()
+        {
+            if (App.Instance.Logger == null) return;
+
+            Selection.activeObject = App.Instance.Logger;
+        }
     }
 }
 #endif
