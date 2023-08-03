@@ -12,6 +12,7 @@ namespace CurlyCore.Audio
     public class AudioManager : BooterObject
     {
         [field: SerializeField, DirectoryPath] public string AudioDirectoryRoot {get; private set;}
+        [field: SerializeField] public AudioOverrideGroup DefaultGroupSettings {get; private set;}
     }
 
 }
