@@ -1,5 +1,6 @@
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
@@ -18,20 +19,21 @@ namespace CurlyEditor.Core
             GroupLogger logger = target as GroupLogger;
             TextAsset asset = AssetDatabase.LoadAssetAtPath<TextAsset>(logger.LoggingEnumPath);
             if (asset == null) return;
-            if (GUILayout.Button("Generate Enums")) GenerateLoggerEnum(logger, logger.LoggingEnumPath);
+            if (GUILayout.Button("Generate Logging Groups")) GenerateLoggerGroups(logger, logger.LoggingEnumPath);
         }
 
-        private void GenerateLoggerEnum(GroupLogger logger, string path)
+        private void GenerateLoggerGroups(GroupLogger logger, string path)
         {
-            if (logger.LoggingGroups == null || logger.LoggingGroups.Count == 0) return;
+            List<LoggingGroup> groups = logger.GetGroups();
+            logger.Groups = groups;
 
             string enumValues = "";
-            for (int i = 0; i < logger.LoggingGroups.Count; i++)
+            for (int i = 0; i < groups.Count; i++)
             {
-                LoggingGroup group = logger.LoggingGroups[i];
+                LoggingGroup group = groups[i];
                 string value = "\t\t";
                 value += group.GroupName.ToUpper();
-                if (i != logger.LoggingGroups.Count - 1) value += ",\n";
+                if (i != groups.Count - 1) value += ",\n";
                 else value += "\n";
 
                 enumValues += value;

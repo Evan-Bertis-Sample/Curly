@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,8 @@ namespace CurlyCore.CurlyApp
         /// <param name="app"> The App object calling the Boostrap </param>
         /// <param name="scene"> The Scene that the game is starting in</param>
         public void OnBoot(App app, Scene scene);
+
+        public Task OnBootAsync(App app, Scene scene);
     }
 
     public interface IQuiter

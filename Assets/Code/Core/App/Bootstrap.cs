@@ -11,9 +11,9 @@ namespace CurlyCore.CurlyApp
         /// Initialization method that runs before any scene has loaded
         /// </summary>
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        public static void Initialize()
+        public static async void Initialize()
         {
-            App.Instance.InitializeGame();
+            await App.Instance.InitializeGame();
         }
     }
 }

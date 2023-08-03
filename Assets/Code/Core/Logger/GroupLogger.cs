@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System;
+using System.Linq;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -29,10 +30,19 @@ namespace CurlyCore.Debugging
         private const string _LAST_LOG_FILE = "last_session.txt";
         private const string _LOG_META = "log_meta.txt";
 
+        [SerializeField, HideInInspector] public List<LoggingGroup> Groups = new List<LoggingGroup>();
+
+        // Required groups that must be in the enum for Curly internals
+        private readonly LoggingGroup[] _REQUIRED_GROUPS = new LoggingGroup[]
+        {
+            new LoggingGroup { GroupName = "App", LoggingColor = new Color(0.9716981f, 0.3162602f, 0.3162602f ), EnableLogging = true },
+            new LoggingGroup { GroupName = "Gameplay", LoggingColor = new Color(0.7203155f, 0.4963955f, 0.9150943f ), EnableLogging = true },
+        };
+        
         public override void OnBoot(App app, Scene scene)
         {
             _loggedThisSession = false;
-
+            Groups = GetGroups();
 #if UNITY_EDITOR
             if (LogToFile) SetupLogContents();
 #endif
@@ -44,7 +54,10 @@ namespace CurlyCore.Debugging
         {
 #if UNITY_EDITOR
             _loggedThisSession = true;
-            LoggingGroup group = LoggingGroups[(int)type];
+            LoggingGroup group = Groups[(int)type];
+
+            if (group.EnableLogging == false) return;
+
             string logColor = ColorUtility.ToHtmlStringRGB(group.LoggingColor);
             string prefix = $"<b><color=#{logColor}>{group.GroupName}: </color></b>";
 
@@ -56,6 +69,20 @@ namespace CurlyCore.Debugging
             return;
 
 #endif
+        }
+
+        public List<LoggingGroup> GetGroups()
+        {
+            // Grab all the groups in the user defined array that aren't already contained in the _REQUIRED GROUPS
+            // This is peak LINQ
+            List<LoggingGroup> groups = LoggingGroups.Where(
+                group => !_REQUIRED_GROUPS.Any(
+                    comp => comp.GroupName.ToUpper() == group.GroupName.ToUpper())
+                ).ToList();
+
+            List<LoggingGroup> g = _REQUIRED_GROUPS.ToList();
+            g.AddRange(groups);
+            return g;
         }
 
         public override void OnQuit(App app, Scene scene)

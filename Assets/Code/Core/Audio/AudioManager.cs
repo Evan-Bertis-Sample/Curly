@@ -24,23 +24,20 @@ namespace CurlyCore.Audio
 
         private Dictionary<AudioClip, AudioOverrideGroup> _groupByReference = new Dictionary<AudioClip, AudioOverrideGroup>();
 
-        public override void OnBoot(App app, Scene scene)
+        public override async Task OnBootAsync(App app, Scene scene)
         {
             // bootin bootin bootin
-            CreateCacheAsync();
+            await CreateCacheAsync();
         }
 
         private async Task CreateCacheAsync()
         {
             // Cache the mappings between AssetReferences and Override Groups
-            List<AudioOverrideGroup> overrideGroups = new List<AudioOverrideGroup>();
-
-            // Load AudioOverrideGroup assets
-            await LoadAssetAsync<AudioOverrideGroup>(ReplacementPath, overrideGroups.Add);
+            List<AssetReference> overrideGroups = await LoadAssetsInDirectoryAsync<AudioOverrideGroup>(ReplacementPath);
 
             // Create a dictionary to store AudioClips
             Dictionary<string, HashSet<AssetReference>> audioDirectoriesToReferencePath = new Dictionary<string, HashSet<AssetReference>>();
-            List<AssetReference> audioClipReferences = await LoadAudioClipReferencesInDirectoryAsync(ReplacementPath);
+            List<AssetReference> audioClipReferences = await LoadAssetsInDirectoryAsync<AudioClip>(ReplacementPath);
             foreach(AssetReference reference in audioClipReferences)
             {
                 App.Instance.Logger.Log(LoggingGroupID.APP, reference.RuntimeKey.ToString());
@@ -66,13 +63,13 @@ namespace CurlyCore.Audio
             return tcs.Task;
         }
 
-        public Task<List<AssetReference>> LoadAudioClipReferencesInDirectoryAsync(string directoryPath)
+        public Task<List<AssetReference>> LoadAssetsInDirectoryAsync<T>(string directoryPath)
         {
             TaskCompletionSource<List<AssetReference>> tcs = new TaskCompletionSource<List<AssetReference>>();
-            List<AssetReference> audioClipReferences = new List<AssetReference>();
+            List<AssetReference> assetReferences = new List<AssetReference>();
 
             // Load locations of all AudioClip assets.
-            Addressables.LoadResourceLocationsAsync(typeof(AudioClip)).Completed += handle =>
+            Addressables.LoadResourceLocationsAsync(typeof(T)).Completed += handle =>
             {
                 if (handle.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
                 {
@@ -85,15 +82,15 @@ namespace CurlyCore.Audio
                         {
                             // Create an AssetReference from the asset's GUID and add it to the list.
                             AssetReference assetReference = new AssetReference(location.PrimaryKey);
-                            audioClipReferences.Add(assetReference);
+                            assetReferences.Add(assetReference);
                         }
                     }
 
-                    tcs.SetResult(audioClipReferences);
+                    tcs.SetResult(assetReferences);
                 }
                 else
                 {
-                    tcs.SetException(new System.Exception($"Failed to load AudioClip locations: {handle.OperationException}"));
+                    tcs.SetException(new System.Exception($"Failed to load Asset locations: {handle.OperationException}"));
                 }
             };
 

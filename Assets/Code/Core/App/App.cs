@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -45,13 +46,13 @@ namespace CurlyCore.CurlyApp
         /// <summary>
         /// Adds all dependencies on gamestartup and performs level loading logic if the starting scene is a level
         /// </summary>
-        public void InitializeGame()
+        public Task InitializeGame()
         {
             Logger.Log(LoggingGroupID.APP, "Initializing Game!");
             if (_config == null)
             {
                 Debug.LogError("Could not find App Config!");
-                return;
+                return Task.CompletedTask;
             }
 
             Boot();
@@ -59,9 +60,10 @@ namespace CurlyCore.CurlyApp
             DressScene();
 
             Scene startingScene = SceneManager.GetActiveScene();
+            return Task.CompletedTask;
         }
 
-        private void Boot()
+        private async void Boot()
         {
             Scene startingScene = SceneManager.GetActiveScene();
             // Instantiate Quitter
@@ -75,7 +77,9 @@ namespace CurlyCore.CurlyApp
                 if (b == null) continue;
                 b.OnBoot(this, startingScene);
                 quitterComponent.OnQuit += () => b.OnQuit(this, startingScene);
+                await b.OnBootAsync(this, startingScene);
             }
+            
         }
 
         /// <summary>
