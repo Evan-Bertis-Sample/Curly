@@ -34,6 +34,8 @@ namespace CurlyEditor.Core
             {
                 string assetPath = AssetDatabase.GUIDToAssetPath(guid);
                 AddressableAssetEntry assetEntry = settings.CreateOrMoveEntry(guid, settings.DefaultGroup, false, false);
+                assetPath = assetPath.Remove(0, audioPath.Length + 1);
+                assetPath = $"{manager.ReplacementPath}/{assetPath}";
                 assetEntry.address = assetPath;
             }
 
@@ -43,6 +45,13 @@ namespace CurlyEditor.Core
             {
                 string assetPath = AssetDatabase.GUIDToAssetPath(guid);
                 AddressableAssetEntry assetEntry = settings.CreateOrMoveEntry(guid, settings.DefaultGroup, false, false);
+                assetPath = assetPath.Remove(0, audioPath.Length + 1);
+                if (manager.ReplacementPath != "") assetPath = $"{manager.ReplacementPath}/{assetPath}";
+
+                // Replace the scriptable object name with something different
+                assetPath = Path.GetDirectoryName(assetPath);
+                assetPath = assetPath.Replace("\\", "/");
+                assetPath += "/" + manager.OverrideGroupAddressName;
                 assetEntry.address = assetPath;
             }
 
