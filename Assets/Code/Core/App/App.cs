@@ -59,14 +59,6 @@ namespace CurlyCore.CurlyApp
             DressScene();
 
             Scene startingScene = SceneManager.GetActiveScene();
-            if (IsLevelScene(startingScene))
-            {
-                // Do some level logic
-            }
-            else
-            {
-                // Do some menu logic
-            }
         }
 
         private void Boot()
@@ -101,13 +93,6 @@ namespace CurlyCore.CurlyApp
                 GameObject instance = GameObject.Instantiate(obj, Vector3.zero, Quaternion.identity);
                 GameObject.DontDestroyOnLoad(instance.transform.root.gameObject);
             }
-        }
-
-        private bool IsLevelScene(Scene currentScene)
-        {
-            if (_config.NonGameplayScenes == null) return false;
-
-            return !_config.NonGameplayScenes.Any(s => s.name == currentScene.name);
         }
     }
 }

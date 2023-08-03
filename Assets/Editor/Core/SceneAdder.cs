@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
-using CurlyUtility;
+using CurlyEditor.Utility;
 
 namespace CurlyEditor.Core.SceneManagement
 {

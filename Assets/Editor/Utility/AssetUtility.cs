@@ -5,7 +5,7 @@ using System.Linq;
 using System.IO;
 using UnityEditor;
 
-namespace CurlyUtility
+namespace CurlyEditor.Utility
 {
     public class AssetUtility
     {
@@ -22,9 +22,9 @@ namespace CurlyUtility
             foreach (string fullpath in fullpaths)
             {
                 //determine a path starting with Assets
-                string assetPath = FileUtil.GetProjectRelativePath(fullpath.Replace(@"\", "/"));
+                string assetPath = UnityEditor.FileUtil.GetProjectRelativePath(fullpath.Replace(@"\", "/"));
                 //load the asset at this relative path
-                Object obj = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+                Object obj = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(assetPath);
                 //and add it to the list if it is of type T
                 if (obj is T) { returnList.Add(obj as T); }
             }

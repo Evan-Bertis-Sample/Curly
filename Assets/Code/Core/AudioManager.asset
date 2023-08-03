@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6ced719b24bf442a71981651712d1f, type: 3}
   m_Name: AudioManager
   m_EditorClassIdentifier: 
-  <AudioDirectoryRoot>k__BackingField: 
+  <AudioDirectoryRoot>k__BackingField: Assets/Audio
+  <DefaultGroupSettings>k__BackingField: {fileID: 0}

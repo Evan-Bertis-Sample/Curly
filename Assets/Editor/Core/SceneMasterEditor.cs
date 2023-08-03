@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEditor;
 
 using CurlyCore.SceneManagement;
-using CurlyEditor;
+using CurlyEditor.Utility;
 using CurlyUtility;
 
 namespace CurlyEditor.Core.SceneManagement

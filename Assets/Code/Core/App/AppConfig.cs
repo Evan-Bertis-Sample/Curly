@@ -28,8 +28,5 @@ namespace CurlyCore.CurlyApp
         [Header("Gameplay")]
         // All objects that should be placed in the DontDestroyOnLoad scene on gamestart
         [SerializeField] public List<GameObject> PersistentObjects = new List<GameObject>();
-
-        [Header("Scenes")]
-        [SerializeField] public List<SceneAsset> NonGameplayScenes = new List<SceneAsset>();
     }
 }
