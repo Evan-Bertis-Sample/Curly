@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Logger
   m_EditorClassIdentifier: 
   <LogToFile>k__BackingField: 1
+  <MaxLogCount>k__BackingField: 3
   <LoggingPath>k__BackingField: D:/Documents/Code/Personal-Projects/cat-game/Logs/CurlyLogs
   <LoggingEnumPath>k__BackingField: Assets/Code/Core/Logger/LoggingGroupID.cs
   <LoggingGroups>k__BackingField:
@@ -20,16 +21,21 @@ MonoBehaviour:
     LoggingColor: {r: 0.9716981, g: 0.31626022, b: 0.31626022, a: 1}
   - GroupName: Gameplay
     LoggingColor: {r: 0.72031546, g: 0.4963955, b: 0.9150943, a: 1}
-  _logContents: 'LOG SESSION (8/2/2023 2:12:40 PM)
+  _logContents: 'LOG SESSION (8/2/2023 3:13:33 PM)
 
-    App: test
+    ----------------------------------------
 
+    App
+    (15:13:33): test
 
-    App: Quitting
-    Sequence Started
+    App (15:13:38): Quitting Sequence Started
 
+    App (15:13:38):
+    Finishing Logging Session
 
-    App: Finishing Logging Session
+    App (15:13:38): Deleting Log File ''D:/Documents/Code/Personal-Projects/cat-game/Logs/CurlyLogs/prev_session_8-2-2023_3-08-08_PM.txt''
 
+    App
+    (15:13:38): Moving old logging contents to new file
 
 '
