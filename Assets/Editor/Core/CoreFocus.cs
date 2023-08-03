@@ -32,6 +32,14 @@ namespace CurlyEditor
 
             Selection.activeObject = App.Instance.Logger;
         }
+
+        [MenuItem("Curly/Core/Audio Manager")]
+        public static void FocusAudioManger()
+        {
+            if (App.Instance.AudioManager == null) return;
+
+            Selection.activeObject = App.Instance.AudioManager;
+        }
     }
 }
 #endif

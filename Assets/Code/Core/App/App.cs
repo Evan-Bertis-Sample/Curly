@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using CurlyCore.SceneManagement;
 using CurlyCore.Input;
 using CurlyCore.Debugging;
+using CurlyCore.Audio;
 
 namespace CurlyCore.CurlyApp
 {
@@ -34,6 +35,7 @@ namespace CurlyCore.CurlyApp
         public SceneMaster SceneMaster => _config.SceneMaster;
         public InputManager InputManager => _config.InputManager;
         public GroupLogger Logger => _config.Logger;
+        public AudioManager AudioManager => _config.AudioManger;
 
         private App()
         {

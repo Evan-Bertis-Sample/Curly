@@ -6,6 +6,7 @@ using UnityEditor;
 using CurlyCore.SceneManagement;
 using CurlyCore.Input;
 using CurlyCore.Debugging;
+using CurlyCore.Audio;
 
 namespace CurlyCore.CurlyApp
 {
@@ -22,6 +23,7 @@ namespace CurlyCore.CurlyApp
         [field: SerializeField] public SceneMaster SceneMaster {get; private set;}
         [field: SerializeField] public InputManager InputManager {get; private set;}
         [field: SerializeField] public GroupLogger Logger {get; private set;}
+        [field: SerializeField] public AudioManager AudioManger {get; private set;}
         
         [Header("Gameplay")]
         // All objects that should be placed in the DontDestroyOnLoad scene on gamestart

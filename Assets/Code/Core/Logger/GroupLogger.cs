@@ -61,6 +61,7 @@ namespace CurlyCore.Debugging
         public override void OnQuit(App app, Scene scene)
         {
             Log(LoggingGroupID.APP, "Finishing Logging Session");
+#if UNITY_EDITOR
             if (LogToFile == false || _loggedThisSession == false) return;
 
             string lastLogPath = $"{LoggingPath}/{_LAST_LOG_FILE}";
@@ -95,7 +96,7 @@ namespace CurlyCore.Debugging
                 SaveMetadata(pastLogs);
 
                 Log(LoggingGroupID.APP, "Moving old logging contents to new file");
-                using (File.Create(newPath)) {}
+                using (File.Create(newPath)) { }
                 File.WriteAllText(newPath, oldContents);
             }
             else
@@ -105,7 +106,7 @@ namespace CurlyCore.Debugging
             }
 
             File.WriteAllText(lastLogPath, _logContents);
-
+#endif
         }
 
         private void SetupLogContents()

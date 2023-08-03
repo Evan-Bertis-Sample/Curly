@@ -11,4 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TransitionScene.unity
     guid: 7138ade6ab07a9f429a0d51aaafdf730
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: b3deaea1c1e46ec4e8afa322a3d1bfa1, type: 2}

@@ -1,22 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
+
+using CurlyCore.CurlyApp;
+using CurlyUtility;
 
 namespace CurlyCore.Audio
 {
-    public class AudioManager : MonoBehaviour
+    [CreateAssetMenu(menuName = "Curly/Core/Audio Manager", fileName = "AudioManager")]
+    public class AudioManager : BooterObject
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        [field: SerializeField, DirectoryPath] public string AudioDirectoryRoot {get; private set;}
     }
 
 }
