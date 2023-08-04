@@ -46,21 +46,16 @@ namespace CurlyEditor.Core
 
         private void ProcessDirectory(string directoryPath, AddressableAssetSettings settings, AddressableAssetGroup group)
         {
-            // Create a new group for this directory
-            // AddressableAssetGroup directoryGroup = settings.CreateGroup(directoryPath, false, false, false, new List<AddressableAssetGroupSchema>(), typeof(BundledAssetGroupSchema));
-
             // Get the GUIDs of the directory itself, any AudioOverrideGroups and any AudioClips in this directory
             string[] childDirectories = Directory.GetDirectories(directoryPath, "*", SearchOption.TopDirectoryOnly);
-            // string[] overrideGUIDs = AssetDatabase.FindAssets("t:AudioOverrideGroup", new[] { directoryPath });
-            // string[] audioGUIDs = AssetDatabase.FindAssets("t:AudioClip", new[] { directoryPath });
-
-            // // Combine all these GUIDs into one array
-            // string[] contentGUIDs = overrideGUIDs.Concat(audioGUIDs).ToArray();
 
             // Now recursively process any subdirectories
             string parentGuid = AssetDatabase.AssetPathToGUID(directoryPath);
             AddressableAssetEntry parentEntry = settings.FindAssetEntry(parentGuid);
-
+            if (parentEntry != null && childDirectories.Length > 0)
+            {
+                parentEntry.IsFolder = true;
+            }
 
             // Process each GUID
             foreach (string childDirectory in childDirectories)
@@ -72,22 +67,39 @@ namespace CurlyEditor.Core
 
                 if (parentEntry != null)
                 {
-                    Debug.Log($"Processed Directory {directory} as Child of Directory {directoryPath}");
+                    Debug.Log($"Processed Directory '{directory}' as child of Directory '{directoryPath}'");
                     assetEntry.IsSubAsset = true;
                     assetEntry.ParentEntry = parentEntry;
-                    parentEntry.IsFolder = true;
+                    assetEntry.IsFolder = true;
 
                     if (parentEntry.SubAssets != null) parentEntry.SubAssets.Add(assetEntry);
                     else parentEntry.SubAssets = new List<AddressableAssetEntry>() { assetEntry };
 
                     assetEntry.labels.Clear();
-                    assetEntry.SetLabel(directoryPath, true, true);
+                    assetEntry.SetLabel(directoryPath, true, true, true);
+                    assetEntry.SetLabel("AudioDirectory", true, true, true);
+                    
+                    ProcessDirectoryContent<AudioClip>(directory, "Clips", settings, group);
+                    ProcessDirectoryContent<AudioOverrideGroup>(directory, "Override", settings, group);
                 }
 
                 ProcessDirectory(directory, settings, group);
             }
         }
 
+        private void ProcessDirectoryContent<T>(string directoryPath, string label, AddressableAssetSettings settings, AddressableAssetGroup group) where T : Object
+        {
+            T[] clips = AssetUtility.GetAssetsAtPath<T>(directoryPath);
 
+            foreach(T clip in clips)
+            {
+                string path = AssetDatabase.GetAssetPath(clip);
+                string guid = AssetDatabase.AssetPathToGUID(path);
+                AddressableAssetEntry clipEntry = settings.CreateOrMoveEntry(guid, group, false, false);
+                clipEntry.labels.Clear();
+                clipEntry.SetLabel(directoryPath, true, true);
+                clipEntry.SetLabel(label, true, true);
+            }
+        }
     }
 }
