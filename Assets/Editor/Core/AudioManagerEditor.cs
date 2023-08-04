@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -23,10 +24,13 @@ namespace CurlyEditor.Core
         {
             base.OnInspectorGUI();
             AudioManager manager = target as AudioManager;
-            if (manager.AudioDirectoryRoot != "" && GUILayout.Button("Build Adressables")) BuildAddressables(manager);
+            if (manager.AudioDirectoryRoot != "" && GUILayout.Button("Build Adressables"))
+            {
+                BuildAddressables(manager);
+            }
         }
 
-        private void BuildAddressables(AudioManager manager)
+        private async void BuildAddressables(AudioManager manager)
         {
             string audioPath = manager.AudioDirectoryRoot;
 
@@ -41,7 +45,10 @@ namespace CurlyEditor.Core
 
             // Process the root directory
             List<AddressableAssetEntry> overrideEntries = ProcessDirectory(manager, audioPath, settings, audioGroup);
-            CreateCache(manager, overrideEntries);
+
+            Debug.Log("Creating Cache, please wait");
+            await CreateCache(manager, overrideEntries);
+            Debug.Log("Finished creating Cache!");
 
             settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, null, true, true);
         }
@@ -118,9 +125,9 @@ namespace CurlyEditor.Core
             return entries;
         }
 
-        private async void CreateCache(AudioManager manager, List<AddressableAssetEntry> overrideEntries)
+        private async Task CreateCache(AudioManager manager, List<AddressableAssetEntry> overrideEntries)
         {
-            Dictionary<AssetReference, AudioOverrideGroup> mapping = new Dictionary<AssetReference, AudioOverrideGroup>();
+            Dictionary<string, AudioOverrideGroup> mapping = new Dictionary<string, AudioOverrideGroup>();
 
             foreach (AddressableAssetEntry entry in overrideEntries)
             {
@@ -131,13 +138,34 @@ namespace CurlyEditor.Core
                 // Load the AudioOverrideGroup
                 AudioOverrideGroup group = await Addressables.LoadAssetAsync<AudioOverrideGroup>(assetReference).Task;
 
-                if (group != null)
-                {
-                    mapping[assetReference] = group;
-                }
+                if (group == null) continue;
+
+                Debug.Log($"Propogating override for {assetPath}");
+
+                // This is an audio directory, add the mapping
+                mapping[assetPath] = group;
+
+                // Propagate this group mapping to all child directories unless they have their own mapping
+                PropagateMappingToChildren(assetPath, group, mapping, manager.DefaultGroupSettings);
             }
 
             manager.SetCache(mapping);
+        }
+
+        private void PropagateMappingToChildren(string parentDirectory, AudioOverrideGroup parentGroup, Dictionary<string, AudioOverrideGroup> mapping, AudioOverrideGroup defaultGroup)
+        {
+            string[] subdirectories = Directory.GetDirectories(parentDirectory);
+            foreach (string subdirectoryUnfixed in subdirectories)
+            {
+                string subdirectory = subdirectoryUnfixed.Replace("\\", "/");
+                Debug.Log("Propogating");
+                // If the child directory doesn't have its own mapping or its mapping is the default one, inherit from the parent
+                if (!mapping.ContainsKey(subdirectory) || mapping[subdirectory] == defaultGroup)
+                {
+                    mapping[subdirectory] = parentGroup;
+                    PropagateMappingToChildren(subdirectory, parentGroup, mapping, defaultGroup);
+                }
+            }
         }
     }
 }

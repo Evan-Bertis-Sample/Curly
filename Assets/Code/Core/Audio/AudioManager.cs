@@ -21,7 +21,7 @@ namespace CurlyCore.Audio
     public class AudioManager : BooterObject
     {
         [System.Serializable]
-        public class RefrenceCache : SerializableDictionary<AssetReference, AudioOverrideGroup> {}
+        public class RefrenceCache : SerializableDictionary<string, AudioOverrideGroup> {}
 
         [field: SerializeField, DirectoryPath] public string AudioDirectoryRoot { get; private set; }
         [field: SerializeField] public string ReplacementPath { get; private set; } = "Audio";
@@ -32,8 +32,6 @@ namespace CurlyCore.Audio
         public readonly string AUDIO_GROUP_NAME = "Audio";
         public readonly string CLIP_LABEL = "Clips";
         public readonly string OVERRIDE_LABEL = "Override";
-
-        private Dictionary<AssetReference, AudioOverrideGroup> _groupByReference = new Dictionary<AssetReference, AudioOverrideGroup>();
 
         // public override async Task OnBootAsync(App app, Scene scene)
         // {
@@ -62,7 +60,7 @@ namespace CurlyCore.Audio
         //     }
         // }
 
-        public void SetCache(Dictionary<AssetReference, AudioOverrideGroup> cache)
+        public void SetCache(Dictionary<string, AudioOverrideGroup> cache)
         {
             GroupCache = new RefrenceCache();
             foreach (var pair in cache)
