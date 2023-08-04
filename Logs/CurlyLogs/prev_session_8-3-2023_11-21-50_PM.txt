@@ -1,0 +1,8 @@
+LOG SESSION (8/3/2023 11:21:45 PM)
+----------------------------------------
+App (23:21:45): test
+App (23:21:45): Assets/Audio/Music, Assets/Audio/SoundFX, Assets/Audio/SoundFX/Enviornment, Assets/Audio/SoundFX/Footsteps, Assets/Audio/SoundFX/Misc, Assets/Audio/SoundFX/Voices, Assets/Audio/SoundFX/Footsteps/Grass, Assets/Audio/SoundFX/Voices/Evan
+App (23:21:50): Quitting Sequence Started
+App (23:21:50): Finishing Logging Session
+App (23:21:50): Deleting Log File 'D:/Documents/Code/Personal-Projects/curly-unity-starter/Logs/CurlyLogs/prev_session_8-3-2023_11-40-46_AM.txt'
+App (23:21:50): Moving old logging contents to new file

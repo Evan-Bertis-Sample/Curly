@@ -33,3 +33,6 @@ Using Curly is not a guarantee that your game will have superb code quality, fun
 ## Dependencies
 The following packages are used in Curly. These packages should be automatically installed by Unity.
 * [DOTween](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
+* [Unity Addressables](https://docs.unity3d.com/Packages/com.unity.addressables@1.19/manual/index.html)
+* [New Unity Input System](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.5/manual/index.html)
+* [Serializable Dictionary](https://assetstore.unity.com/packages/tools/integration/serializabledictionary-90477)

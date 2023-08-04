@@ -44,24 +44,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 11b3bf0fd9ed4de498cb245298abcb30, type: 2}
   - {fileID: 11400000, guid: 0450f40d2e8d93444ab61433db52f4f4, type: 2}
   - {fileID: 11400000, guid: ca940ced3b6189144ad8cc6602b108ea, type: 2}
-  - {fileID: 11400000, guid: ea25b41b4037288489c27bee03aa7d39, type: 2}
-  - {fileID: 11400000, guid: 94cef3b7b1eab0e42a93b83fa7df8d18, type: 2}
-  - {fileID: 11400000, guid: 4ee028e83c2a9e745a6d5e1e5538f9c8, type: 2}
-  - {fileID: 11400000, guid: a3279d8eefa0d7147af8d27a0ef2d71a, type: 2}
-  - {fileID: 11400000, guid: c290ac2a719d41d41b59960cceff1ba2, type: 2}
-  - {fileID: 11400000, guid: 67894d20995800642917fb14c3e4992c, type: 2}
-  - {fileID: 11400000, guid: 0174420ba28b0014d9a4f2a5f6533868, type: 2}
-  - {fileID: 11400000, guid: 91bf70409dcfe7d4c9328718a3d497dd, type: 2}
-  - {fileID: 11400000, guid: 731653c85e4e3a74ab8d9227efd31278, type: 2}
-  - {fileID: 11400000, guid: 44a4c066dd0e16146826401fd0b29dcc, type: 2}
-  - {fileID: 11400000, guid: b7c12c61ce6ac1c408c7701aeeec576d, type: 2}
-  - {fileID: 11400000, guid: 20f25d634feb201439be32a8dabee0ae, type: 2}
-  - {fileID: 11400000, guid: 4ea6523a1a335924a88bcf592f90e171, type: 2}
-  - {fileID: 11400000, guid: fc349a8fdc3065b48818dae73240472c, type: 2}
-  - {fileID: 11400000, guid: 32d50a6f42e97414dacc0a32253dcafe, type: 2}
-  - {fileID: 11400000, guid: 312349b534fa4ac479b37e63e2b1e537, type: 2}
-  - {fileID: 11400000, guid: 6574f120b61cead4d86c2a5e8bea141d, type: 2}
-  - {fileID: 11400000, guid: e4c13dcf91251bc4982eb02ac9e8eb50, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -103,17 +85,15 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
-    - Audio/SoundFX/Enviornment/SoundFX/Enviornment/audio
-    - Audio/SoundFX/Enviornment/SoundFX/Footsteps/Grass/audio
-    - Audio/SoundFX/Enviornment/SoundFX/Misc/audio
-    - Audio/SoundFX/Enviornment/SoundFX/Voices/Evan/audio
-    - Assets/Audio
     - Assets/Audio/SoundFX
-    - Assets/Audio/SoundFX/Footsteps
-    - Assets/Audio/SoundFX/Voices
+    - AudioDirectory
     - Assets/Audio/SoundFX/Enviornment
-    - Assets/Audio/SoundFX/Misc
+    - Clips
+    - Override
+    - Assets/Audio/SoundFX/Footsteps
     - Assets/Audio/SoundFX/Footsteps/Grass
+    - Assets/Audio/SoundFX/Misc
+    - Assets/Audio/SoundFX/Voices
     - Assets/Audio/SoundFX/Voices/Evan
   m_SchemaTemplates: []
   m_GroupTemplateObjects:

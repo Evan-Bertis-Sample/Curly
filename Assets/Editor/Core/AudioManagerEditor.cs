@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
@@ -39,12 +40,21 @@ namespace CurlyEditor.Core
             }
 
             // Process the root directory
-            ProcessDirectory(audioPath, settings, audioGroup);
+            List<AddressableAssetEntry> overrideEntries = ProcessDirectory(manager, audioPath, settings, audioGroup);
+            CreateCache(manager, overrideEntries);
 
             settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, null, true, true);
         }
 
-        private void ProcessDirectory(string directoryPath, AddressableAssetSettings settings, AddressableAssetGroup group)
+        /// <summary>
+        /// Proccess the Audio directory
+        /// </summary>
+        /// <param name="manager"> The AudioManager that dictates how the Directory is processed </param>
+        /// <param name="directoryPath"> The path of the directory </param>
+        /// <param name="settings"> Addressables settings </param>
+        /// <param name="group"> The Addressables group to place the processed entries </param>
+        /// <returns> A List of AudioOverride Entries -- used for building the cache </returns>
+        private List<AddressableAssetEntry> ProcessDirectory(AudioManager manager, string directoryPath, AddressableAssetSettings settings, AddressableAssetGroup group)
         {
             // Get the GUIDs of the directory itself, any AudioOverrideGroups and any AudioClips in this directory
             string[] childDirectories = Directory.GetDirectories(directoryPath, "*", SearchOption.TopDirectoryOnly);
@@ -57,6 +67,7 @@ namespace CurlyEditor.Core
                 parentEntry.IsFolder = true;
             }
 
+            List<AddressableAssetEntry> overrideEntries = new List<AddressableAssetEntry>();
             // Process each GUID
             foreach (string childDirectory in childDirectories)
             {
@@ -78,28 +89,55 @@ namespace CurlyEditor.Core
                     assetEntry.labels.Clear();
                     assetEntry.SetLabel(directoryPath, true, true, true);
                     assetEntry.SetLabel("AudioDirectory", true, true, true);
-                    
-                    ProcessDirectoryContent<AudioClip>(directory, "Clips", settings, group);
-                    ProcessDirectoryContent<AudioOverrideGroup>(directory, "Override", settings, group);
+
+                    ProcessDirectoryContent<AudioClip>(directory, manager.CLIP_LABEL, settings, group);
+                    overrideEntries.AddRange(ProcessDirectoryContent<AudioOverrideGroup>(directory, manager.OVERRIDE_LABEL, settings, group));
                 }
 
-                ProcessDirectory(directory, settings, group);
+                overrideEntries.AddRange(ProcessDirectory(manager, directory, settings, group));
             }
+
+            return overrideEntries;
         }
 
-        private void ProcessDirectoryContent<T>(string directoryPath, string label, AddressableAssetSettings settings, AddressableAssetGroup group) where T : Object
+        private List<AddressableAssetEntry> ProcessDirectoryContent<T>(string directoryPath, string label, AddressableAssetSettings settings, AddressableAssetGroup group) where T : Object
         {
             T[] clips = AssetUtility.GetAssetsAtPath<T>(directoryPath);
-
-            foreach(T clip in clips)
+            List<AddressableAssetEntry> entries = new List<AddressableAssetEntry>();
+            foreach (T clip in clips)
             {
                 string path = AssetDatabase.GetAssetPath(clip);
                 string guid = AssetDatabase.AssetPathToGUID(path);
                 AddressableAssetEntry clipEntry = settings.CreateOrMoveEntry(guid, group, false, false);
+                entries.Add(clipEntry);
                 clipEntry.labels.Clear();
                 clipEntry.SetLabel(directoryPath, true, true);
                 clipEntry.SetLabel(label, true, true);
             }
+
+            return entries;
+        }
+
+        private async void CreateCache(AudioManager manager, List<AddressableAssetEntry> overrideEntries)
+        {
+            Dictionary<AssetReference, AudioOverrideGroup> mapping = new Dictionary<AssetReference, AudioOverrideGroup>();
+
+            foreach (AddressableAssetEntry entry in overrideEntries)
+            {
+                string assetPath = entry.AssetPath;
+                string guid = AssetDatabase.AssetPathToGUID(assetPath);
+                AssetReference assetReference = new AssetReference(guid);
+
+                // Load the AudioOverrideGroup
+                AudioOverrideGroup group = await Addressables.LoadAssetAsync<AudioOverrideGroup>(assetReference).Task;
+
+                if (group != null)
+                {
+                    mapping[assetReference] = group;
+                }
+            }
+
+            manager.SetCache(mapping);
         }
     }
 }

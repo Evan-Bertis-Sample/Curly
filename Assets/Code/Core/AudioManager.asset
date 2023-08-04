@@ -16,3 +16,6 @@ MonoBehaviour:
   <ReplacementPath>k__BackingField: Audio/SoundFX/Enviornment
   <OverrideGroupAddressName>k__BackingField: Override.asset
   <DefaultGroupSettings>k__BackingField: {fileID: 0}
+  <GroupCache>k__BackingField:
+    m_keys: []
+    m_values: []
