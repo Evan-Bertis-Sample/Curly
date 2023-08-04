@@ -1,7 +1,0 @@
-LOG SESSION (8/2/2023 3:13:33 PM)
-----------------------------------------
-App (15:13:33): test
-App (15:13:38): Quitting Sequence Started
-App (15:13:38): Finishing Logging Session
-App (15:13:38): Deleting Log File 'D:/Documents/Code/Personal-Projects/cat-game/Logs/CurlyLogs/prev_session_8-2-2023_3-08-08_PM.txt'
-App (15:13:38): Moving old logging contents to new file

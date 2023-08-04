@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AudioManager
   m_EditorClassIdentifier: 
   <AudioDirectoryRoot>k__BackingField: Assets/Audio
-  <ReplacementPath>k__BackingField: Audio
+  <ReplacementPath>k__BackingField: Audio/SoundFX/Enviornment
   <OverrideGroupAddressName>k__BackingField: Override.asset
   <DefaultGroupSettings>k__BackingField: {fileID: 0}

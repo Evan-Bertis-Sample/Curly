@@ -22,6 +22,8 @@ namespace CurlyCore.Audio
         [field: SerializeField] public string OverrideGroupAddressName { get; private set; } = "Override.asset";
         [field: SerializeField] public AudioOverrideGroup DefaultGroupSettings { get; private set; }
 
+        public readonly string AUDIO_GROUP_NAME = "Audio";
+
         private Dictionary<AudioClip, AudioOverrideGroup> _groupByReference = new Dictionary<AudioClip, AudioOverrideGroup>();
 
         public override async Task OnBootAsync(App app, Scene scene)
@@ -38,6 +40,8 @@ namespace CurlyCore.Audio
             // Create a dictionary to store AudioClips
             Dictionary<string, HashSet<AssetReference>> audioDirectoriesToReferencePath = new Dictionary<string, HashSet<AssetReference>>();
             List<AssetReference> audioClipReferences = await LoadAssetsInDirectoryAsync<AudioClip>(ReplacementPath);
+
+            App.Instance.Logger.Log(LoggingGroupID.APP, $"Located {audioClipReferences.Count} References");
             foreach(AssetReference reference in audioClipReferences)
             {
                 App.Instance.Logger.Log(LoggingGroupID.APP, reference.RuntimeKey.ToString());

@@ -1,6 +1,8 @@
-LOG SESSION (8/3/2023 10:45:02 AM)
+LOG SESSION (8/3/2023 11:41:31 AM)
 ----------------------------------------
-App (10:45:02): test
-App (10:45:10): Quitting Sequence Started
-App (10:45:10): Finishing Logging Session
-App (10:45:10): Moving old logging contents to new file
+App (11:41:31): test
+App (11:41:31): Located 0 References
+App (11:41:34): Quitting Sequence Started
+App (11:41:34): Finishing Logging Session
+App (11:41:34): Deleting Log File 'D:/Documents/Code/Personal-Projects/curly-unity-starter/Logs/CurlyLogs/prev_session_8-3-2023_11-39-57_AM.txt'
+App (11:41:34): Moving old logging contents to new file
