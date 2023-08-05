@@ -9,6 +9,7 @@ using CurlyCore.Input;
 using CurlyCore.Debugging;
 using CurlyCore.Audio;
 
+// TODO: Make AppConfig chooseable in Editor
 namespace CurlyCore.CurlyApp
 {
     /// <summary>

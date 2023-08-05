@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Reflection;
 
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -24,15 +26,17 @@ namespace CurlyEditor.Core
         {
             base.OnInspectorGUI();
             AudioManager manager = target as AudioManager;
-            if (manager.AudioDirectoryRoot != "" && GUILayout.Button("Build Adressables"))
+            if (manager.AudioDirectoryRoot != "" && GUILayout.Button("Build Addressables"))
             {
                 BuildAddressables(manager);
+                EditorUtility.SetDirty(manager);
             }
         }
 
-        private async void BuildAddressables(AudioManager manager)
+        private void BuildAddressables(AudioManager manager)
         {
             string audioPath = manager.AudioDirectoryRoot;
+            Debug.Log($"Building Addressables at {audioPath}");
 
             AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
 
@@ -47,10 +51,15 @@ namespace CurlyEditor.Core
             List<AddressableAssetEntry> overrideEntries = ProcessDirectory(manager, audioPath, settings, audioGroup);
 
             Debug.Log("Creating Cache, please wait");
-            await CreateCache(manager, overrideEntries);
+
+            CreateCache(manager, overrideEntries);
+
             Debug.Log("Finished creating Cache!");
 
             settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, null, true, true);
+
+            // Clear progress bar when build is done
+            EditorUtility.ClearProgressBar();
         }
 
         /// <summary>
@@ -125,28 +134,37 @@ namespace CurlyEditor.Core
             return entries;
         }
 
-        private async Task CreateCache(AudioManager manager, List<AddressableAssetEntry> overrideEntries)
+        private void CreateCache(AudioManager manager, List<AddressableAssetEntry> overrideEntries)
         {
             Dictionary<string, AudioOverrideGroup> mapping = new Dictionary<string, AudioOverrideGroup>();
 
-            foreach (AddressableAssetEntry entry in overrideEntries)
+            // Set default
+            string[] subdirectories = Directory.GetDirectories(manager.AudioDirectoryRoot, "*", SearchOption.AllDirectories);
+            foreach (string subdirectoryUnfixed in subdirectories)
             {
-                string assetPath = entry.AssetPath;
-                string guid = AssetDatabase.AssetPathToGUID(assetPath);
-                AssetReference assetReference = new AssetReference(guid);
+                string subdirectory = subdirectoryUnfixed.Replace("\\", "/");
+                mapping[subdirectory] = manager.DefaultGroupSettings;
+            }
 
+            Dictionary<AudioOverrideGroup, string> groupsToPath = AssetUtility.FindAssetsByType<AudioOverrideGroup>(manager.AudioDirectoryRoot);
+
+            foreach (var groupPath in groupsToPath)
+            {
+                string assetPath = groupPath.Value;
                 // Load the AudioOverrideGroup
-                AudioOverrideGroup group = await Addressables.LoadAssetAsync<AudioOverrideGroup>(assetReference).Task;
+                AudioOverrideGroup group = groupPath.Key;
 
                 if (group == null) continue;
 
                 Debug.Log($"Propogating override for {assetPath}");
 
+                string directory = Path.GetDirectoryName(assetPath);
+                directory = directory.Replace("\\", "/");
                 // This is an audio directory, add the mapping
-                mapping[assetPath] = group;
+                mapping[directory] = group;
 
                 // Propagate this group mapping to all child directories unless they have their own mapping
-                PropagateMappingToChildren(assetPath, group, mapping, manager.DefaultGroupSettings);
+                PropagateMappingToChildren(directory, group, mapping, manager.DefaultGroupSettings);
             }
 
             manager.SetCache(mapping);

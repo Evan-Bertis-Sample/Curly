@@ -31,5 +31,41 @@ namespace CurlyEditor.Utility
 
             return returnList.ToArray();
         }
+
+        /// </summary>
+        /// <param name="directoryPath">The path of the directory to search in.</param>
+        /// <typeparam name="T">The type of assets to find.</typeparam>
+        /// <returns>A Dictionary containing the found assets as keys and their corresponding paths as values.</returns>
+        public static Dictionary<T, string> FindAssetsByType<T>(string directoryPath) where T : Object
+        {
+            // This will hold the final result
+            Dictionary<T, string> assetDict = new Dictionary<T, string>();
+
+            // Find all assets of type T in the directory
+            // The "t:" filter in FindAssets allows us to filter by type
+            string[] guids = AssetDatabase.FindAssets("t:" + typeof(T).Name, new string[] { directoryPath });
+
+            // Loop over the results
+            foreach (string guid in guids)
+            {
+                // Get the asset path
+                // The GUIDToAssetPath function translates the unique identifier to a relative path
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+
+                // Load the asset from the path
+                // LoadAssetAtPath loads an asset stored at path in a Resources folder
+                T asset = AssetDatabase.LoadAssetAtPath<T>(path);
+
+                // If asset is not null, add it to the dictionary
+                // This adds the asset and its path to our result dictionary
+                if (asset != null)
+                {
+                    assetDict.Add(asset, path);
+                }
+            }
+
+            // Return the resulting dictionary
+            return assetDict;
+        }
     }
 }
