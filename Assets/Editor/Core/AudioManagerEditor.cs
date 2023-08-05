@@ -26,35 +26,30 @@ namespace CurlyEditor.Core
         {
             base.OnInspectorGUI();
             AudioManager manager = target as AudioManager;
-            if (manager.AudioDirectoryRoot != "" && GUILayout.Button("Build Addressables"))
+            if (manager.AudioDirectoryRoot != "" && GUILayout.Button("Build Audio"))
             {
-                BuildAddressables(manager);
+                BuildAudio(manager);
                 EditorUtility.SetDirty(manager);
             }
         }
 
-        private void BuildAddressables(AudioManager manager)
+        private void BuildAudio(AudioManager manager)
         {
             string audioPath = manager.AudioDirectoryRoot;
             Debug.Log($"Building Addressables at {audioPath}");
 
             AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
-
             // Find or create the "Audio" group
             AddressableAssetGroup audioGroup = settings.FindGroup(manager.AUDIO_GROUP_NAME);
             if (audioGroup == null)
             {
                 audioGroup = settings.CreateGroup(manager.AUDIO_GROUP_NAME, false, false, true, new List<AddressableAssetGroupSchema>());
             }
-
             // Process the root directory
-            List<AddressableAssetEntry> overrideEntries = ProcessDirectory(manager, audioPath, settings, audioGroup);
+            ProcessAddressables(manager, audioPath, settings, audioGroup);
 
-            Debug.Log("Creating Cache, please wait");
-
-            CreateCache(manager, overrideEntries);
-
-            Debug.Log("Finished creating Cache!");
+            CreateOverrideCache(manager);
+            CreateGroupCache(manager, settings);
 
             settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, null, true, true);
 
@@ -69,8 +64,7 @@ namespace CurlyEditor.Core
         /// <param name="directoryPath"> The path of the directory </param>
         /// <param name="settings"> Addressables settings </param>
         /// <param name="group"> The Addressables group to place the processed entries </param>
-        /// <returns> A List of AudioOverride Entries -- used for building the cache </returns>
-        private List<AddressableAssetEntry> ProcessDirectory(AudioManager manager, string directoryPath, AddressableAssetSettings settings, AddressableAssetGroup group)
+        private void ProcessAddressables(AudioManager manager, string directoryPath, AddressableAssetSettings settings, AddressableAssetGroup group)
         {
             // Get the GUIDs of the directory itself, any AudioOverrideGroups and any AudioClips in this directory
             string[] childDirectories = Directory.GetDirectories(directoryPath, "*", SearchOption.TopDirectoryOnly);
@@ -83,7 +77,6 @@ namespace CurlyEditor.Core
                 parentEntry.IsFolder = true;
             }
 
-            List<AddressableAssetEntry> overrideEntries = new List<AddressableAssetEntry>();
             // Process each GUID
             foreach (string childDirectory in childDirectories)
             {
@@ -107,13 +100,11 @@ namespace CurlyEditor.Core
                     assetEntry.SetLabel("AudioDirectory", true, true, true);
 
                     ProcessDirectoryContent<AudioClip>(directory, manager.CLIP_LABEL, settings, group);
-                    overrideEntries.AddRange(ProcessDirectoryContent<AudioOverrideGroup>(directory, manager.OVERRIDE_LABEL, settings, group));
+                    ProcessDirectoryContent<AudioOverride>(directory, manager.OVERRIDE_LABEL, settings, group);
                 }
 
-                overrideEntries.AddRange(ProcessDirectory(manager, directory, settings, group));
+                ProcessAddressables(manager, directory, settings, group);
             }
-
-            return overrideEntries;
         }
 
         private List<AddressableAssetEntry> ProcessDirectoryContent<T>(string directoryPath, string label, AddressableAssetSettings settings, AddressableAssetGroup group) where T : Object
@@ -134,9 +125,9 @@ namespace CurlyEditor.Core
             return entries;
         }
 
-        private void CreateCache(AudioManager manager, List<AddressableAssetEntry> overrideEntries)
+        private void CreateOverrideCache(AudioManager manager)
         {
-            Dictionary<string, AudioOverrideGroup> mapping = new Dictionary<string, AudioOverrideGroup>();
+            Dictionary<string, AudioOverride> mapping = new Dictionary<string, AudioOverride>();
 
             // Set default
             string[] subdirectories = Directory.GetDirectories(manager.AudioDirectoryRoot, "*", SearchOption.AllDirectories);
@@ -146,13 +137,13 @@ namespace CurlyEditor.Core
                 mapping[subdirectory] = manager.DefaultGroupSettings;
             }
 
-            Dictionary<AudioOverrideGroup, string> groupsToPath = AssetUtility.FindAssetsByType<AudioOverrideGroup>(manager.AudioDirectoryRoot);
+            Dictionary<AudioOverride, string> groupsToPath = AssetUtility.GetAssetsInDirectory<AudioOverride>(manager.AudioDirectoryRoot);
 
             foreach (var groupPath in groupsToPath)
             {
                 string assetPath = groupPath.Value;
                 // Load the AudioOverrideGroup
-                AudioOverrideGroup group = groupPath.Key;
+                AudioOverride group = groupPath.Key;
 
                 if (group == null) continue;
 
@@ -167,10 +158,10 @@ namespace CurlyEditor.Core
                 PropagateMappingToChildren(directory, group, mapping, manager.DefaultGroupSettings);
             }
 
-            manager.SetCache(mapping);
+            manager.SetOverrideCache(mapping);
         }
 
-        private void PropagateMappingToChildren(string parentDirectory, AudioOverrideGroup parentGroup, Dictionary<string, AudioOverrideGroup> mapping, AudioOverrideGroup defaultGroup)
+        private void PropagateMappingToChildren(string parentDirectory, AudioOverride parentGroup, Dictionary<string, AudioOverride> mapping, AudioOverride defaultGroup)
         {
             string[] subdirectories = Directory.GetDirectories(parentDirectory);
             foreach (string subdirectoryUnfixed in subdirectories)
@@ -184,6 +175,35 @@ namespace CurlyEditor.Core
                     PropagateMappingToChildren(subdirectory, parentGroup, mapping, defaultGroup);
                 }
             }
+        }
+
+        private void CreateGroupCache(AudioManager manager, AddressableAssetSettings settings)
+        {
+            Dictionary<string, AudioGroup> groupCache = new Dictionary<string, AudioGroup>();
+
+            foreach (var overrideMapping in manager.OverrideCache)
+            {
+                string directoryPath = overrideMapping.Key;
+                AudioOverride audioOverride = overrideMapping.Value;
+
+                string[] clipPaths = AssetUtility.GetAssetPathsAtPath<AudioClip>(directoryPath);
+
+                List<AssetReference> references = new List<AssetReference>();
+
+                foreach (string path in clipPaths)
+                {
+                    // Convert the asset path to a GUID
+                    string guid = AssetDatabase.AssetPathToGUID(path);
+                    // Construct an AssetReference using the GUID
+                    AssetReference assetReference = new AssetReference(guid);
+                    references.Add(assetReference);
+                }
+
+                AudioGroup group = new AudioGroup { Override = audioOverride, AudioReferences = references};
+                groupCache[directoryPath] = group;
+            }
+
+            manager.SetGroupCache(groupCache);
         }
     }
 }

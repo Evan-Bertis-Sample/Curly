@@ -21,49 +21,36 @@ namespace CurlyCore.Audio
     public class AudioManager : BooterObject
     {
         [System.Serializable]
-        public class RefrenceCache : SerializableDictionary<string, AudioOverrideGroup> {}
+        public class SerializableOverrideCache : SerializableDictionary<string, AudioOverride> {}
+
+        [System.Serializable]
+        public class SerializableGroupCache : SerializableDictionary<string, AudioGroup> {}
 
         [field: SerializeField, DirectoryPath] public string AudioDirectoryRoot { get; private set; }
         [field: SerializeField] public string ReplacementPath { get; private set; } = "Audio";
         [field: SerializeField] public string OverrideGroupAddressName { get; private set; } = "Override.asset";
-        [field: SerializeField] public AudioOverrideGroup DefaultGroupSettings { get; private set; }
-        [field: SerializeField] public RefrenceCache GroupCache {get; private set;}
+        [field: SerializeField] public AudioOverride DefaultGroupSettings { get; private set; }
+        [field: SerializeField] public SerializableOverrideCache OverrideCache {get; private set;}
+        [field: SerializeField] public SerializableGroupCache GroupCache {get; private set;}
 
         public readonly string AUDIO_GROUP_NAME = "Audio";
         public readonly string CLIP_LABEL = "Clips";
         public readonly string OVERRIDE_LABEL = "Override";
 
-        // public override async Task OnBootAsync(App app, Scene scene)
-        // {
-        //     // bootin bootin bootin
-        //     await CreateCacheAsync();
-        // }
 
-        // private async Task CreateCacheAsync()
-        // {
-        //     // Prepare our mapping dictionary
-        //     Dictionary<string, AudioOverrideGroup> pathsToGroup = new Dictionary<string, AudioOverrideGroup>();
-        //     List<string> directories = Directory.GetDirectories(AudioDirectoryRoot, "*", SearchOption.AllDirectories).ToList();
-        //     directories = directories.Select(x => x.Replace("\\", "/")).ToList();
-        //     App.Instance.Logger.Log(LoggingGroupID.APP, System.String.Join(", ", directories));
-        //     // Fill with null data
-        //     foreach (string dir in directories) pathsToGroup[dir] = null;
-
-        //     // Now load all the overrides
-        //     var locations = await Addressables.LoadResourceLocationsAsync(OVERRIDE_LABEL, null).Task;
-
-        //     if (locations == null) return;
-
-        //     foreach(IResourceLocation location in locations)
-        //     {
-        //         AssetReference reference = await Addressables.LoadAssetAsync<AssetReference>(location).Task;
-        //     }
-        // }
-
-        public void SetCache(Dictionary<string, AudioOverrideGroup> cache)
+        public void SetOverrideCache(Dictionary<string, AudioOverride> cache)
         {
-            GroupCache = new RefrenceCache();
+            OverrideCache = new SerializableOverrideCache();
             foreach (var pair in cache)
+            {
+                OverrideCache[pair.Key] = pair.Value;
+            }
+        }
+
+        public void SetGroupCache(Dictionary<string, AudioGroup> cache)
+        {
+            GroupCache = new SerializableGroupCache();
+            foreach(var pair in cache)
             {
                 GroupCache[pair.Key] = pair.Value;
             }

@@ -32,11 +32,34 @@ namespace CurlyEditor.Utility
             return returnList.ToArray();
         }
 
+        /// <summary>Gets an array of paths of assets of type T at a given path. This path is relative to /Assets.</summary>
+        /// <returns>An array of assets of type T.</returns>
+        /// <param name="path">The file path relative to /Assets.</param>
+        public static string[] GetAssetPathsAtPath<T>(string path) where T : Object
+        {
+            List<string> returnList = new List<string>();
+
+            //get the contents of the folder's full path (excluding any meta files) sorted alphabetically
+            IEnumerable<string> fullpaths = Directory.GetFiles(Path.GetFullPath(path)).Where(x => !x.EndsWith(".meta")).OrderBy(s => s);
+            //loop through the folder contents
+            foreach (string fullpath in fullpaths)
+            {
+                //determine a path starting with Assets
+                string assetPath = UnityEditor.FileUtil.GetProjectRelativePath(fullpath.Replace(@"\", "/"));
+                //load the asset at this relative path
+                Object obj = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(assetPath);
+                //and add it to the list if it is of type T
+                if (obj is T) { returnList.Add(assetPath); }
+            }
+
+            return returnList.ToArray();
+        }
+
         /// </summary>
         /// <param name="directoryPath">The path of the directory to search in.</param>
         /// <typeparam name="T">The type of assets to find.</typeparam>
         /// <returns>A Dictionary containing the found assets as keys and their corresponding paths as values.</returns>
-        public static Dictionary<T, string> FindAssetsByType<T>(string directoryPath) where T : Object
+        public static Dictionary<T, string> GetAssetsInDirectory<T>(string directoryPath) where T : Object
         {
             // This will hold the final result
             Dictionary<T, string> assetDict = new Dictionary<T, string>();

@@ -29,7 +29,7 @@ namespace CurlyCore.CurlyApp
         }
         #endregion
 
-        private AppConfig _config;
+        private readonly AppConfig _config;
 
         // Fields
         public static string ConfigPath = "Core_Config/AppConfig";
@@ -60,7 +60,6 @@ namespace CurlyCore.CurlyApp
             // Spawn objects
             DressScene();
 
-            Scene startingScene = SceneManager.GetActiveScene();
             return Task.CompletedTask;
         }
 
