@@ -37,8 +37,8 @@ namespace CurlyCore.Audio
         [field: SerializeField] private readonly float _sourceGrowthRate = 1.5f;
 
         private GameObject _sourceParent;
-        private List<AudioSource> _availableSources = new List<AudioSource>();
-        private List<AudioSource> _unavailableSources = new List<AudioSource>();
+        public List<AudioSource> _availableSources = new List<AudioSource>();
+        public List<AudioSource> _unavailableSources = new List<AudioSource>();
 
         public readonly string AUDIO_GROUP_NAME = "Audio";
         public readonly string CLIP_LABEL = "Clips";
@@ -70,10 +70,16 @@ namespace CurlyCore.Audio
             appliedOverride.ApplyOverride(source);
 
             AssetReference clipReference = (groupOverride.IdentifyByFileName) ? group.ChooseClip(soundPath) : group.ChooseRandom();
+
+            AudioClip clip = clipReference.Asset as AudioClip;
+            source.clip = clip;
+            source.Play();
             AudioCallback callback = new AudioCallback(source);
 
+            callback.OnAudioEnd += RestashSource;
             return callback;
         }
+
 
         public void SetOverrideCache(Dictionary<string, AudioOverride> cache)
         {
@@ -120,6 +126,11 @@ namespace CurlyCore.Audio
             source.gameObject.SetActive(true);
 
             return source;
+        }
+
+        private void Play(AudioSource source, AudioClip clip)
+        {
+            
         }
 
         private void RestashSource(AudioSource source)

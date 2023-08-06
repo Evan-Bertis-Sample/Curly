@@ -27,8 +27,10 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 66b10e98edcea1443a13f34d1d70b0c3
     m_Address: Assets/Audio/SoundFX/Enviornment
-    m_ReadOnly: 1
-    m_SerializedLabels: []
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Assets/Audio/SoundFX
+    - AudioDirectory
   - m_GUID: c11df33324e1a114daad5279ecaa42ad
     m_Address: Assets/Audio/SoundFX/Enviornment/Lightning.wav
     m_ReadOnly: 0
@@ -67,8 +69,10 @@ MonoBehaviour:
     - Override
   - m_GUID: 543cece89914d8d4e912bad2774b40ff
     m_Address: Assets/Audio/SoundFX/Footsteps
-    m_ReadOnly: 1
-    m_SerializedLabels: []
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Assets/Audio/SoundFX
+    - AudioDirectory
   - m_GUID: 831f3267d3fc43f4ab85e20ca541beb6
     m_Address: Assets/Audio/SoundFX/Footsteps/AudioOverrideGroup.asset
     m_ReadOnly: 0
@@ -77,8 +81,10 @@ MonoBehaviour:
     - Override
   - m_GUID: ab7285970ac234443b384c8d4b9dfdf1
     m_Address: Assets/Audio/SoundFX/Footsteps/Grass
-    m_ReadOnly: 1
-    m_SerializedLabels: []
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Assets/Audio/SoundFX/Footsteps
+    - AudioDirectory
   - m_GUID: f766a0bea3a08e34eb80d6d95daf51b9
     m_Address: Assets/Audio/SoundFX/Footsteps/Grass/GrassFootstepA.mp3
     m_ReadOnly: 0
@@ -165,8 +171,10 @@ MonoBehaviour:
     - Clips
   - m_GUID: a101032b744e6d64da912aefc26e3e75
     m_Address: Assets/Audio/SoundFX/Misc
-    m_ReadOnly: 1
-    m_SerializedLabels: []
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Assets/Audio/SoundFX
+    - AudioDirectory
   - m_GUID: c6add41d97e85cb4b977a9477fcc4c6f
     m_Address: Assets/Audio/SoundFX/Misc/Camera Flash.mp3
     m_ReadOnly: 0
@@ -187,8 +195,10 @@ MonoBehaviour:
     - Override
   - m_GUID: 6c17b22ea135f5344b15a8280b344921
     m_Address: Assets/Audio/SoundFX/Voices
-    m_ReadOnly: 1
-    m_SerializedLabels: []
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Assets/Audio/SoundFX
+    - AudioDirectory
   - m_GUID: 76854146a36f6534489903e3c9f30e7b
     m_Address: Assets/Audio/SoundFX/Voices/AudioOverrideGroup.asset
     m_ReadOnly: 0
@@ -197,8 +207,10 @@ MonoBehaviour:
     - Override
   - m_GUID: 486c959976f79ce4e85c72767c1aa606
     m_Address: Assets/Audio/SoundFX/Voices/Evan
-    m_ReadOnly: 1
-    m_SerializedLabels: []
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Assets/Audio/SoundFX/Voices
+    - AudioDirectory
   - m_GUID: 8005b2f177ae5f546bf5dc1f01e302f1
     m_Address: Assets/Audio/SoundFX/Voices/Evan/EvanA.mp3
     m_ReadOnly: 0

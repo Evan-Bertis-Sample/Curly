@@ -11,7 +11,7 @@ namespace CurlyCore.Audio
 {
     public class AudioCallback
     {
-        public Action OnAudioEnd;
+        public Action<AudioSource> OnAudioEnd;
 
         public AudioCallback(AudioSource source)
         {
@@ -23,7 +23,11 @@ namespace CurlyCore.Audio
         public async Task WaitForClip(AudioSource source)
         {
             await TaskUtility.WaitUntil(() => source.isPlaying == false );
-            OnAudioEnd?.Invoke();
+            OnAudioEnd?.Invoke(source);
+
+            if (OnAudioEnd == null) return;
+            foreach(var d in OnAudioEnd.GetInvocationList())
+                OnAudioEnd -= d as Action<AudioSource>;
         }
     }
 }
