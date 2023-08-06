@@ -16,5 +16,15 @@ namespace CurlyCore.Audio
         {
             return AudioReferences[0];
         }
+
+        public AssetReference ChooseRandom()
+        {
+            return AudioReferences[Random.Range(0, AudioReferences.Count - 1)];
+        }
+
+        public AssetReference ChooseClip(string clipPath)
+        {
+            return AudioReferences[0];
+        }
     }
 }
