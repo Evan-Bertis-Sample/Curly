@@ -6,28 +6,41 @@ using System;
 using UnityEngine;
 
 using CurlyUtility;
+using CurlyCore.CurlyApp;
 
 namespace CurlyCore.Audio
 {
     public class AudioCallback
     {
+        public Action<AudioSource> OnAudioStart;
         public Action<AudioSource> OnAudioEnd;
 
         public AudioCallback(AudioSource source)
         {
-            OnAudioEnd = null;
-            AudioCallback callback = this;
-            Task.Run(async () => await callback.WaitForClip(source));
+            App.Instance.CoroutineRunner.StartGlobalCoroutine(WaitForClip(source));
         }
 
-        public async Task WaitForClip(AudioSource source)
+        public IEnumerator WaitForClip(AudioSource source)
         {
-            await TaskUtility.WaitUntil(() => source.isPlaying == false );
+            yield return new WaitUntil(() => source.isPlaying);
+
+            OnAudioStart?.Invoke(source);
+
+            yield return new WaitUntil(() => source.isPlaying == false);
+
             OnAudioEnd?.Invoke(source);
 
-            if (OnAudioEnd == null) return;
-            foreach(var d in OnAudioEnd.GetInvocationList())
-                OnAudioEnd -= d as Action<AudioSource>;
+            if (OnAudioEnd != null)
+            {
+                foreach (var d in OnAudioEnd.GetInvocationList())
+                    OnAudioEnd -= d as Action<AudioSource>;
+            }
+
+            if (OnAudioStart != null)
+            {
+                foreach (var d in OnAudioStart.GetInvocationList())
+                    OnAudioStart -= d as Action<AudioSource>;
+            }
         }
     }
 }

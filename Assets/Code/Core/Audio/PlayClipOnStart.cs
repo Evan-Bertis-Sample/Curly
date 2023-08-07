@@ -12,12 +12,17 @@ public class PlayClipOnStart : MonoBehaviour
 
     private void Start()
     {
-        App.Instance.AudioManager.PlayOneShot(AudioPath);
+        App.Instance.AudioManager.PlayOneShot(AudioPath, default, null,
+        callback =>
+        {
+            callback.OnAudioStart += source => Log(source, "AUDIO START");
+            callback.OnAudioEnd += source => Log(source, "AUDIO END");
+        });
     }
 
 
-    private void Log(AudioSource source)
+    private void Log(AudioSource source, string message)
     {
-        App.Instance.Logger.Log(CurlyCore.Debugging.LoggingGroupID.APP, "AUDIO END");
+        App.Instance.Logger.Log(CurlyCore.Debugging.LoggingGroupID.APP, message);
     }
 }

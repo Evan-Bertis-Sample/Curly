@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.IO;
 using System.Linq;
+using System;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -55,6 +56,9 @@ namespace CurlyCore.Audio
         public override void OnBoot(App app, Scene startingScene)
         {
             // Create audio sources
+            _availableSources = new List<AudioSource>();
+            _unavailableSources = new List<AudioSource>();
+
             _sourceParent = new GameObject(SOURCE_PARENT_NAME);
             GenerateSources(_sourceParent, StartingSourceCount);
             DontDestroyOnLoad(_sourceParent);
@@ -66,7 +70,23 @@ namespace CurlyCore.Audio
             _unavailableSources.Clear();
         }
 
-        public async Task<AudioCallback> PlayOneShot(string soundPath, Vector3 position = default, IAudioOverride iOverride = null)
+        public void PlayOneShot(string soundPath, Vector3 position = default, IAudioOverride iOverride = null, Action<AudioCallback> OnPlay = null)
+        {
+            IEnumerator coroutine = PlayOneShotRoutine(soundPath, position, iOverride, OnPlay);
+            App.Instance.CoroutineRunner.StartGlobalCoroutine(coroutine);
+        }
+
+        private IEnumerator PlayOneShotRoutine(string soundPath, Vector3 position = default, IAudioOverride iOverride = null, Action<AudioCallback> OnPlay = null)
+        {
+            Task<AudioCallback> callbackTask = PlayOneShotAsync(soundPath, position, iOverride);
+
+            while (!callbackTask.IsCompleted) yield return null;
+
+            AudioCallback result = callbackTask.Result;
+            OnPlay?.Invoke(result);
+        }
+
+        private async Task<AudioCallback> PlayOneShotAsync(string soundPath, Vector3 position = default, IAudioOverride iOverride = null)
         {
             App.Instance.Logger.Log(LoggingGroupID.APP, $"Attempting to play one shot sound {soundPath}");
             bool found = GroupCache.TryGetValue(soundPath, out AudioGroup group);
@@ -91,12 +111,13 @@ namespace CurlyCore.Audio
                 App.Instance.Logger.Log(LoggingGroupID.APP, $"Could not find Audio Clip for path {soundPath}", LogType.Warning);
                 return null;
             }
+
             App.Instance.Logger.Log(LoggingGroupID.APP, $"Found clip: {clip.name}");
             source.clip = clip;
             source.Play();
             AudioCallback callback = new AudioCallback(source);
-
             callback.OnAudioEnd += RestashSource;
+            callback.OnAudioEnd += source => Addressables.Release(clip);
             return callback;
         }
 
@@ -125,7 +146,7 @@ namespace CurlyCore.Audio
             {
                 GameObject sourceObject = new GameObject($"{SOURCE_OBJECT_NAME} ({i})");
                 AudioSource source = sourceObject.AddComponent<AudioSource>();
-                // sourceObject.SetActive(false);
+                sourceObject.SetActive(false);
                 sourceObject.transform.parent = parent.transform;
                 _availableSources.Add(source);
             }
@@ -146,11 +167,6 @@ namespace CurlyCore.Audio
             source.gameObject.SetActive(true);
 
             return source;
-        }
-
-        private void Play(AudioSource source, AudioClip clip)
-        {
-
         }
 
         private void RestashSource(AudioSource source)

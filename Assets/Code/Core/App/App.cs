@@ -39,6 +39,10 @@ namespace CurlyCore.CurlyApp
         public GroupLogger Logger => _config.Logger;
         public AudioManager AudioManager => _config.AudioManger;
 
+        // Coroutine stuff
+        public CoroutineRunner CoroutineRunner {get; private set;}
+
+
         private App()
         {
             _config = Resources.Load<AppConfig>(App.ConfigPath);
@@ -56,14 +60,14 @@ namespace CurlyCore.CurlyApp
                 return Task.CompletedTask;
             }
 
-            Boot();
-            // Spawn objects
+            HandleBooters();
             DressScene();
+            SpawnCoroutineMaster();
 
             return Task.CompletedTask;
         }
 
-        private async void Boot()
+        private async void HandleBooters()
         {
             Scene startingScene = SceneManager.GetActiveScene();
             // Instantiate Quitter
@@ -97,6 +101,13 @@ namespace CurlyCore.CurlyApp
                 GameObject instance = GameObject.Instantiate(obj, Vector3.zero, Quaternion.identity);
                 GameObject.DontDestroyOnLoad(instance.transform.root.gameObject);
             }
+        }
+
+        private void SpawnCoroutineMaster()
+        {
+            GameObject instance = new GameObject("Coroutine Master");
+            CoroutineRunner = instance.AddComponent<CoroutineRunner>();
+            GameObject.DontDestroyOnLoad(instance);
         }
     }
 }
