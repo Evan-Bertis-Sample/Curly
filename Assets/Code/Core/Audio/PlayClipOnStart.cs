@@ -12,9 +12,9 @@ public class PlayClipOnStart : MonoBehaviour
 
     private void Start()
     {
-        AudioCallback callback = App.Instance.AudioManager.PlayOneShot(AudioPath);
-        callback.OnAudioEnd += Log;
+        App.Instance.AudioManager.PlayOneShot(AudioPath);
     }
+
 
     private void Log(AudioSource source)
     {

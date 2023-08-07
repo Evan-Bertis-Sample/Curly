@@ -14,7 +14,8 @@ namespace CurlyEditor
         {
             if (App.Instance.SceneMaster == null) return;
 
-            Selection.activeObject = App.Instance.SceneMaster;
+            // Selection.activeObject = App.Instance.SceneMaster;
+            EditorUtility.OpenPropertyEditor(App.Instance.SceneMaster);
         }
 
         [MenuItem("Curly/Core/Input Manager")]
@@ -22,7 +23,8 @@ namespace CurlyEditor
         {
             if (App.Instance.InputManager == null) return;
 
-            Selection.activeObject = App.Instance.InputManager;
+            // Selection.activeObject = App.Instance.InputManager;
+            EditorUtility.OpenPropertyEditor(App.Instance.InputManager);
         }
 
         [MenuItem("Curly/Core/Logger")]
@@ -30,7 +32,8 @@ namespace CurlyEditor
         {
             if (App.Instance.Logger == null) return;
 
-            Selection.activeObject = App.Instance.Logger;
+            // Selection.activeObject = App.Instance.Logger;
+            EditorUtility.OpenPropertyEditor(App.Instance.Logger);
         }
 
         [MenuItem("Curly/Core/Audio Manager")]
@@ -38,7 +41,8 @@ namespace CurlyEditor
         {
             if (App.Instance.AudioManager == null) return;
 
-            Selection.activeObject = App.Instance.AudioManager;
+            // Selection.activeObject = App.Instance.AudioManager;
+            EditorUtility.OpenPropertyEditor(App.Instance.AudioManager);
         }
     }
 }

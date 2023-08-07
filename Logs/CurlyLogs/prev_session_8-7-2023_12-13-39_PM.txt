@@ -1,0 +1,10 @@
+LOG SESSION (8/7/2023 12:13:14 PM)
+----------------------------------------
+App (12:13:14): test
+App (12:13:14): Attempting to play one shot sound Assets/Audio/SoundFX/Enviornment
+App (12:13:14): Found source: Audio Source (0)
+App (12:13:14): Could not find Audio Clip for path Assets/Audio/SoundFX/Enviornment
+App (12:13:39): Quitting Sequence Started
+App (12:13:39): Finishing Logging Session
+App (12:13:39): Deleting Log File 'D:/Documents/Code/Personal-Projects/curly-unity-starter/Logs/CurlyLogs/prev_session_8-7-2023_12-08-38_PM.txt'
+App (12:13:39): Moving old logging contents to new file
