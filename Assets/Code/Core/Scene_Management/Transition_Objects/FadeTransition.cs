@@ -16,7 +16,7 @@ namespace CurlyCore.SceneManagement.Transitions
         private Image _fadeImage;
         private Tweener _fadeTween;
 
-        public override void PrepareAnimation(Canvas screenCanvas)
+        public override void PrepareTransition(Canvas screenCanvas)
         {
             GameObject fadeObject = new GameObject("FadeObject");
             fadeObject.transform.SetParent(screenCanvas.transform, false);
@@ -35,7 +35,7 @@ namespace CurlyCore.SceneManagement.Transitions
             await _fadeTween.AsyncWaitForCompletion();
         }
 
-        public override void EndAnimation(Canvas screenCanvas)
+        public override void EndTransition(Canvas screenCanvas)
         {
             _fadeTween?.Kill();
             if (_fadeImage != null)

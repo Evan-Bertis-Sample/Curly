@@ -35,31 +35,31 @@ MonoBehaviour:
     m_Address: Assets/Audio/SoundFX/Enviornment/Lightning.wav
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Assets/Audio/SoundFX/Enviornment
+    - Assets/Audio/SoundFX/Enviornment/Lightning
     - Clips
   - m_GUID: d4a1d22bfee002c4ba55a82cac4ac7e1
     m_Address: Assets/Audio/SoundFX/Enviornment/Lightning2.wav
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Assets/Audio/SoundFX/Enviornment
+    - Assets/Audio/SoundFX/Enviornment/Lightning
     - Clips
   - m_GUID: 8a77b4d5c5d1bbd458cc4307e16e4059
     m_Address: Assets/Audio/SoundFX/Enviornment/Lightning3.wav
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Assets/Audio/SoundFX/Enviornment
+    - Assets/Audio/SoundFX/Enviornment/Lightning
     - Clips
   - m_GUID: 69a18aa5bf7f1624fb1e5bbbc3553e76
     m_Address: Assets/Audio/SoundFX/Enviornment/Lightning4.wav
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Assets/Audio/SoundFX/Enviornment
+    - Assets/Audio/SoundFX/Enviornment/Lightning
     - Clips
   - m_GUID: 852f22fcbf943d64c89ef75bc734571e
     m_Address: Assets/Audio/SoundFX/Enviornment/Rain.wav
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Assets/Audio/SoundFX/Enviornment
+    - Assets/Audio/SoundFX/Enviornment/Rain
     - Clips
   - m_GUID: e8f72cffbe1be394ea6759870e18e25c
     m_Address: Assets/Audio/SoundFX/Enviornment/AudioOverrideGroup.asset
@@ -367,6 +367,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Assets/Audio/SoundFX/Voices/Evan
     - Clips
+  - m_GUID: a88b04ef6b882754f8ae452071474034
+    m_Address: Assets/Audio/SoundFX/Enviornment/Lightning
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Assets/Audio/SoundFX/Enviornment
+    - AudioDirectory
+  - m_GUID: 6c29fd20159e8f444966059e5b21843a
+    m_Address: Assets/Audio/SoundFX/Enviornment/Rain
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Assets/Audio/SoundFX/Enviornment
+    - AudioDirectory
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8bf41b2f4f13e9b42a85e4f9bc8cecca, type: 2}
   m_SchemaSet:

@@ -52,7 +52,7 @@ namespace CurlyCore.SceneManagement
         /// <param name="transitionIn"> The transition played at the beginning of the transition </param>
         /// <param name="transitionOut"> The transition played leaving the transition </param>
         /// <returns></returns>
-        public async void LoadSceneAsync(string sceneName, ISceneTransition transitionIn = null, ISceneTransition transitionOut = null)
+        public async void LoadSceneAsync(string sceneName, ITransition<Canvas> transitionIn = null, ITransition<Canvas> transitionOut = null)
         {
             Scene curScene = SceneManager.GetActiveScene();
             Debug.Log($"Loading scene {sceneName} from {curScene.name}");

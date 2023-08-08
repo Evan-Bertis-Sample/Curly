@@ -1,12 +1,12 @@
-LOG SESSION (8/7/2023 1:59:47 PM)
+LOG SESSION (8/8/2023 6:12:06 PM)
 ----------------------------------------
-App (13:59:47): test
-App (13:59:47): Attempting to play one shot sound Assets/Audio/SoundFX/Enviornment
-App (13:59:47): Found source: Audio Source (0)
-App (13:59:47): Found clip: Lightning2
-App (13:59:48): AUDIO START
-App (13:59:52): AUDIO END
-App (13:59:56): Quitting Sequence Started
-App (13:59:56): Finishing Logging Session
-App (13:59:56): Deleting Log File 'D:/Documents/Code/Personal-Projects/curly-unity-starter/Logs/CurlyLogs/prev_session_8-7-2023_1-00-38_PM.txt'
-App (13:59:56): Moving old logging contents to new file
+App (18:12:06): test
+App (18:12:06): Attempting to play one shot sound Assets/Audio/SoundFX/Enviornment/Lightning
+App (18:12:06): Found source: Audio Source (0)
+App (18:12:06): Found clip: Lightning3
+App (18:12:07): AUDIO START
+App (18:12:08): Found clip: Rain
+App (18:12:15): Quitting Sequence Started
+App (18:12:15): Finishing Logging Session
+App (18:12:15): Deleting Log File 'D:/Documents/Code/Personal-Projects/curly-unity-starter/Logs/CurlyLogs/prev_session_8-8-2023_6-08-45_PM.txt'
+App (18:12:15): Moving old logging contents to new file

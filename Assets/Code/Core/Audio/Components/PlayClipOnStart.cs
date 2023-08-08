@@ -8,7 +8,7 @@ using CurlyCore.Audio;
 
 public class PlayClipOnStart : MonoBehaviour
 {
-    [DirectoryPath] public string AudioPath;
+    [AudioPath] public string AudioPath;
 
     private void Start()
     {
@@ -19,7 +19,6 @@ public class PlayClipOnStart : MonoBehaviour
             callback.OnAudioEnd += source => Log(source, "AUDIO END");
         });
     }
-
 
     private void Log(AudioSource source, string message)
     {

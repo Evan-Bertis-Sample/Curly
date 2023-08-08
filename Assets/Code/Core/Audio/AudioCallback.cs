@@ -14,13 +14,25 @@ namespace CurlyCore.Audio
     {
         public Action<AudioSource> OnAudioStart;
         public Action<AudioSource> OnAudioEnd;
+        private AudioSource _source;
+        private Coroutine _callbackInvoker;
 
         public AudioCallback(AudioSource source)
         {
-            App.Instance.CoroutineRunner.StartGlobalCoroutine(WaitForClip(source));
+            _source = source;
+            _callbackInvoker = App.Instance.CoroutineRunner.StartGlobalCoroutine(WaitForClip(source));
         }
 
-        public IEnumerator WaitForClip(AudioSource source)
+        public void ForceStop()
+        {
+            if (_source == null || _callbackInvoker == null) return;
+
+            _source.Stop();
+            OnAudioEnd?.Invoke(_source);
+            App.Instance.AudioManager.RestashSource(_source);
+        }
+
+        private IEnumerator WaitForClip(AudioSource source)
         {
             yield return new WaitUntil(() => source.isPlaying);
 
@@ -41,6 +53,8 @@ namespace CurlyCore.Audio
                 foreach (var d in OnAudioStart.GetInvocationList())
                     OnAudioStart -= d as Action<AudioSource>;
             }
+
+            _callbackInvoker = null;
         }
     }
 }

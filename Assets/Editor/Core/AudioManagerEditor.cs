@@ -199,7 +199,7 @@ namespace CurlyEditor.Core
                     references.Add(assetReference);
                 }
 
-                AudioGroup group = new AudioGroup { Override = audioOverride, AudioReferences = references};
+                AudioGroup group = new AudioGroup(audioOverride, references);
                 groupCache[directoryPath] = group;
             }
 
