@@ -36,12 +36,14 @@ namespace CurlyCore.Saving
             SaveFilePaths = GetAllSavePaths();
 
             SaveData data = new SaveData();
-            int testInt = 3;
-            data.Bind<int>("TestFact", ref testInt, 2);
+            data.Save<int>("TestFact", 3);
             Save(data, new JsonSaveSerializer(), "test");
 
             string path = CreateSaveFilePath(SerializationType.TEXT, "test");
             SaveData load = Load(path);
+            int testLoad = -1;
+            load.Load("TestFact", ref testLoad, -1);
+            Debug.Log("Loaded: " + testLoad);
         }
 
         public void Save(SaveData data, ISaveDataSerializer serializer, string fileName = "")
