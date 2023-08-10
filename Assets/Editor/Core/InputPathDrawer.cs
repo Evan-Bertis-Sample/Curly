@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.InputSystem;
+using UnityEditor.Experimental.GraphView;
 
 using CurlyCore.CurlyApp;
 using CurlyCore.Input;
@@ -15,7 +17,41 @@ namespace CurlyEditor.Core
     [CustomPropertyDrawer(typeof(InputPathAttribute))]
     public class InputPathDrawer : SearchBarDrawer
     {
-        
+        public class InputSearchProvider : ScriptableObject, ISearchWindowProvider
+        {
+            public Leaf<InputLeafContent> Root;
+            private Action<string> _onSelect;
+
+            public InputSearchProvider(Leaf<InputLeafContent> root, Action<string> onSelect = null)
+            {
+                Root = root;
+                _onSelect = onSelect;
+            }
+
+            public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
+            {
+                return SearchWindowUtility.ConvertLeafToSearchTree<InputLeafContent>(Root, new GUIContent("Search"));
+            }
+
+            public bool OnSelectEntry(SearchTreeEntry SearchTreeEntry, SearchWindowContext context)
+            {
+                InputLeafContent content = SearchTreeEntry.userData as InputLeafContent;
+                _onSelect?.Invoke(content.Path);
+                return true;
+            }
+        }
+
+        public class InputLeafContent
+        {
+            public string DisplayName;
+            public string Path;
+
+            public override string ToString()
+            {
+                return DisplayName;
+            }
+        }
+
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             base.OnGUI(position, property, label);
@@ -33,32 +69,35 @@ namespace CurlyEditor.Core
             return _standardPropertyHeight * 3f;
         }
 
-        protected override void ButtonClicked(Rect browserPosition)
+        protected override void ButtonClicked(Rect buttonPosition)
         {
-            Leaf<string> browserContent = GenerateBrowserContent();
-            DropDownBrowser browser = new DropDownBrowser(browserContent);
-            browser.PathUpdate += UpdateProperty;
-            PopupWindow.Show(browserPosition, browser);
+            Leaf<InputLeafContent> content = GenerateBrowserContent();
+            InputSearchProvider provider = new InputSearchProvider(content, UpdateProperty);
+            SearchWindowContext searchContext = new SearchWindowContext(GUIUtility.GUIToScreenPoint(Event.current.mousePosition));
+            SearchWindow.Open(searchContext, provider);
         }
 
-        private Leaf<string> GenerateBrowserContent()
+        private Leaf<InputLeafContent> GenerateBrowserContent()
         {
             if (App.Instance.InputManager.MasterActionAsset == null) throw new System.Exception("Action map is not defined.");
             IEnumerable<InputActionMap> actionMaps = App.Instance.InputManager.MasterActionAsset.actionMaps;
 
-            List<Leaf<string>> children = new List<Leaf<string>>();
+            List<Leaf<InputLeafContent>> children = new List<Leaf<InputLeafContent>>();
 
             foreach (InputActionMap map in actionMaps)
             {
-                List<string> mapChildren = new List<string>();
+                List<InputLeafContent> mapChildren = new List<InputLeafContent>();
                 foreach (InputAction action in map.actions)
                 {
-                    mapChildren.Add(action.name);
+                    InputLeafContent content = new InputLeafContent() { DisplayName = action.name, Path = $"{map.name}/{action.name}"};
+                    mapChildren.Add(content);
                 }
-                children.Add(new Leaf<string>(map.name, mapChildren, null));
+
+                InputLeafContent mapContent = new InputLeafContent() {DisplayName = map.name, Path = map.name };
+                children.Add(new Leaf<InputLeafContent>(mapContent, mapChildren, null));
             }
 
-            return new Leaf<string>(null, children);
+            return new Leaf<InputLeafContent>(null, children);
         }
 
         private void UpdateProperty(string value)

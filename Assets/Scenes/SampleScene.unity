@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cc7817426a6a8499b3ef1dc70bb0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioPath: Assets/Audio/SoundFX/Enviornment/Lightning
+  AudioPath: Assets/Audio/SoundFX/Footsteps/Grass
 --- !u!4 &394797118
 Transform:
   m_ObjectHideFlags: 0
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e3b5ff774e47d4b8c56a8574a4d2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicPath: Assets/Audio/SoundFX/Enviornment/Rain
+  MusicPath: Assets/Audio/SoundFX/Misc/Polaroid Shutter.mp3
   TransitionIn: {fileID: 11400000, guid: 2fba1b2b20c2dd943b24dde3a6be3629, type: 2}
   TransitionOut: {fileID: 11400000, guid: fdbdfb9e75170024784f011a9316803d, type: 2}
   AudioOverride: {fileID: 0}
