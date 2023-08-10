@@ -1,0 +1,14 @@
+LOG SESSION (8/9/2023 11:52:51 PM)
+----------------------------------------
+App (23:52:51): test
+App (23:52:51): Creating Save Directory: C:/Users/esamp/AppData/LocalLow/Curly/Curly-Starter/savedata/
+App (23:52:51): Attempting to play one shot sound Assets/Audio/SoundFX/Footsteps/Grass
+App (23:52:51): Found source: Audio Source (0)
+App (23:52:52): Found clip: Single-footstep-in-grass-D-www.fesliyanstudios.com
+App (23:52:52): AUDIO START
+App (23:52:52): AUDIO END
+App (23:52:53): Found clip: Polaroid Shutter
+App (23:52:57): Quitting Sequence Started
+App (23:52:57): Finishing Logging Session
+App (23:52:57): Deleting Log File 'D:/Documents/Code/Personal-Projects/curly-unity-starter/Logs/CurlyLogs/prev_session_8-9-2023_11-18-55_PM.txt'
+App (23:52:57): Moving old logging contents to new file
