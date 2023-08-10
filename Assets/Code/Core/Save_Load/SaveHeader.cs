@@ -14,12 +14,66 @@ namespace CurlyCore.Saving
         [field: SerializeField] public SerializationType SerializationType { get; } // 4 bytes
         [field: SerializeField] public DateTime TimeSaved { get; } // 8 bytes
 
-        public SaveHeader(string id, SerializationType type)
+        public SaveHeader(string id, SerializationType type, DateTime time = default)
         {
             if (id.Length != 3) throw new Exception($"Cannot make SaveHeader: Serialization ID must be 3 characters! Please change ID '{id}' to be 3 characters!");
             SerializerID = id;
             SerializationType = type;
-            TimeSaved = DateTime.Now;
+            TimeSaved = (time != default) ? DateTime.Now : time;
+        }
+
+        public static SaveHeader Deserialize(Byte[] bytes, SerializationType type)
+        {
+            switch (type)
+            {
+                case SerializationType.TEXT:
+                    return DeserializeFromText(bytes);
+                    break;
+                case SerializationType.BINARY:
+                    return DeserializeFromBinary(bytes);
+                    break;
+                default:
+                    throw new Exception("Invalid SerializationType!");
+            }
+        }
+
+        private static SaveHeader DeserializeFromText(Byte[] bytes)
+        {
+            string textRepresentation = Encoding.UTF8.GetString(bytes);
+            Debug.Log(textRepresentation);
+            SaveHeader deserializedHeader = JsonConvert.DeserializeObject<SaveHeader>(textRepresentation);
+            return deserializedHeader;
+        }
+
+        private static SaveHeader DeserializeFromBinary(Byte[] bytes)
+        {
+            if (bytes.Length != 15) throw new Exception("Invalid byte array length for binary deserialization!");
+            string id = Encoding.ASCII.GetString(bytes, 0, 3);
+            SerializationType format = (SerializationType)BitConverter.ToInt32(bytes, 3);
+            DateTime time = DateTime.FromBinary(BitConverter.ToInt64(bytes, 7));
+            return new SaveHeader(id, format, time);
+        }
+
+        public static int GetByteSize(SerializationType type)
+        {
+            switch (type)
+            {
+                case SerializationType.BINARY:
+                    return 15;
+                case SerializationType.TEXT:
+                    return GetTextSerializationByteSize();
+                default:
+                    throw new System.Exception("Invalid type!");
+            }
+        }
+
+        // Just a quick way to get the length of metadata
+        private static int GetTextSerializationByteSize()
+        {
+            SaveHeader fake = new SaveHeader("FKE", SerializationType.TEXT);
+            string json = JsonConvert.SerializeObject(fake);
+            // Debug.Log(json);
+            return System.Text.ASCIIEncoding.UTF8.GetByteCount(json);
         }
 
         public Byte[] Serialize()
@@ -33,6 +87,11 @@ namespace CurlyCore.Saving
                 default:
                     throw new Exception("Invalid SerializationType!");
             }
+        }
+
+        public override string ToString()
+        {
+            return $"SaveHeader: SerializerID = {SerializerID}, SerializationType = {SerializationType}, TimeSaved = {TimeSaved}";
         }
 
         private Byte[] SerializeAsText()
@@ -57,26 +116,5 @@ namespace CurlyCore.Saving
             return result;
         }
 
-        public static int GetByteSize(SerializationType type)
-        {
-            switch (type)
-            {
-                case SerializationType.BINARY:
-                    return 15;
-                case SerializationType.TEXT:
-                    return GetTextSerializationByteSize();
-                default:
-                    throw new System.Exception("Invalid type!");
-            }
-        }
-
-        // Just a quick way to get the length of metadata
-        private static int GetTextSerializationByteSize()
-        {
-            SaveHeader fake = new SaveHeader("FKE", SerializationType.TEXT);
-            string json = JsonConvert.SerializeObject(fake);
-            // Debug.Log(json);
-            return System.Text.ASCIIEncoding.UTF8.GetByteCount(json);
-        }
     }
 }

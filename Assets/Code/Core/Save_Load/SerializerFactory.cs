@@ -27,9 +27,9 @@ namespace CurlyCore.Saving
             }
         }
 
-        public static ISaveDataSerializer CreateSerializer(string metadata)
+        public ISaveDataSerializer CreateSerializer(string serializerID)
         {
-            if (_serializers.TryGetValue(metadata, out Type type))
+            if (_serializers.TryGetValue(serializerID, out Type type))
             {
                 return (ISaveDataSerializer)Activator.CreateInstance(type);
             }

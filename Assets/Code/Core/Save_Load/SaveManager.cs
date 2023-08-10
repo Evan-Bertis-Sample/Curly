@@ -27,15 +27,15 @@ namespace CurlyCore.Saving
         {
             _factory = new SerializerFactory();
 
-            Debug.Log(_SAVE_DIRECTORY);
-
             if (Directory.Exists(_SAVE_DIRECTORY) == false)
             {
                 App.Instance.Logger.Log(Debugging.LoggingGroupID.APP, $"Creating Save Directory: {_SAVE_DIRECTORY}");
                 Directory.CreateDirectory(_SAVE_DIRECTORY);
             }
 
-            Save(null, new JsonSaveSerializer());
+            Save(null, new JsonSaveSerializer(), "test");
+            string path = CreateSaveFilePath(SerializationType.TEXT, "test");
+            Load(path);
         }
 
         public void Save(SaveData data, ISaveDataSerializer serializer, string fileName = "")
@@ -57,11 +57,37 @@ namespace CurlyCore.Saving
             Byte[] headerEncoding = header.Serialize();
 
             using (File.Create(path)) { }
-            
+
             Byte[] dataEncoding = serializer.Save(data);
 
             Byte[] saveEncoding = headerEncoding.Concat(dataEncoding).ToArray();
             File.WriteAllBytes(path, saveEncoding);
+        }
+
+        public SaveData Load(string savepath)
+        {
+            // Get serialization type
+            SerializationType format = GetSerializationType(savepath);
+
+            int byteCount = SaveHeader.GetByteSize(format);
+            byte[] headerBuffer = new byte[byteCount];
+
+            using (FileStream fs = new FileStream(savepath, FileMode.Open, FileAccess.Read))
+            {
+                int bytesRead = fs.Read(headerBuffer, 0, byteCount);
+                fs.Close();
+
+                if (bytesRead != headerBuffer.Length)
+                {
+                    throw new Exception("Header information is not expected length!");
+                }
+            }
+
+            SaveHeader header = SaveHeader.Deserialize(headerBuffer, format);
+            Debug.Log(header.ToString());
+            ISaveDataSerializer serializer = _factory.CreateSerializer(header.SerializerID);
+
+            return null;
         }
 
         private string CreateSaveFilePath(SerializationType type, string fileName = "")
@@ -71,6 +97,16 @@ namespace CurlyCore.Saving
             string extension = _SAVE_EXTENSIONS[(int)type];
 
             return $"{_SAVE_DIRECTORY}/{fileName}{extension}";
+        }
+
+        private SerializationType GetSerializationType(string absolutePath)
+        {
+            string extension = Path.GetExtension(absolutePath);
+            int index = Array.IndexOf(_SAVE_EXTENSIONS, extension);
+
+            if (index == -1) throw new Exception("Unsupported Filetype!");
+
+            return (SerializationType)index;
         }
     }
 }
