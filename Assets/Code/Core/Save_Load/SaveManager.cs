@@ -36,14 +36,13 @@ namespace CurlyCore.Saving
             SaveFilePaths = GetAllSavePaths();
 
             SaveData data = new SaveData();
-            data.Save<int>("TestFact", 3);
-            Save(data, new JsonSaveSerializer(), "test");
+            data.Save("TestFact", 3);
+            Save(data, new BinarySaveSerializer(), "test");
 
-            string path = CreateSaveFilePath(SerializationType.TEXT, "test");
+            string path = CreateSaveFilePath(SerializationType.BINARY, "test");
             SaveData load = Load(path);
-            int testLoad = -1;
-            load.Load("TestFact", ref testLoad, -1);
-            Debug.Log("Loaded: " + testLoad);
+            int testLoad = load.Load("TestFact", -1);
+            Debug.Log($"Loaded {testLoad}");
         }
 
         public void Save(SaveData data, ISaveDataSerializer serializer, string fileName = "")
@@ -92,7 +91,6 @@ namespace CurlyCore.Saving
                 ISaveDataSerializer serializer = _factory.CreateSerializer(header.SerializerID);
 
                 int dataSize = (int)fs.Length - headerSize;
-                Debug.Log(dataSize);
                 byte[] dataBuffer = new byte[dataSize];
                 fs.Read(dataBuffer, 0, dataSize);
                 SaveData data = serializer.Load(dataBuffer);

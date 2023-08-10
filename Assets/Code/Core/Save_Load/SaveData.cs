@@ -6,9 +6,10 @@ using CurlyCore.Debugging;
 
 namespace CurlyCore.Saving
 {
+    [System.Serializable]
     public class SaveData
     {
-        public FactDictionary Facts { get; private set; }
+        public FactDictionary Facts;
 
         public SaveData()
         {
@@ -20,7 +21,7 @@ namespace CurlyCore.Saving
             try
             {
                 T val = value;
-                Load<T>(factname, ref val, default);
+                Load<T>(factname, default);
                 // If the load is unsuccessful, that means that the value is of a different type and a casting error is thrown
                 Facts[factname] = value;
             }
@@ -30,19 +31,22 @@ namespace CurlyCore.Saving
             }
         }
 
-        public void Load<T>(string factName, ref T value, T fallback)
+        public T Load<T>(string factName, T fallback)
         {
             try
             {
                 if (Facts.ContainsKey(factName))
-                    value = (T)Facts[factName];
+                {
+                    Debug.Log((T)Facts[factName]);
+                    return (T)Facts[factName];
+                }
                 else
-                    value = fallback;
+                    return fallback;
             }
             catch (System.Exception error)
             {
                 App.Instance.Logger.Log(LoggingGroupID.APP, error, LogType.Warning);
-                value = fallback;
+                return fallback;
             }
         }
     }
