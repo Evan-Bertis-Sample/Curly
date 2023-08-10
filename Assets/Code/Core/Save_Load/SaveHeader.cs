@@ -40,7 +40,6 @@ namespace CurlyCore.Saving
         private static SaveHeader DeserializeFromText(Byte[] bytes)
         {
             string textRepresentation = Encoding.UTF8.GetString(bytes);
-            Debug.Log(textRepresentation);
             SaveHeader deserializedHeader = JsonConvert.DeserializeObject<SaveHeader>(textRepresentation);
             return deserializedHeader;
         }
@@ -94,7 +93,8 @@ namespace CurlyCore.Saving
 
         private Byte[] SerializeAsText()
         {
-            string textRepresentation = JsonConvert.SerializeObject(this);
+            string textRepresentation = JsonConvert.SerializeObject(this, Formatting.Indented);
+            textRepresentation += "\n";
             return Encoding.UTF8.GetBytes(textRepresentation);
         }
 

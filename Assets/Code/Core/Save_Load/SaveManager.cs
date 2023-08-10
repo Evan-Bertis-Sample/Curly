@@ -13,6 +13,7 @@ namespace CurlyCore.Saving
     public class SaveManager : BooterObject
     {
         [field: SerializeField] public List<string> SaveFilePaths { get; private set; } = new List<string>();
+        public SaveData CurrentSave { get; private set; }
         private SerializerFactory _factory;
 
         private string _SAVE_DIRECTORY => $"{Application.persistentDataPath}/savedata";
@@ -33,9 +34,14 @@ namespace CurlyCore.Saving
                 Directory.CreateDirectory(_SAVE_DIRECTORY);
             }
             SaveFilePaths = GetAllSavePaths();
-            Save(null, new JsonSaveSerializer(), "test");
+
+            SaveData data = new SaveData();
+            int testInt = 3;
+            data.Bind<int>("TestFact", ref testInt, 2);
+            Save(data, new JsonSaveSerializer(), "test");
+
             string path = CreateSaveFilePath(SerializationType.TEXT, "test");
-            Load(path);
+            SaveData load = Load(path);
         }
 
         public void Save(SaveData data, ISaveDataSerializer serializer, string fileName = "")
@@ -69,25 +75,29 @@ namespace CurlyCore.Saving
             // Get serialization type
             SerializationType format = GetSerializationType(savepath);
 
-            int byteCount = SaveHeader.GetByteSize(format);
-            byte[] headerBuffer = new byte[byteCount];
-
             using (FileStream fs = new FileStream(savepath, FileMode.Open, FileAccess.Read))
             {
-                int bytesRead = fs.Read(headerBuffer, 0, byteCount);
-                fs.Close();
+                int headerSize = SaveHeader.GetByteSize(format);
+                byte[] headerBuffer = new byte[headerSize];
+                int bytesRead = fs.Read(headerBuffer, 0, headerSize);
 
                 if (bytesRead != headerBuffer.Length)
                 {
                     throw new Exception("Header information is not expected length!");
                 }
+
+                SaveHeader header = SaveHeader.Deserialize(headerBuffer, format);
+                ISaveDataSerializer serializer = _factory.CreateSerializer(header.SerializerID);
+
+                int dataSize = (int)fs.Length - headerSize;
+                Debug.Log(dataSize);
+                byte[] dataBuffer = new byte[dataSize];
+                fs.Read(dataBuffer, 0, dataSize);
+                SaveData data = serializer.Load(dataBuffer);
+                fs.Close();
+
+                return data;
             }
-
-            SaveHeader header = SaveHeader.Deserialize(headerBuffer, format);
-            Debug.Log(header.ToString());
-            ISaveDataSerializer serializer = _factory.CreateSerializer(header.SerializerID);
-
-            return null;
         }
 
         private List<string> GetAllSavePaths()

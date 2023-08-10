@@ -7,7 +7,7 @@ namespace CurlyCore.Saving
 {
     public interface ISaveDataSerializer
     {
-        public SaveData Load(string absolutePath);
+        public SaveData Load(Byte[] data);
         public Byte[] Save(SaveData toSave);
     }
 }
