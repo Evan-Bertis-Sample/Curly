@@ -10,16 +10,16 @@ namespace CurlyCore.Saving
     [System.Serializable]
     public struct SaveHeader
     {
-        [field: SerializeField] public string SerializerID { get; } // Must be 3 characters -- 3 bytes
-        [field: SerializeField] public SerializationType SerializationType { get; } // 4 bytes
-        [field: SerializeField] public DateTime TimeSaved { get; } // 8 bytes
+        [field: SerializeField] public string SerializerID;// Must be 3 characters -- 3 bytes
+        [field: SerializeField] public SerializationType SerializationType; // 4 bytes
+        [field: SerializeField] public DateTime TimeSaved; // 8 bytes
 
         public SaveHeader(string id, SerializationType type, DateTime time = default)
         {
             if (id.Length != 3) throw new Exception($"Cannot make SaveHeader: Serialization ID must be 3 characters! Please change ID '{id}' to be 3 characters!");
             SerializerID = id;
             SerializationType = type;
-            TimeSaved = (time != default) ? DateTime.Now : time;
+            TimeSaved = (time == default) ? DateTime.Now : time;
         }
 
         public static SaveHeader Deserialize(Byte[] bytes, SerializationType type)
@@ -71,9 +71,7 @@ namespace CurlyCore.Saving
         private static int GetTextSerializationByteSize()
         {
             SaveHeader fake = new SaveHeader("FKE", SerializationType.TEXT);
-            string json = JsonConvert.SerializeObject(fake);
-            // Debug.Log(json);
-            return System.Text.ASCIIEncoding.UTF8.GetByteCount(json);
+            return fake.Serialize().Length;
         }
 
         public Byte[] Serialize()

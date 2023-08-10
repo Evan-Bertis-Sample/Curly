@@ -38,7 +38,7 @@ namespace CurlyCore.Debugging
             new LoggingGroup { GroupName = "App", LoggingColor = new Color(0.9716981f, 0.3162602f, 0.3162602f ), EnableLogging = true },
             new LoggingGroup { GroupName = "Gameplay", LoggingColor = new Color(0.7203155f, 0.4963955f, 0.9150943f ), EnableLogging = true },
         };
-        
+
         public override void OnBoot(App app, Scene scene)
         {
             _loggedThisSession = false;
@@ -73,16 +73,25 @@ namespace CurlyCore.Debugging
 
         public List<LoggingGroup> GetGroups()
         {
-            // Grab all the groups in the user defined array that aren't already contained in the _REQUIRED GROUPS
-            // This is peak LINQ
-            List<LoggingGroup> groups = LoggingGroups.Where(
-                group => !_REQUIRED_GROUPS.Any(
-                    comp => comp.GroupName.ToUpper() == group.GroupName.ToUpper())
-                ).ToList();
+            // Concatenate LoggingGroups with _REQUIRED_GROUPS, then remove duplicates by GroupName (case-insensitive)
+            List<LoggingGroup> combinedGroups = LoggingGroups
+                .Union(_REQUIRED_GROUPS, new LoggingGroupNameComparer())
+                .ToList();
 
-            List<LoggingGroup> g = _REQUIRED_GROUPS.ToList();
-            g.AddRange(groups);
-            return g;
+            return combinedGroups;
+        }
+
+        private class LoggingGroupNameComparer : IEqualityComparer<LoggingGroup>
+        {
+            public bool Equals(LoggingGroup x, LoggingGroup y)
+            {
+                return string.Equals(x.GroupName, y.GroupName, StringComparison.OrdinalIgnoreCase);
+            }
+
+            public int GetHashCode(LoggingGroup obj)
+            {
+                return obj.GroupName.ToUpperInvariant().GetHashCode();
+            }
         }
 
         public override void OnQuit(App app, Scene scene)

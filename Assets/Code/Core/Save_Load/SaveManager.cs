@@ -12,8 +12,8 @@ namespace CurlyCore.Saving
     [CreateAssetMenu(menuName = "Curly/Core/Save Manager", fileName = "SaveManager")]
     public class SaveManager : BooterObject
     {
+        [field: SerializeField] public List<string> SaveFilePaths { get; private set; } = new List<string>();
         private SerializerFactory _factory;
-        private List<string> _saveFilePaths = new List<string>();
 
         private string _SAVE_DIRECTORY => $"{Application.persistentDataPath}/savedata";
 
@@ -32,7 +32,7 @@ namespace CurlyCore.Saving
                 App.Instance.Logger.Log(Debugging.LoggingGroupID.APP, $"Creating Save Directory: {_SAVE_DIRECTORY}");
                 Directory.CreateDirectory(_SAVE_DIRECTORY);
             }
-
+            SaveFilePaths = GetAllSavePaths();
             Save(null, new JsonSaveSerializer(), "test");
             string path = CreateSaveFilePath(SerializationType.TEXT, "test");
             Load(path);
@@ -56,7 +56,7 @@ namespace CurlyCore.Saving
             SaveHeader header = new SaveHeader(attribute.ID, attribute.SerializationFormat);
             Byte[] headerEncoding = header.Serialize();
 
-            using (File.Create(path)) { }
+            if (File.Exists(path) == false) using (File.Create(path)) { }
 
             Byte[] dataEncoding = serializer.Save(data);
 
@@ -88,6 +88,21 @@ namespace CurlyCore.Saving
             ISaveDataSerializer serializer = _factory.CreateSerializer(header.SerializerID);
 
             return null;
+        }
+
+        private List<string> GetAllSavePaths()
+        {
+            List<string> filteredFiles = Directory
+                .EnumerateFiles(_SAVE_DIRECTORY, "*", SearchOption.TopDirectoryOnly)
+                .Where(file =>
+                {
+                    // Debug.Log(File);
+                    return _SAVE_EXTENSIONS.Contains(Path.GetExtension(file));
+                })
+                .Select(path => path.Replace("\\", "/"))
+                .ToList();
+
+            return filteredFiles;
         }
 
         private string CreateSaveFilePath(SerializationType type, string fileName = "")
