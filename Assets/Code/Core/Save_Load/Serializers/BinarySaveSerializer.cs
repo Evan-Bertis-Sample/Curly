@@ -30,7 +30,6 @@ namespace CurlyCore.Saving
                     {
                         int id = reader.ReadInt32();
                         string typename = reader.ReadString();
-                        Debug.Log($"Loaded {id}, {typename}");
                         mappper._idToTypeMap[id] = typename;
                         mappper._typeToIdMap[typename] = id;
                     }
@@ -56,7 +55,7 @@ namespace CurlyCore.Saving
 
             public int GetTypeIdentifier(Type type)
             {
-                string typename = $"{type.Assembly.GetName().Name}.{type.Name}";
+                string typename = type.AssemblyQualifiedName;
                 if (_typeToIdMap.ContainsKey(typename))
                     return _typeToIdMap[typename];
 
@@ -97,12 +96,7 @@ namespace CurlyCore.Saving
                 ms.Read(dictBytes, 0, dictLength);
                 var factDict = DeserializeFactDictionary(dictBytes, mapper);
 
-                SaveData saveData = new SaveData() {Facts = factDict};
-                foreach(var pair in saveData.Facts)
-                {
-                    Debug.Log($"({pair.Key}, {pair.Value})");
-                }
-
+                SaveData saveData = new SaveData(factDict);
                 Debug.Log(saveData.Load("TestFact", -1));
                 return saveData;
             }
@@ -210,7 +204,7 @@ namespace CurlyCore.Saving
             using (MemoryStream ms = new MemoryStream(bytes))
             {
                 string json = System.Text.Encoding.UTF8.GetString(bytes);
-                return JsonConvert.DeserializeObject(json);
+                return JsonConvert.DeserializeObject(json, targetType);
             }
         }
     }

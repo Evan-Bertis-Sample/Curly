@@ -28,10 +28,8 @@ namespace CurlyCore.Saving
             {
                 case SerializationType.TEXT:
                     return DeserializeFromText(bytes);
-                    break;
                 case SerializationType.BINARY:
                     return DeserializeFromBinary(bytes);
-                    break;
                 default:
                     throw new Exception("Invalid SerializationType!");
             }

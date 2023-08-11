@@ -16,13 +16,16 @@ namespace CurlyCore.Saving
             Facts = new FactDictionary();
         }
 
+        public SaveData(FactDictionary facts)
+        {
+            Facts = facts;
+        }
+
         public void Save<T>(string factname, T value)
         {
             try
             {
                 T val = value;
-                Load<T>(factname, default);
-                // If the load is unsuccessful, that means that the value is of a different type and a casting error is thrown
                 Facts[factname] = value;
             }
             catch
@@ -35,13 +38,8 @@ namespace CurlyCore.Saving
         {
             try
             {
-                if (Facts.ContainsKey(factName))
-                {
-                    Debug.Log((T)Facts[factName]);
-                    return (T)Facts[factName];
-                }
-                else
-                    return fallback;
+                Debug.Log((T)Facts[factName]);
+                return (T)Facts[factName];
             }
             catch (System.Exception error)
             {

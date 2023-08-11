@@ -46,8 +46,6 @@ namespace CurlyCore.Debugging
 #if UNITY_EDITOR
             if (LogToFile) SetupLogContents();
 #endif
-
-            Log(LoggingGroupID.APP, "test");
         }
 
         public void Log(LoggingGroupID type, object message, LogType logType = LogType.Log)
