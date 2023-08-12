@@ -16,5 +16,10 @@ namespace CurlyCore.Saving
         {
             return data;
         }
+
+        public void SetKeyAndIV(byte[] key, byte[] iv)
+        {
+            return;
+        }
     }
 }

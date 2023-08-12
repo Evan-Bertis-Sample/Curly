@@ -4,7 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
-
+using System.Security.Cryptography;
+using Newtonsoft.Json;
 
 namespace CurlyCore.Saving
 {
@@ -27,6 +28,7 @@ namespace CurlyCore.Saving
                 {
                     _encryptors[attribute.ID] = type;
                     IEncryptor encryptor = CreateEncryptorFromID(attribute.ID);
+                    SetKeyAndIV(encryptor);
                     byte[] idBytes = System.Text.Encoding.UTF8.GetBytes(attribute.ID);
                     byte[] bytesEncrypted = encryptor.Encrypt(idBytes);
                     string tag = System.Text.Encoding.UTF8.GetString(bytesEncrypted);
@@ -40,7 +42,9 @@ namespace CurlyCore.Saving
         {
             if (_encryptors.TryGetValue(serializerID, out Type type))
             {
-                return (IEncryptor)Activator.CreateInstance(type);
+                IEncryptor encryptor = (IEncryptor)Activator.CreateInstance(type);
+                SetKeyAndIV(encryptor);
+                return encryptor;
             }
 
             throw new InvalidOperationException("Unknown encryptor type.");
@@ -63,6 +67,51 @@ namespace CurlyCore.Saving
 
             string tag = _idToTag[attribute.ID];
             return System.Text.Encoding.UTF8.GetBytes(tag);
+        }
+
+        private void SetKeyAndIV(IEncryptor encryptor)
+        {
+            // Use the type's fully qualified name as part of the passphrase
+            string typeName = encryptor.GetType().FullName;
+
+            // Retrieve the EncryptorMetadataAttribute for the additional ID
+            var attribute = encryptor.GetType().GetCustomAttribute<EncryptorMetadataAttribute>();
+            if (attribute == null)
+            {
+                throw new Exception("Encryptor is unregistered. Add an EncryptorMetadataAttribute to register the encryptor.");
+            }
+
+            // Combine the type name and the ID to form the passphrase
+            string passphrase = typeName + attribute.ID;
+
+            // Hash the passphrase using SHA-256
+            byte[] hashedPassphrase = SHA256Hash(passphrase);
+            string salt = "CurlyCore.Saving Encryption is simply meant to defer the 99% who want to tamper save files. If someone manages to figure it out, they deserve it.";
+
+            // Generate Key and IV using the hashed passphrase and a static salt (e.g., "YourGameTitle")
+            var (key, iv) = GenerateKeyAndIV(hashedPassphrase, salt);
+
+            encryptor.SetKeyAndIV(key, iv);
+        }
+
+        private byte[] SHA256Hash(string data)
+        {
+            using (System.Security.Cryptography.SHA256 sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                return sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(data));
+            }
+        }
+
+        private (byte[] Key, byte[] IV) GenerateKeyAndIV(byte[] passphrase, string salt)
+        {
+            // Use a key derivation function like PBKDF2 to generate bytes.
+            using (var deriveBytes = new Rfc2898DeriveBytes(passphrase, System.Text.Encoding.UTF8.GetBytes(salt), 1000))
+            {
+                byte[] key = deriveBytes.GetBytes(32);  // For a 256-bit key
+                byte[] iv = deriveBytes.GetBytes(16);   // For a 128-bit IV
+
+                return (key, iv);
+            }
         }
     }
 }

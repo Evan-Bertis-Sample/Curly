@@ -39,7 +39,7 @@ namespace CurlyCore.Saving
 
             SaveData data = new SaveData();
             data.Save("TestFact", 3);
-            Save(data, new BinarySaveSerializer(), null, "test-encrypted");
+            Save(data, new JsonSaveSerializer(), _encryptorFactory.CreateEncryptorFromID("AES"), "test-encrypted-json");
 
             string path = CreateSaveFilePath(SerializationType.BINARY, "test-encrypted");
             SaveData load = Load(path);
