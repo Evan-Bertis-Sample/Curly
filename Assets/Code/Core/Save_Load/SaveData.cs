@@ -38,7 +38,6 @@ namespace CurlyCore.Saving
         {
             try
             {
-                Debug.Log((T)Facts[factName]);
                 return (T)Facts[factName];
             }
             catch (System.Exception error)

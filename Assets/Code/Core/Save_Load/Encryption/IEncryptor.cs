@@ -6,6 +6,7 @@ namespace CurlyCore.Saving
 {
     public interface IEncryptor
     {
-        public void Encrypt(string path);
+        public byte[] Encrypt(byte[] data);
+        public byte[] Decrypt(byte[] data);
     }
 }
