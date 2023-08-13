@@ -1,7 +1,9 @@
 using System;
+using UnityEngine;
 
-namespace CurlyCore
+namespace CurlyCore.Saving
 {
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class DataStorageMetadata : Attribute
     {
         public string ID { get; private set; }
@@ -10,5 +12,10 @@ namespace CurlyCore
         {
             ID = id;
         }
+    }
+
+    public class DataStorageID : PropertyAttribute
+    {
+
     }
 }

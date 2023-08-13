@@ -14,22 +14,28 @@ namespace CurlyCore.Saving
     public class SaveManager : BooterObject
     {
         public SaveData CurrentSave { get; private set; }
-        private SerializerFactory _serializationFactory;
-        private EncryptorFactory _encryptorFactory;
+
+        [field: SerializeField, DataStorageID] public string DefaultStorage {get; private set;}
+        [field: SerializeField, SerializerID] public string DefaultSerializer {get; private set;}
+        [field: SerializeField, EncryptorID] public string DefaultEncryptor {get; private set;}
 
         public override void OnBoot(App app, Scene scene)
         {
-            _serializationFactory = new SerializerFactory();
-            _encryptorFactory = new EncryptorFactory();
-
             SaveData data = new SaveData();
             data.Save("TestFact", 3);
 
-            LocalDataStorage storage = new LocalDataStorage();
-            Save(data, storage, new BinarySaveSerializer(), null, "test-bin");
-            SaveData load = Load(storage, "test-bin");
+            SaveUsingDefault(data, "test-default");
+            SaveData load = LoadUsingDefault("test-default");
             int testLoad = load.Load("TestFact", -1);
             Debug.Log($"Loaded {testLoad}");
+        }
+
+        public void SaveUsingDefault(SaveData data, string fileName)
+        {
+            IDataStorage storage = DataStorageFactory.CreateStorage(DefaultStorage);
+            ISaveDataSerializer serializer = SerializerFactory.CreateSerializer(DefaultSerializer);
+            IEncryptor encryptor = EncryptorFactory.CreateEncryptorFromID(DefaultEncryptor);
+            Save(data, storage, serializer, encryptor, fileName);
         }
 
         public void Save(SaveData data, IDataStorage storage, ISaveDataSerializer serializer, IEncryptor encryptor = null, string fileName = "")
@@ -65,7 +71,7 @@ namespace CurlyCore.Saving
                 saveEncrypted = encryptor.Encrypt(ms.ToArray());
             }
 
-            byte[] encryptorTag = _encryptorFactory.GetTag(encryptor);
+            byte[] encryptorTag = EncryptorFactory.GetTag(encryptor);
             int length = encryptorTag.Length;
             byte[] tagLengthBytes = BitConverter.GetBytes(length);
 
@@ -79,6 +85,12 @@ namespace CurlyCore.Saving
             }
         }
 
+        public SaveData LoadUsingDefault(string fileName)
+        {
+            IDataStorage storage = DataStorageFactory.CreateStorage(DefaultStorage);
+            return Load(storage, fileName);
+        }
+
         public SaveData Load(IDataStorage storage, string fileName)
         {
             byte[] data = storage.RetrieveData(fileName);
@@ -88,7 +100,7 @@ namespace CurlyCore.Saving
                 BinaryReader fileReader = new BinaryReader(retrievedStream);
                 int encryptonTagSize = fileReader.ReadInt32();
                 byte[] encryptonTag = fileReader.ReadBytes(encryptonTagSize);
-                IEncryptor encryptor = _encryptorFactory.CreateEncryptorFromTag(encryptonTag);
+                IEncryptor encryptor = EncryptorFactory.CreateEncryptorFromTag(encryptonTag);
 
                 int encryptedDataSize = (int)retrievedStream.Length - encryptonTagSize;
 
@@ -108,7 +120,7 @@ namespace CurlyCore.Saving
                     }
 
                     SaveHeader header = SaveHeader.Deserialize(headerBuffer, format);
-                    ISaveDataSerializer serializer = _serializationFactory.CreateSerializer(header.SerializerID);
+                    ISaveDataSerializer serializer = SerializerFactory.CreateSerializer(header.SerializerID);
 
                     int dataSize = (int)saveDataStream.Length - (int)saveDataStream.Position;
                     byte[] dataBuffer = new byte[dataSize];

@@ -9,13 +9,13 @@ using Newtonsoft.Json;
 
 namespace CurlyCore.Saving
 {
-    public class EncryptorFactory
+    public static class EncryptorFactory
     {
         private static readonly Dictionary<string, Type> _encryptors = new Dictionary<string, Type>();
         private static readonly Dictionary<string, string> _tagToID = new Dictionary<string, string>();
         private static readonly Dictionary<string, string> _idToTag = new Dictionary<string, string>();
 
-        public EncryptorFactory()
+        static EncryptorFactory()
         {
             var types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
@@ -38,7 +38,7 @@ namespace CurlyCore.Saving
             }
         }
 
-        public IEncryptor CreateEncryptorFromID(string serializerID)
+        public static IEncryptor CreateEncryptorFromID(string serializerID)
         {
             if (_encryptors.TryGetValue(serializerID, out Type type))
             {
@@ -50,14 +50,14 @@ namespace CurlyCore.Saving
             throw new InvalidOperationException("Unknown encryptor type.");
         }
 
-        public IEncryptor CreateEncryptorFromTag(byte[] tagBytes)
+        public static IEncryptor CreateEncryptorFromTag(byte[] tagBytes)
         {
             string tag = System.Text.Encoding.UTF8.GetString(tagBytes);
             string id = _tagToID[tag];
             return CreateEncryptorFromID(id);
         }
 
-        public byte[] GetTag(IEncryptor encryptor)
+        public static byte[] GetTag(IEncryptor encryptor)
         {
             var attribute = encryptor.GetType().GetCustomAttribute<EncryptorMetadataAttribute>();
             if (attribute == null)
@@ -69,7 +69,9 @@ namespace CurlyCore.Saving
             return System.Text.Encoding.UTF8.GetBytes(tag);
         }
 
-        private void SetKeyAndIV(IEncryptor encryptor)
+        public static List<string> GetEncryptorIDs() => _idToTag.Keys.ToList();
+
+        private static void SetKeyAndIV(IEncryptor encryptor)
         {
             // Use the type's fully qualified name as part of the passphrase
             string typeName = encryptor.GetType().FullName;
@@ -94,7 +96,7 @@ namespace CurlyCore.Saving
             encryptor.SetKeyAndIV(key, iv);
         }
 
-        private byte[] SHA256Hash(string data)
+        private static byte[] SHA256Hash(string data)
         {
             using (System.Security.Cryptography.SHA256 sha256 = System.Security.Cryptography.SHA256.Create())
             {
@@ -102,7 +104,7 @@ namespace CurlyCore.Saving
             }
         }
 
-        private (byte[] Key, byte[] IV) GenerateKeyAndIV(byte[] passphrase, string salt)
+        private static (byte[] Key, byte[] IV) GenerateKeyAndIV(byte[] passphrase, string salt)
         {
             // Use a key derivation function like PBKDF2 to generate bytes.
             using (var deriveBytes = new Rfc2898DeriveBytes(passphrase, System.Text.Encoding.UTF8.GetBytes(salt), 1000))

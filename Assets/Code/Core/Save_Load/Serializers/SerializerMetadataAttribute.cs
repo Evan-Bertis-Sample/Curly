@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace CurlyCore.Saving
 {
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class SerializerMetadataAttribute : Attribute
     {
         public string ID { get; }
@@ -16,6 +17,11 @@ namespace CurlyCore.Saving
             if (id.Length != 3) throw new Exception($"Serialization ID must be 3 characters! Please change ID '{id}' to be 3 characters!");
             SerializationFormat =  type;
         }
+    }
+
+    public class SerializerID : PropertyAttribute
+    {
+        
     }
 }
 

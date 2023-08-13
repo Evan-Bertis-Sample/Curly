@@ -1,10 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CurlyCore.Saving
 {
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class EncryptorMetadataAttribute : Attribute
     {
         public string ID { get; }
@@ -13,5 +12,10 @@ namespace CurlyCore.Saving
         {
             this.ID = id;
         }
+    }
+
+    public class EncryptorID : PropertyAttribute
+    {
+
     }
 }

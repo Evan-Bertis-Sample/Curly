@@ -27,7 +27,7 @@ namespace CurlyCore.Saving
             }
         }
 
-        public ISaveDataSerializer CreateSerializer(string serializerID)
+        public static ISaveDataSerializer CreateSerializer(string serializerID)
         {
             if (_serializers.TryGetValue(serializerID, out Type type))
             {
@@ -36,5 +36,7 @@ namespace CurlyCore.Saving
 
             throw new InvalidOperationException("Unknown serializer type.");
         }
+
+        public static List<string> GetSerializerIDs() => _serializers.Keys.ToList();
     }
 }
