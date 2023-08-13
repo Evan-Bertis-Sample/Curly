@@ -47,7 +47,6 @@ namespace CurlyCore.Saving
                     {
                         writer.Write(pair.Key);
                         writer.Write(pair.Value);
-                        Debug.Log($"Saved {pair.Key}, {pair.Value}");
                     }
                     return ms.ToArray();
                 }
