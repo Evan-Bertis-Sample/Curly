@@ -2479,3 +2479,780 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 37925.416456 seconds.
+  path: Assets/UniversalRenderPipelineGlobalSettings.asset
+  artifactKey: Guid(d8b6ec550a6d2bf4a9facba53db16b2a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/UniversalRenderPipelineGlobalSettings.asset using Guid(d8b6ec550a6d2bf4a9facba53db16b2a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '48bceebaad8fc5e862cee82d84a1d2ec') in 0.253114 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/AddressableAssetsData/AssetGroups/Built In Data.asset
+  artifactKey: Guid(11b3bf0fd9ed4de498cb245298abcb30) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/AddressableAssetsData/AssetGroups/Built In Data.asset using Guid(11b3bf0fd9ed4de498cb245298abcb30) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '0927a93d478eb86fe0716fcb841b7e04') in 0.021078 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt
+  artifactKey: Guid(d82c1b31c7e74239bff1220585707d2b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt using Guid(d82c1b31c7e74239bff1220585707d2b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '9d9f7379ce5c453a4b48e893c35142f1') in 0.026619 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Code/Core/Audio/AudioCallback.cs
+  artifactKey: Guid(6feb9a6fc4ba0c844b626d410d64d01d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Audio/AudioCallback.cs using Guid(6feb9a6fc4ba0c844b626d410d64d01d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'c1367df5df7505513af7a47cddf6405a') in 0.016777 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Editor/Core/EncryptorIDDrawer.cs
+  artifactKey: Guid(381239781b9b49a499b334b135f48ed4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Editor/Core/EncryptorIDDrawer.cs using Guid(381239781b9b49a499b334b135f48ed4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '1c9df2285ad3607909fa7ac96cc1433c') in 0.021807 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/TextMesh Pro/Shaders/TMPro.cginc
+  artifactKey: Guid(407bc68d299748449bbf7f48ee690f8d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Shaders/TMPro.cginc using Guid(407bc68d299748449bbf7f48ee690f8d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'd64cb78350da4f768cfde1dfcd22548c') in 0.021100 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Code/Core/Audio/AudioPath.cs
+  artifactKey: Guid(6713aa2584c801442a96dd102ca570d5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Audio/AudioPath.cs using Guid(6713aa2584c801442a96dd102ca570d5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '58907708e75d3557b84dc98fac70b69f') in 0.020168 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_ContentUpdateGroupSchema.asset
+  artifactKey: Guid(852b6abfef0915d4f9a67b86005a7317) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_ContentUpdateGroupSchema.asset using Guid(852b6abfef0915d4f9a67b86005a7317) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '165bcdc08a0a4134346f924c66ed82f8') in 0.027359 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Settings/Lit2DSceneTemplate.scenetemplate
+  artifactKey: Guid(d03ed43fc9d8a4f2e9fa70c1c7916eb9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Settings/Lit2DSceneTemplate.scenetemplate using Guid(d03ed43fc9d8a4f2e9fa70c1c7916eb9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e502995cb95e1d365ab6a96a381e85b2') in 0.056541 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Audio/SoundFX/Misc/Camera Flash.mp3
+  artifactKey: Guid(c6add41d97e85cb4b977a9477fcc4c6f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Misc/Camera Flash.mp3 using Guid(c6add41d97e85cb4b977a9477fcc4c6f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '2dad833922a9b05755c1e2281089add3') in 0.084230 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Code/Core/Logger/LoggingGroup.cs
+  artifactKey: Guid(a581a61a3b885f34594f5da874903749) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Logger/LoggingGroup.cs using Guid(a581a61a3b885f34594f5da874903749) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '5e7ec7e34c510e90c31eebcddd32d769') in 0.015610 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/AddressableAssetsData/AssetGroups/Audio.asset
+  artifactKey: Guid(ca940ced3b6189144ad8cc6602b108ea) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/AddressableAssetsData/AssetGroups/Audio.asset using Guid(ca940ced3b6189144ad8cc6602b108ea) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '7e41002e5c9db95bb87519e49b10d7ba') in 0.018194 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Editor/Core/AudioManagerEditor.cs
+  artifactKey: Guid(36106da576298914f80fbb3c0002f95e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Editor/Core/AudioManagerEditor.cs using Guid(36106da576298914f80fbb3c0002f95e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e51996494cd2b1650936b6b209026aef') in 0.017024 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader
+  artifactKey: Guid(48bb5f55d8670e349b6e614913f9d910) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader using Guid(48bb5f55d8670e349b6e614913f9d910) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'ec32e9961b983a61079a31b9f2f2f572') in 0.031120 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Editor/Utility/SearchBarDrawer.cs
+  artifactKey: Guid(af726bfd58daf3041acfe7209df19b96) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Editor/Utility/SearchBarDrawer.cs using Guid(af726bfd58daf3041acfe7209df19b96) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'd9d42a7979f263be2025172410f0cb67') in 0.016866 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Editor/Core/LoggerEditor.cs
+  artifactKey: Guid(ad1e37decd11075429c3fd1bf3b69970) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Editor/Core/LoggerEditor.cs using Guid(ad1e37decd11075429c3fd1bf3b69970) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '37aaa442bf1852070533fda70a121ec2') in 0.016690 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Resources/DOTweenSettings.asset
+  artifactKey: Guid(fe0d9f2d115233b4494b132f4558ad6d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Resources/DOTweenSettings.asset using Guid(fe0d9f2d115233b4494b132f4558ad6d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '53830d03028fbac8ede30924592d049d') in 0.025506 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Code/Core/Audio/AudioManager.cs
+  artifactKey: Guid(0d6ced719b24bf442a71981651712d1f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Audio/AudioManager.cs using Guid(0d6ced719b24bf442a71981651712d1f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '0dcb603a55ceaa52b841078bbe35a8ee') in 0.020900 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Editor/Core/InputPathDrawer.cs
+  artifactKey: Guid(a1f22ad5e7d1580449f85b140ac553a6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Editor/Core/InputPathDrawer.cs using Guid(a1f22ad5e7d1580449f85b140ac553a6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'a97be71bf174e4a9f6dc88d2b5c44b61') in 0.018211 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Code/Core/Input/InputPathAttribute.cs
+  artifactKey: Guid(e8ed496ee8506a449b0d6b1599a59f7a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Input/InputPathAttribute.cs using Guid(e8ed496ee8506a449b0d6b1599a59f7a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '994602577d754ad09723c37509352230') in 0.020335 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Code/Utility/Utility.asmdef
+  artifactKey: Guid(8d71123879b899e4987953374246d528) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Utility/Utility.asmdef using Guid(8d71123879b899e4987953374246d528) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '71803ae19c6a2c21c0ccce45e1f6bfef') in 0.019452 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf
+  artifactKey: Guid(1b8d251f9af63b746bf2f7ffe00ebb9b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf using Guid(1b8d251f9af63b746bf2f7ffe00ebb9b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '34bdb3e997980eb26150e9d203304142') in 0.013958 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Editor/Utility/DropDownBrowser/Leaf.cs
+  artifactKey: Guid(3578956519e88b4469e633533e10f0bc) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Editor/Utility/DropDownBrowser/Leaf.cs using Guid(3578956519e88b4469e633533e10f0bc) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '9c7a4f7c43eab90f5a9623c92ee5f0b5') in 0.016438 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Code/Core/Scene_Management/SceneMaster.cs
+  artifactKey: Guid(d8d1aee8f52d2fd4284e33ed8515e2d5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Scene_Management/SceneMaster.cs using Guid(d8d1aee8f52d2fd4284e33ed8515e2d5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'eb95fb1c359b55a7c9e6bf4cafe7976f') in 0.016809 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Code/Core/Input/InputManager.cs
+  artifactKey: Guid(c1ec6d63f4af18a44b0c492b7170fc06) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Input/InputManager.cs using Guid(c1ec6d63f4af18a44b0c492b7170fc06) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '2156bf803c3d9d3728f0b5685275c7bd') in 0.016683 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Resources/Core_Config/AppConfig.asset
+  artifactKey: Guid(97eb77a3421628f44bf76d4d87f83b48) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Resources/Core_Config/AppConfig.asset using Guid(97eb77a3421628f44bf76d4d87f83b48) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'f49c1962ec26e86fc33e8241e472543a') in 0.063961 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Audio/SoundFX/Enviornment/Lightning/Lightning.wav
+  artifactKey: Guid(c11df33324e1a114daad5279ecaa42ad) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Enviornment/Lightning/Lightning.wav using Guid(c11df33324e1a114daad5279ecaa42ad) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '43c7f43988b607a04401ee34125b2fc1') in 0.068818 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/Audio/SoundFX/Footsteps/Grass/Single-footstep-in-grass-B-www.fesliyanstudios.com.mp3
+  artifactKey: Guid(763dd706a6592d341970e7d42b71b82d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Footsteps/Grass/Single-footstep-in-grass-B-www.fesliyanstudios.com.mp3 using Guid(763dd706a6592d341970e7d42b71b82d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'ece7130dd54257f873636908bb8c789d') in 0.060823 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Vendor/SerializableDictionary/Example/UserSerializableDictionaries.cs
+  artifactKey: Guid(bd910530dd8f6b5429c65a494644ed09) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Vendor/SerializableDictionary/Example/UserSerializableDictionaries.cs using Guid(bd910530dd8f6b5429c65a494644ed09) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'c7157817757e778aa26d93be33a01bd7') in 0.017820 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/readme.txt
+  artifactKey: Guid(fccfc62abf2eb0a4db614853430894fd) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Plugins/Demigiant/DOTween/readme.txt using Guid(fccfc62abf2eb0a4db614853430894fd) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'd5d4871d2a2db299162454f1e1df2652') in 0.016998 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Audio/SoundFX/Footsteps/Grass/GrassFootstepB.mp3
+  artifactKey: Guid(5d9a223ee449b8649a688c261820a0d8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Footsteps/Grass/GrassFootstepB.mp3 using Guid(5d9a223ee449b8649a688c261820a0d8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '31f5ebe2e736cab4d7eeee469353f439') in 0.055807 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Audio/SoundFX/Footsteps/Grass/GrassFootstepD.mp3
+  artifactKey: Guid(0fc4bc4cd56740440a4705e4d6821e74) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Footsteps/Grass/GrassFootstepD.mp3 using Guid(0fc4bc4cd56740440a4705e4d6821e74) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'a249d8539104110df63758354173b9ea') in 0.054879 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Audio/SoundFX/Footsteps/Grass/GrassFootstepE.mp3
+  artifactKey: Guid(00898389ca20ddf4bb76f2caf9565107) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Footsteps/Grass/GrassFootstepE.mp3 using Guid(00898389ca20ddf4bb76f2caf9565107) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'cf4f08eaaa4a9a1be105d754d461a453') in 0.055622 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Audio/SoundFX/Footsteps/Grass/Single-footstep-in-grass-D-www.fesliyanstudios.com.mp3
+  artifactKey: Guid(127a8db446e2aeb43953a57a9fb3d808) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Footsteps/Grass/Single-footstep-in-grass-D-www.fesliyanstudios.com.mp3 using Guid(127a8db446e2aeb43953a57a9fb3d808) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '6778da17f52a221ebf2cdcfb325bce17') in 0.059324 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanA.mp3
+  artifactKey: Guid(8005b2f177ae5f546bf5dc1f01e302f1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanA.mp3 using Guid(8005b2f177ae5f546bf5dc1f01e302f1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e7df807a864d56ace734285c2e490745') in 0.056831 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanG.mp3
+  artifactKey: Guid(e842a0651b6354249a7746791d3714d1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanG.mp3 using Guid(e842a0651b6354249a7746791d3714d1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '25f6e21f2b15ac77ad2175ea5ca3f4e4') in 0.058322 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanL.mp3
+  artifactKey: Guid(51ae4021bbfbcde4e9ab98179b0d07d0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanL.mp3 using Guid(51ae4021bbfbcde4e9ab98179b0d07d0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'b00003f4b6e84593e1a843f9b3ce131e') in 0.059988 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanE.mp3
+  artifactKey: Guid(e36655d9b4deaab4593fbfe323db37ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanE.mp3 using Guid(e36655d9b4deaab4593fbfe323db37ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'ec1305a43037de72d79e94b3732e2057') in 0.071735 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanD.mp3
+  artifactKey: Guid(7cf728ac1a91dcb4c97c7b50b8219ec2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanD.mp3 using Guid(7cf728ac1a91dcb4c97c7b50b8219ec2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '0c385369e315e6da2c3d4e357cc958c8') in 0.065962 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader
+  artifactKey: Guid(bc1ede39bf3643ee8e493720e4259791) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader using Guid(bc1ede39bf3643ee8e493720e4259791) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '7e64515d9e2d5f6ed6afcc7f5bf711ef') in 0.014646 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat
+  artifactKey: Guid(79459efec17a4d00a321bdcc27bbc385) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat using Guid(79459efec17a4d00a321bdcc27bbc385) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '90d27d3f2944cbaf4a1b840d35c2d93d') in 0.040422 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/TextMesh Pro/Fonts/LiberationSans.ttf
+  artifactKey: Guid(e3265ab4bf004d28a9537516768c1c75) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Fonts/LiberationSans.ttf using Guid(e3265ab4bf004d28a9537516768c1c75) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '5c071f74521734112a1cc3977d3e7eb6') in 0.042820 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Code/Core/App/Components/CoroutineRunner.cs
+  artifactKey: Guid(aac58128ab6747144a3db3ed058aeda7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/App/Components/CoroutineRunner.cs using Guid(aac58128ab6747144a3db3ed058aeda7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'b40b55275bf286eedfa701d633b13013') in 0.015528 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Code/Core/Audio/Components/BackgroundMusic.cs
+  artifactKey: Guid(c1e3b5ff774e47d4b8c56a8574a4d2aa) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Audio/Components/BackgroundMusic.cs using Guid(c1e3b5ff774e47d4b8c56a8574a4d2aa) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'a067a0066f12201c8aed5dec7b8d0012') in 0.016876 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Code/Core/Audio/Transition_Objects/AudioFadeTransition.cs
+  artifactKey: Guid(e4238f8ab210e4940a04e0f2996cbf93) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Audio/Transition_Objects/AudioFadeTransition.cs using Guid(e4238f8ab210e4940a04e0f2996cbf93) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '961567a64fda818b92cb416d5e82600a') in 0.016647 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanU.mp3
+  artifactKey: Guid(edf972206de825b4a93c8b3c97cda4d9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanU.mp3 using Guid(edf972206de825b4a93c8b3c97cda4d9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'c355fd1220230ed824b1cb196a4085ad') in 0.065304 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Settings/Renderer2D.asset
+  artifactKey: Guid(424799608f7334c24bf367e4bbfa7f9a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Settings/Renderer2D.asset using Guid(424799608f7334c24bf367e4bbfa7f9a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '6691fe162591fb5790a2c16c2ee59b88') in 0.290814 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader
+  artifactKey: Guid(fe393ace9b354375a9cb14cdbbc28be4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader using Guid(fe393ace9b354375a9cb14cdbbc28be4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e47ab8b81b9f22653fcfc19fc8c9aca4') in 0.014431 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Editor/Core/DataStorageIDDrawer.cs
+  artifactKey: Guid(b3de86a35bd23914cb02cc7c1a4db80a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Editor/Core/DataStorageIDDrawer.cs using Guid(b3de86a35bd23914cb02cc7c1a4db80a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e978ffdb0001983cc337247251f53dab') in 0.018693 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Editor/Core/SceneAdder.cs
+  artifactKey: Guid(34996d88299fe3e4c959e974109380f4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Editor/Core/SceneAdder.cs using Guid(34996d88299fe3e4c959e974109380f4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'cffdbde0f31f6b2d14c3bcc9f2fbb2db') in 0.014132 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.002731 seconds.
+  path: Assets/Code/Core/Save_Load/Serializers/BinarySaveSerializer.cs
+  artifactKey: Guid(720aeba78bfd21643adf08da9df59ad1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Save_Load/Serializers/BinarySaveSerializer.cs using Guid(720aeba78bfd21643adf08da9df59ad1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'b2b3b467b81b48bc1ab77e2f7f9ecc63') in 0.016194 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Code/Core/Scene_Management/Transition_Objects/FadeTransition.cs
+  artifactKey: Guid(c84cf443a15da914f9d02065352ff50a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Scene_Management/Transition_Objects/FadeTransition.cs using Guid(c84cf443a15da914f9d02065352ff50a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'cfa94ace13c14357535d230b0448fa42') in 0.015114 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Code/Core/Save_Load/Data_Storage/DataStorageFactory.cs
+  artifactKey: Guid(e71d599e3758c23468c90e2183db2965) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Save_Load/Data_Storage/DataStorageFactory.cs using Guid(e71d599e3758c23468c90e2183db2965) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'ac0fcd3354d529719095217e2a3d3fe0') in 0.015310 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Code/Core/Save_Load/Data_Storage/DataStorageMetadata.cs
+  artifactKey: Guid(81d13b9aa67d1bd42abeb0e160d7c558) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Save_Load/Data_Storage/DataStorageMetadata.cs using Guid(81d13b9aa67d1bd42abeb0e160d7c558) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '474ad00efbd03e7c4a86f8ff27a79512') in 0.017490 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Code/Core/Save_Load/Encryption/NoEncryptor.cs
+  artifactKey: Guid(ee7f9908d93ef734f834d7a37cd82755) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Save_Load/Encryption/NoEncryptor.cs using Guid(ee7f9908d93ef734f834d7a37cd82755) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '374356b6b83bf571ac5c99a801b090d7') in 0.016885 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Code/Core/Save_Load/Serializers/ISaveDataSerializer.cs
+  artifactKey: Guid(92fda489f0aaec44d860b122880b86a6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Save_Load/Serializers/ISaveDataSerializer.cs using Guid(92fda489f0aaec44d860b122880b86a6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '3499c0ccb62704e2a5db8682070d6775') in 0.019471 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/TextMesh Pro/Resources/TMP Settings.asset
+  artifactKey: Guid(3f5b5dff67a942289a9defa416b206f3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Resources/TMP Settings.asset using Guid(3f5b5dff67a942289a9defa416b206f3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '6f73174c5225d099c87b7ef86d004d41') in 0.106982 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Audio/SoundFX/Enviornment/Lightning/Lightning2.wav
+  artifactKey: Guid(d4a1d22bfee002c4ba55a82cac4ac7e1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Enviornment/Lightning/Lightning2.wav using Guid(d4a1d22bfee002c4ba55a82cac4ac7e1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '4f1a8cc07ec6d511e628bd2063e1fe28') in 0.065925 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanP.mp3
+  artifactKey: Guid(d23847e60f3a4494d955b25570e885d8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanP.mp3 using Guid(d23847e60f3a4494d955b25570e885d8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '4003b8fad2cda77580e5108ff13bd37e') in 0.071316 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanZ.mp3
+  artifactKey: Guid(267749b1299a7014493efdb5f6e7b6cd) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanZ.mp3 using Guid(267749b1299a7014493efdb5f6e7b6cd) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '19ebd1e88ebfc02bc2946370efeb2297') in 0.060038 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanT.mp3
+  artifactKey: Guid(33dd50ed517fba643b384daa8603766f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanT.mp3 using Guid(33dd50ed517fba643b384daa8603766f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e257be31525bdd716e579402a50228a7') in 0.071120 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleSprite.cs
+  artifactKey: Guid(188918ab119d93148aa0de59ccf5286b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleSprite.cs using Guid(188918ab119d93148aa0de59ccf5286b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '199df94fda8ab57990ecdd29eb0945fd') in 0.018312 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleEPOOutline.cs
+  artifactKey: Guid(e944529dcaee98f4e9498d80e541d93e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleEPOOutline.cs using Guid(e944529dcaee98f4e9498d80e541d93e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e52ad61d7acf0cbed8c58900912b968f') in 0.021623 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Footer_dark.png
+  artifactKey: Guid(519694efe2bb2914788b151fbd8c01f4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Footer_dark.png using Guid(519694efe2bb2914788b151fbd8c01f4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '28ae2f25c6bf4f74a8e75c33a284007f') in 0.046931 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Vendor/Vendor.asmdef
+  artifactKey: Guid(ed6bea6aa684b6340979f4f9ec6e958b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Vendor/Vendor.asmdef using Guid(ed6bea6aa684b6340979f4f9ec6e958b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '05be69fd711bcd0db095caa4b76ea607') in 0.014357 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.001010 seconds.
+  path: Assets/Audio/SoundFX/Voices/AudioOverrideGroup.asset
+  artifactKey: Guid(76854146a36f6534489903e3c9f30e7b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/AudioOverrideGroup.asset using Guid(76854146a36f6534489903e3c9f30e7b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '73aabd84ba4735aaf6874e83964f607a') in 0.011196 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanS.mp3
+  artifactKey: Guid(76cb4375e2b2a9241b708ed9d835be5b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanS.mp3 using Guid(76cb4375e2b2a9241b708ed9d835be5b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '2ef91a272d6808221cf8c34ca6e3ebfd') in 0.057347 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader
+  artifactKey: Guid(1e3b057af24249748ff873be7fafee47) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader using Guid(1e3b057af24249748ff873be7fafee47) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'f2d2424af582b53479237161f17c29d4') in 0.014280 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Code/Core/SaveManager.asset
+  artifactKey: Guid(c707d80cd9aacc945805a953469db9c4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/SaveManager.asset using Guid(c707d80cd9aacc945805a953469db9c4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'bcf5c6978421cb230122699f592ced13') in 0.012425 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Editor/Core/AppConfigEditor.cs
+  artifactKey: Guid(5e6cc571b88dac6468c750fc6d5ac780) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Editor/Core/AppConfigEditor.cs using Guid(5e6cc571b88dac6468c750fc6d5ac780) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e4db5c17cee35709619b506f8ee2a2b9') in 0.017157 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Settings/Scenes/URP2DSceneTemplate.unity
+  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Settings/Scenes/URP2DSceneTemplate.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '35f6e4d41e522c0ac90aa816bf3605a5') in 0.010182 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Scenes/TransitionScene.unity
+  artifactKey: Guid(7138ade6ab07a9f429a0d51aaafdf730) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Scenes/TransitionScene.unity using Guid(7138ade6ab07a9f429a0d51aaafdf730) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'a97af3dec589b8cdc8495efca692d571') in 0.010212 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Code/Core/Logger/LoggingGroupID.cs
+  artifactKey: Guid(00f3af9690010e9418d8f6d22c43d07c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Logger/LoggingGroupID.cs using Guid(00f3af9690010e9418d8f6d22c43d07c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'b31b893197b4c335cc8fb110b19941ee') in 0.015812 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Code/Core/InputManager.asset
+  artifactKey: Guid(050b6b33eb36bcb42bb2174f81fb20e3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/InputManager.asset using Guid(050b6b33eb36bcb42bb2174f81fb20e3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '26f8b48b3e99f352c00145623d9354da') in 0.015155 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Audio/SoundFX/Enviornment/Rain/Rain.wav
+  artifactKey: Guid(852f22fcbf943d64c89ef75bc734571e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Enviornment/Rain/Rain.wav using Guid(852f22fcbf943d64c89ef75bc734571e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '35b7e1a32994674e9ee7cb27ae058468') in 0.076483 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader
+  artifactKey: Guid(f7ada0af4f174f0694ca6a487b8f543d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader using Guid(f7ada0af4f174f0694ca6a487b8f543d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '9173e3f1694cea598230425bb0ad7e49') in 0.019873 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Editor/StyleCollection.cs
+  artifactKey: Guid(49f5305e38864a14fb0cb0ff7debef04) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Editor/StyleCollection.cs using Guid(49f5305e38864a14fb0cb0ff7debef04) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '7e631f434b42bd3c735b6244025c083f') in 0.018426 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Audio/SoundFX/AudioOverrideGroup.asset
+  artifactKey: Guid(c5b9c860ad079a3459a3ab91d51943bd) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/AudioOverrideGroup.asset using Guid(c5b9c860ad079a3459a3ab91d51943bd) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '7f5247de828c3618dfa2e2800d8a37a4') in 0.012933 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Code/Core/Input/DeviceInputHandler.cs
+  artifactKey: Guid(571582393e840f04eac2bce14690aaa1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Input/DeviceInputHandler.cs using Guid(571582393e840f04eac2bce14690aaa1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '0f381e572864ce635681aee7cdc15489') in 0.015569 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUI.cs
+  artifactKey: Guid(a060394c03331a64392db53a10e7f2d1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUI.cs using Guid(a060394c03331a64392db53a10e7f2d1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '006f704ca31073561ff989f1dafbb754') in 0.017381 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanJ.mp3
+  artifactKey: Guid(d7d4202878900434f8ae995623525563) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanJ.mp3 using Guid(d7d4202878900434f8ae995623525563) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e6f24ec431f40109b3a65be6cc681472') in 0.072071 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/TextMesh Pro/Shaders/TMP_SDF.shader
+  artifactKey: Guid(68e6db2ebdc24f95958faec2be5558d6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Shaders/TMP_SDF.shader using Guid(68e6db2ebdc24f95958faec2be5558d6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '22eed351dc2b971f33716b9d2f3b13fa') in 0.016866 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics2D.cs
+  artifactKey: Guid(230fe34542e175245ba74b4659dae700) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics2D.cs using Guid(230fe34542e175245ba74b4659dae700) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '67ad7b7128e3a04bb2f8020c8155a5f5') in 0.015856 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Code/Core/Save_Load/SaveHeader.cs
+  artifactKey: Guid(0f48844359e8cbd48b2357072b419052) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Save_Load/SaveHeader.cs using Guid(0f48844359e8cbd48b2357072b419052) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'cacc8c5433b7e42e0576f4f3dd9ab41b') in 0.019113 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Code/Utility/ITransition.cs
+  artifactKey: Guid(fe78f3fc4d2b14b479c4dfe72d3a3f9d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Utility/ITransition.cs using Guid(fe78f3fc4d2b14b479c4dfe72d3a3f9d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '81a04da62dee6c42c11ee77a12a3fdba') in 0.014844 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Editor/Core/SerializerIDDrawer.cs
+  artifactKey: Guid(f55accce2f70cf5489263e52fdaa2602) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Editor/Core/SerializerIDDrawer.cs using Guid(f55accce2f70cf5489263e52fdaa2602) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '5335182faa9bf490f4d6176baa31b007') in 0.016580 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Code/Core/Save_Load/Serializers/SerializerFactory.cs
+  artifactKey: Guid(99581eda103cae34fb5d88726e177be2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Save_Load/Serializers/SerializerFactory.cs using Guid(99581eda103cae34fb5d88726e177be2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'fa13f372b380ca0173370ef426eefd22') in 0.023233 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs
+  artifactKey: Guid(b766d08851589514b97afb23c6f30a70) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs using Guid(b766d08851589514b97afb23c6f30a70) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '02329e18d394dbf6921dcd7f7d02208e') in 0.019153 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Code/Core/Save_Load/Data_Storage/LocalDataStorage.cs
+  artifactKey: Guid(87ac877934e79a447bc0ba4856d4cf36) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Save_Load/Data_Storage/LocalDataStorage.cs using Guid(87ac877934e79a447bc0ba4856d4cf36) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '37e8add0a615f00fd25435d13b4fcc5f') in 0.020658 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader
+  artifactKey: Guid(c8d12adcee749c344b8117cf7c7eb912) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader using Guid(c8d12adcee749c344b8117cf7c7eb912) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '71f940a2e8be1166e48532bfa77496a7') in 0.017147 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt
+  artifactKey: Guid(fade42e8bc714b018fac513c043d323b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt using Guid(fade42e8bc714b018fac513c043d323b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '4bfe0947aedde4d32ed69c512b35524f') in 0.010708 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanY.mp3
+  artifactKey: Guid(92646f2df85bc224da862d00973beed9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanY.mp3 using Guid(92646f2df85bc224da862d00973beed9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'd597bb0b8c48c5e4787d4700791cf0f1') in 0.067708 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Settings/UniversalRP.asset
+  artifactKey: Guid(681886c5eb7344803b6206f758bf0b1c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Settings/UniversalRP.asset using Guid(681886c5eb7344803b6206f758bf0b1c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '36ee37d88d10d9d7b410b22d48941c57') in 0.051098 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset
+  artifactKey: Guid(f952c082cb03451daed3ee968ac6c63e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset using Guid(f952c082cb03451daed3ee968ac6c63e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '8f9b72b305fc9c58e68dd4aa8af50fda') in 0.016316 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset
+  artifactKey: Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset using Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '71cef9277394ddbaab1faacba2faa7a1') in 0.041014 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Vendor/SerializableDictionary/Example/SerializableDicitonary Example.unity
+  artifactKey: Guid(6c0758ade4ba74b7493ce3806fa2f38b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Vendor/SerializableDictionary/Example/SerializableDicitonary Example.unity using Guid(6c0758ade4ba74b7493ce3806fa2f38b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '520b6524abc0a617a4e4c97218454abe') in 0.011982 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanQ.mp3
+  artifactKey: Guid(6d574d540506c4f419753ce70981991b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanQ.mp3 using Guid(6d574d540506c4f419753ce70981991b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'ffd925d24caa9cee24f69a28586d484e') in 0.069402 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/DOTween.dll.mdb
+  artifactKey: Guid(4f007001a22b3d24dae350342c4d19c8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Plugins/Demigiant/DOTween/DOTween.dll.mdb using Guid(4f007001a22b3d24dae350342c4d19c8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '8363143309a38b217ba0390689e118aa') in 0.015169 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset
+  artifactKey: Guid(c41005c129ba4d66911b75229fd70b45) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset using Guid(c41005c129ba4d66911b75229fd70b45) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '4fe97adf65b040e06e4b25ceb432421d') in 0.013637 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Code/Core/App/App.cs
+  artifactKey: Guid(61ea7e82779f2d8468abc9214cbd32c5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/App/App.cs using Guid(61ea7e82779f2d8468abc9214cbd32c5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '4373841182243b8f4b194c402b5131ac') in 0.015181 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Scenes/SampleScene.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '57c7c837f822160d62cb306bcd981e6b') in 0.010094 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Audio/SoundFX/Voices/Evan/EvanI.mp3
+  artifactKey: Guid(d347892fb873bc44294963cb6a8756a6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Audio/SoundFX/Voices/Evan/EvanI.mp3 using Guid(d347892fb873bc44294963cb6a8756a6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'c099b4fe1bd26470d443bb2c85a81489') in 0.065910 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Code/Gameplay/Player/PlayerController.cs
+  artifactKey: Guid(aea6b9eb81e0e714a96bee4607b05b95) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Gameplay/Player/PlayerController.cs using Guid(aea6b9eb81e0e714a96bee4607b05b95) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '415f2c0e64313cfe32c7f6609bd94df1') in 0.015591 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Code/Core/Save_Load/Serializers/JsonSaveSerializer.cs
+  artifactKey: Guid(a20dd81e9022465408de22eb63f13209) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Save_Load/Serializers/JsonSaveSerializer.cs using Guid(a20dd81e9022465408de22eb63f13209) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '8b9055da5001defb06be2d371e3692d8') in 0.017333 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Code/Gameplay/GameEvents.cs
+  artifactKey: Guid(03ecdc3f739ea464aa6177475a31ead5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Gameplay/GameEvents.cs using Guid(03ecdc3f739ea464aa6177475a31ead5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'db2598e207bb5ad28f44263ac3ccb91f') in 0.016417 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt
+  artifactKey: Guid(6e59c59b81ab47f9b6ec5781fa725d2c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt using Guid(6e59c59b81ab47f9b6ec5781fa725d2c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'a6f483f3641363450bcc0ac9446f3691') in 0.018972 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.017722 seconds.
+  path: Assets/Code/Core/Save_Load/Data_Storage/IDataStorage.cs
+  artifactKey: Guid(ebf5d104b6d65c24d83a22c2ffc5b654) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Code/Core/Save_Load/Data_Storage/IDataStorage.cs using Guid(ebf5d104b6d65c24d83a22c2ffc5b654) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'aee12777b3619e8f253644e6d727fdb5') in 0.015667 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics.cs
+  artifactKey: Guid(dae9aa560b4242648a3affa2bfabc365) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics.cs using Guid(dae9aa560b4242648a3affa2bfabc365) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'a338276ce538b80f10937d03052ee349') in 0.015908 seconds 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 68.56 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 40 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 40 unused Assets / (1.2 MB). Loaded Objects now: 6378.
+Memory consumption went from 106.5 MB to 105.3 MB.
+Total: 54.762700 ms (FindLiveObjects: 1.592100 ms CreateObjectMapping: 0.443400 ms MarkObjects: 51.725100 ms  DeleteObjects: 1.001000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 

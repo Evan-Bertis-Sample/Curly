@@ -1,0 +1,20 @@
+{
+  "name": "documentation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vuepress": "^1.9.9"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev",
+    "docs:build": "vuepress build",
+    "docs:deploy": "push-dir --dir=.vuepress/dist --branch=gh-pages --cleanup"
+  }
+}
