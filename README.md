@@ -1,4 +1,4 @@
-![Curly Logo](./Documentation/Images/logo_transparent.png)
+![Curly Logo](./docs/Images/logo_transparent.png)
 
 
 <div align="center">
