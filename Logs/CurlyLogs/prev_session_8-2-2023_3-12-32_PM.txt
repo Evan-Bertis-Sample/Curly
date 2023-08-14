@@ -1,6 +1,0 @@
-LOG SESSION (8/2/2023 3:12:26 PM)
-----------------------------------------
-App (15:12:26): test
-App (15:12:32): Quitting Sequence Started
-App (15:12:32): Finishing Logging Session
-App (15:12:32): Moving old logging contents to new file
