@@ -74,5 +74,5 @@ crashlytics-build.properties
 /Documentation/node_modules/
 
 # Ignore Logs, but not log folders
-/Logs/CurlyLogs/*
-/Logs/*
+/Logs/CurlyLogs/*.txt
+/Logs/*.log
