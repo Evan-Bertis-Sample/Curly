@@ -70,5 +70,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# Documentation Node Modules
+# Documentation Ignore
 /Documentation/node_modules/
+/Documentation/.vuepress/dist
