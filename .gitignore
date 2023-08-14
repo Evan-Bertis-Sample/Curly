@@ -72,4 +72,3 @@ crashlytics-build.properties
 
 # Documentation Ignore
 /Documentation/node_modules/
-/Documentation/.vuepress/dist
