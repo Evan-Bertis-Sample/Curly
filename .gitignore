@@ -71,7 +71,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Documentation Ignore
-/Documentation/node_modules/
+/docs/node_modules/
 
 # Ignore Logs, but not log folders
 /Logs/CurlyLogs/*.txt

@@ -52,5 +52,6 @@
         "temp/":true,
         "Temp/":true
     },
-    "dotnet.defaultSolution": "curly-unity-starter.sln"
+    "dotnet.defaultSolution": "curly-unity-starter.sln",
+    "git.ignoreLimitWarning": true
 }
