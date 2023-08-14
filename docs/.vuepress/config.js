@@ -1,6 +1,6 @@
 module.exports = {
-    title: 'Curly',
-    description: 'Curly is a lightweight unity template that promotes solid architecture, and removes the redundancy of implementing systems found in almost all games.',
+    title: 'Curly Docs',
+    description: 'Curly Documenetation',
     base: '/Curly/',
     themeConfig: {
         logo: '/logo_transparent.png',
