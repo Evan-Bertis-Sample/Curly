@@ -2,8 +2,6 @@
     "files.exclude":
     {
         "**/.DS_Store":true,
-        "**/.git":true,
-        "**/.gitmodules":true,
         "**/*.booproj":true,
         "**/*.pidb":true,
         "**/*.suo":true,
@@ -52,6 +50,6 @@
         "temp/":true,
         "Temp/":true
     },
-    "dotnet.defaultSolution": "curly-unity-starter.sln",
+    "dotnet.defaultSolution": "Curly.sln",
     "git.ignoreLimitWarning": true
 }
