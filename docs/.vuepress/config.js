@@ -2,6 +2,7 @@ module.exports = {
     title: 'Curly',
     themeConfig: {
         logo: '/logo_transparent.png',
+        base: "/Curly/",
         sidebar: [
             {
                 title: 'Introduction',
