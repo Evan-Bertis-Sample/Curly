@@ -10,3 +10,4 @@ The ```CurlyCore``` namespace contains all core systems to most games, including
 * Scene Management Systems
 
 These core systems comprise the base layer for most games.
+
