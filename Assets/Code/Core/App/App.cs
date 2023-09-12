@@ -34,15 +34,15 @@ namespace CurlyCore.CurlyApp
 
         // Fields
         public static string ConfigPath = "Core_Config/AppConfig";
+        public AppConfig Config => _config;
 
         // Coroutine stuff
-        public CoroutineRunner CoroutineRunner {get; private set;}
+        public CoroutineRunner CoroutineRunner { get; private set; }
 
 
         private App()
         {
             _config = Resources.Load<AppConfig>(App.ConfigPath);
-            RegisterDefaults();
         }
 
         /// <summary>
@@ -56,6 +56,7 @@ namespace CurlyCore.CurlyApp
                 return Task.CompletedTask;
             }
 
+            RegisterDefaults();
             HandleBooters();
             DressScene();
             SpawnCoroutineMaster();
@@ -66,7 +67,7 @@ namespace CurlyCore.CurlyApp
         public void RegisterDefaults()
         {
             Debug.Log("Registering defaults...");
-            foreach(ScriptableObject so in _config.GlobalDefaultSystems)
+            foreach (ScriptableObject so in _config.GlobalDefaultSystems)
             {
                 Type soType = so.GetType();
                 GlobalDefaultStorage.RegisterDefault(soType, so);
@@ -89,7 +90,7 @@ namespace CurlyCore.CurlyApp
                 quitterComponent.OnQuit += () => b.OnQuit(this, startingScene);
                 await b.OnBootAsync(this, startingScene);
             }
-            
+
         }
 
         /// <summary>

@@ -12,6 +12,7 @@ using CurlyCore.Audio;
 using CurlyUtility;
 using CurlyEditor.Utility;
 using System.Reflection;
+using CurlyCore;
 
 namespace CurlyEditor.Core
 {
@@ -58,27 +59,16 @@ namespace CurlyEditor.Core
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             base.OnGUI(position, property, label);
-            if (_manager == null)
-            {
-                // Fetch manager from attribute
-                object targetObject = property.serializedObject.targetObject;
-                FieldInfo fieldInfo = targetObject.GetType().GetField(property.propertyPath, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-
-                if (fieldInfo != null)
-                {
-                    _manager = fieldInfo.GetCustomAttribute<AudioPath>()?.Manager;
-                }
-            }
+            object targetObject = property.serializedObject.targetObject;
+            _manager = ReflectionUtility.GetFieldByType<AudioManager>(targetObject);
+            if (_manager == null) _manager = GlobalDefaultStorage.GetDefault(typeof(AudioManager)) as AudioManager;
         }
 
         protected override void ButtonClicked(Rect buttonPosition)
         {
-
             Leaf<AudioLeafContent> content = GenerateContent();
             AudioSearchProvider provider = new AudioSearchProvider(content, UpdateProperty);
             SearchWindowContext searchContext = new SearchWindowContext(GUIUtility.GUIToScreenPoint(Event.current.mousePosition));
-            Debug.Log(provider);
-            Debug.Log(searchContext);
             SearchWindow.Open(searchContext, provider);
         }
 

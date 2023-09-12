@@ -12,6 +12,7 @@ using CurlyCore.CurlyApp;
 using CurlyCore.Input;
 using CurlyEditor.Utility;
 using System.Reflection;
+using CurlyCore;
 
 namespace CurlyEditor.Core
 {
@@ -58,18 +59,10 @@ namespace CurlyEditor.Core
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             base.OnGUI(position, property, label);
-
-            if (_manager == null)
-            {
-                // Fetch manager from attribute
-                object targetObject = property.serializedObject.targetObject;
-                FieldInfo fieldInfo = targetObject.GetType().GetField(property.propertyPath, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-
-                if (fieldInfo != null)
-                {
-                    _manager = fieldInfo.GetCustomAttribute<InputPathAttribute>()?.Manager;
-                }
-            }
+            // Fetch manager from the object
+            object targetObject = property.serializedObject.targetObject;
+            _manager = ReflectionUtility.GetFieldByType<InputManager>(targetObject);
+            if (_manager == null) _manager = GlobalDefaultStorage.GetDefault(typeof(InputManager)) as InputManager;
 
             if (!_manager.IsInputAssigned(property.stringValue))
             {
@@ -118,6 +111,7 @@ namespace CurlyEditor.Core
         private void UpdateProperty(string value)
         {
             _propertyValue = value;
+            _manager = null;
         }
     }
 }

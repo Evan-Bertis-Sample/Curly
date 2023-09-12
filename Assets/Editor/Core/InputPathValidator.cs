@@ -11,6 +11,8 @@ using CurlyCore.CurlyApp;
 using System;
 
 using Object = UnityEngine.Object;
+using CurlyEditor.Utility;
+using CurlyCore;
 
 #if UNITY_EDITOR
 namespace CurlyEditor.Core
@@ -33,13 +35,15 @@ namespace CurlyEditor.Core
         {
             if (manager == null)
             {
-                Debug.LogError("No InputManager selected!");
-                return;
+                Debug.Log("Validating Inputs using Default Manager...");
+                manager = GlobalDefaultStorage.GetDefault(typeof(InputManager)) as InputManager;
             }
 
             invalidValues.Clear();
 
             string[] guids = AssetDatabase.FindAssets("t:Object");  // This finds all assets
+
+            InputManager defaultManager = GlobalDefaultStorage.GetDefault(typeof(InputManager)) as InputManager;
 
             foreach (var guid in guids)
             {
@@ -47,13 +51,23 @@ namespace CurlyEditor.Core
                 Object obj = AssetDatabase.LoadAssetAtPath<Object>(path);
                 if (obj == null) continue;
 
+                InputManager objectInputManager = ReflectionUtility.GetFieldByType<InputManager>(obj);
+
+                if (objectInputManager == null)
+                {
+                    // This is using the default
+                    objectInputManager = defaultManager;
+                }
+
+                if (objectInputManager != manager) continue; // We don't need to validate this object
+
                 var type = obj.GetType();
                 FieldInfo[] allFields = type.GetFields(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
                 foreach (FieldInfo field in allFields)
                 {
                     if (InputPathAttribute.IsDefined(field, typeof(InputPathAttribute)))
                     {
-                        bool isValid = ValidateInputPath(obj, field, manager); // Note: Pass the manager to the validate method
+                        bool isValid = ValidateInputPath(obj, field, manager);
                         if (!isValid)
                         {
                             string invalidValue = (string)field.GetValue(obj);
@@ -69,6 +83,7 @@ namespace CurlyEditor.Core
                     }
                 }
             }
+
             if (invalidValues.Count == 0)
             {
                 Debug.Log("InputPaths validated!");

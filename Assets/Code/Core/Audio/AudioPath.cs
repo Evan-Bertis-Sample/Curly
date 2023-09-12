@@ -6,11 +6,9 @@ namespace CurlyCore.Audio
 {
     public class AudioPath : PropertyAttribute
     {
-        public AudioManager Manager;
-
         public AudioPath()
         {
-            Manager = GlobalDefaultStorage.GetDefault(typeof(AudioManager)) as AudioManager;
+
         }
     }
 }

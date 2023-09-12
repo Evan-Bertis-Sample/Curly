@@ -166,10 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e3b5ff774e47d4b8c56a8574a4d2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicPath: Assets/Audio/SoundFX/Enviornment/Rain
+  MusicPath: Assets/Audio/SoundFX/Voices/Evan/EvanA.mp3
   TransitionIn: {fileID: 11400000, guid: 2fba1b2b20c2dd943b24dde3a6be3629, type: 2}
   TransitionOut: {fileID: 11400000, guid: fdbdfb9e75170024784f011a9316803d, type: 2}
   AudioOverride: {fileID: 0}
+  _audioManager: {fileID: 11400000, guid: e38690a0d96821847991d05ff94d6150, type: 2}
 --- !u!224 &394797121
 RectTransform:
   m_ObjectHideFlags: 0
