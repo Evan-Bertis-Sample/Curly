@@ -18,18 +18,23 @@ module.exports = {
                 collapsable: true,
                 children: [
                     '/Introduction/WhatIsCurly.md',
-                    '/Introduction/QuickStart.md'
+                    '/Introduction/QuickStart.md',
+                    '/Introduction/Contributing.md'
                 ]
             },
             {
                 title: 'API Reference',
-                collapsable: true,
+                collapsable: false,
                 children: [
                     {
                         title: 'Core',
-                        collapsable: false,
+                        collapsable: true,
                         children: [
-                            '/API-Reference/Core/CoreOverview.md'
+                            '/API-Reference/Core/CoreOverview.md',
+                            '/API-Reference/Core/AudioManagement.md',
+                            '/API-Reference/Core/InputManagement.md',
+                            '/API-Reference/Core/CustomLogging.md',
+                            '/API-Reference/Core/SavingData.md'
                         ]
                     }
                 ]
