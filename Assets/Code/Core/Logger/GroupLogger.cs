@@ -32,7 +32,7 @@ namespace CurlyCore.Debugging
 
         [SerializeField, HideInInspector] public List<LoggingGroup> Groups = new List<LoggingGroup>();
 
-        // Required groups that must be in the enum for Curly internals
+        // Required groups that must be in the enum for Curly internals -- do not delete
         private readonly LoggingGroup[] _REQUIRED_GROUPS = new LoggingGroup[]
         {
             new LoggingGroup { GroupName = "App", LoggingColor = new Color(0.9716981f, 0.3162602f, 0.3162602f ), EnableLogging = true },

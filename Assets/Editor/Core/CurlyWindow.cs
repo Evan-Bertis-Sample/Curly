@@ -10,6 +10,8 @@ namespace CurlyEditor.Core
 
     public class CurlyWindow : EditorWindow
     {
+        private Sprite _icon;
+
         [MenuItem("Curly/Shortcuts #E")]
         private static void ShowWindow()
         {
@@ -21,7 +23,8 @@ namespace CurlyEditor.Core
         private void OnGUI()
         {
             EditorGUILayout.Space(10f);
-            DrawImage(AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Editor/Icons/logo_transparent.png"));
+            if (_icon == null) _icon = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Editor/Icons/logo_transparent.png");
+            DrawImage(_icon);
             EditorGUILayout.BeginVertical("Box");
             EditorGUILayout.LabelField("Defaults", EditorStyles.boldLabel);
             foreach(ScriptableObject de in App.Instance.Config.GlobalDefaultSystems)
