@@ -28,6 +28,8 @@ namespace CurlyCore.Saving
             SaveData load = LoadUsingDefault("test-default");
             int testLoad = load.Load("TestFact", -1);
             Debug.Log($"Loaded {testLoad}");
+
+            DependencyInjector.InjectDependencies(this);
         }
 
         public void SaveUsingDefault(SaveData data, string fileName)

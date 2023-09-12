@@ -8,10 +8,6 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement;
-using UnityEngine.ResourceManagement.ResourceLocations;
-using UnityEngine.Rendering;
 
 using CurlyCore.CurlyApp;
 using CurlyCore.Debugging;
@@ -57,6 +53,8 @@ namespace CurlyCore.Audio
         public readonly string ONE_SHOT_SOURCE_OBJECT_NAME = "Audio Source";
         public readonly string BACKGROUND_SOURCE_OBJECT_NAME = "Background Source";
 
+        [GlobalDefault] private GroupLogger _logger;
+
         public override void OnBoot(App app, Scene startingScene)
         {
             // Create audio sources
@@ -72,6 +70,9 @@ namespace CurlyCore.Audio
             GenerateOneShotSources(_sourceParent, StartingSourceCount);
 
             DontDestroyOnLoad(_sourceParent);
+
+            DependencyInjector.InjectDependencies(this);
+            _logger.Log(LoggingGroupID.APP, "Test Injection!");
         }
 
         public override void OnQuit(App app, Scene endingScene)
@@ -88,7 +89,7 @@ namespace CurlyCore.Audio
 
             if (found == false)
             {
-                App.Instance.Logger.Log(LoggingGroupID.APP, $"Could not find Audio Group for path {group}", LogType.Warning);
+                _logger.Log(LoggingGroupID.APP, $"Could not find Audio Group for path {group}", LogType.Warning);
                 return;
             }
 
@@ -102,7 +103,7 @@ namespace CurlyCore.Audio
 
             if (clipReference == null)
             {
-                App.Instance.Logger.Log(LoggingGroupID.APP, $"Could not find Audio Reference for path {musicPath}", LogType.Warning);
+                _logger.Log(LoggingGroupID.APP, $"Could not find Audio Reference for path {musicPath}", LogType.Warning);
                 return;
             }
 
@@ -113,11 +114,11 @@ namespace CurlyCore.Audio
 
             if (clip == null)
             {
-                App.Instance.Logger.Log(LoggingGroupID.APP, $"Could not find Audio Clip for path {musicPath}", LogType.Warning);
+                _logger.Log(LoggingGroupID.APP, $"Could not find Audio Clip for path {musicPath}", LogType.Warning);
                 return;
             }
 
-            App.Instance.Logger.Log(LoggingGroupID.APP, $"Found clip: {clip.name}");
+            _logger.Log(LoggingGroupID.APP, $"Found clip: {clip.name}");
             source.clip = clip;
             source.Play();
 
@@ -144,7 +145,7 @@ namespace CurlyCore.Audio
 
         private async Task<AudioCallback> PlayOneShotAsync(string soundPath, Vector3 position = default, IAudioOverride iOverride = null)
         {
-            App.Instance.Logger.Log(LoggingGroupID.APP, $"Attempting to play one shot sound {soundPath}");
+            _logger.Log(LoggingGroupID.APP, $"Attempting to play one shot sound {soundPath}");
 
             string groupPath = IsFile(soundPath) ? Path.GetDirectoryName(soundPath).Replace("\\", "/") : soundPath;
 
@@ -152,21 +153,21 @@ namespace CurlyCore.Audio
 
             if (found == false)
             {
-                App.Instance.Logger.Log(LoggingGroupID.APP, $"Could not find Audio Group for path {groupPath}", LogType.Warning);
+                _logger.Log(LoggingGroupID.APP, $"Could not find Audio Group for path {groupPath}", LogType.Warning);
                 return null;
             }
 
             AudioOverride groupOverride = group.Override;
             IAudioOverride appliedOverride = (iOverride == null) ? groupOverride : iOverride;
             AudioSource source = GetOneShotSource();
-            App.Instance.Logger.Log(LoggingGroupID.APP, $"Found source: {source.gameObject.name}");
+            _logger.Log(LoggingGroupID.APP, $"Found source: {source.gameObject.name}");
             appliedOverride.ApplyOverride(source);
 
             AssetReference clipReference = (groupOverride.IdentifyByFileName) ? group.ChooseClip(soundPath) : group.ChooseRandom();
 
             if (clipReference == null)
             {
-                App.Instance.Logger.Log(LoggingGroupID.APP, $"Could not find Audio Reference for path {soundPath}", LogType.Warning);
+                _logger.Log(LoggingGroupID.APP, $"Could not find Audio Reference for path {soundPath}", LogType.Warning);
                 return null;
             }
 
@@ -174,11 +175,11 @@ namespace CurlyCore.Audio
 
             if (clip == null)
             {
-                App.Instance.Logger.Log(LoggingGroupID.APP, $"Could not find Audio Clip for path {soundPath}", LogType.Warning);
+                _logger.Log(LoggingGroupID.APP, $"Could not find Audio Clip for path {soundPath}", LogType.Warning);
                 return null;
             }
 
-            App.Instance.Logger.Log(LoggingGroupID.APP, $"Found clip: {clip.name}");
+            _logger.Log(LoggingGroupID.APP, $"Found clip: {clip.name}");
             source.clip = clip;
             source.Play();
             AudioCallback callback = new AudioCallback(source);

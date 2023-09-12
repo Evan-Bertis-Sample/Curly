@@ -24,6 +24,9 @@ namespace CurlyCore.CurlyApp
         [field: SerializeField] public InputManager InputManager {get; private set;}
         [field: SerializeField] public GroupLogger Logger {get; private set;}
         [field: SerializeField] public AudioManager AudioManger {get; private set;}
+
+        [field: Header("Global Defaults")]
+        [field: SerializeField] public List<ScriptableObject> GlobalDefaultSystems {get; private set;}
         
         [Header("Gameplay")]
         // All objects that should be placed in the DontDestroyOnLoad scene on gamestart

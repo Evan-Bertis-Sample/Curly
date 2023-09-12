@@ -8,6 +8,7 @@ using CurlyCore.SceneManagement;
 using CurlyCore.Input;
 using CurlyCore.Debugging;
 using CurlyCore.Audio;
+using System;
 
 // TODO: Make AppConfig chooseable in Editor
 namespace CurlyCore.CurlyApp
@@ -60,11 +61,21 @@ namespace CurlyCore.CurlyApp
                 return Task.CompletedTask;
             }
 
+            RegisterDefaults();
             HandleBooters();
             DressScene();
             SpawnCoroutineMaster();
 
             return Task.CompletedTask;
+        }
+
+        private void RegisterDefaults()
+        {
+            foreach(ScriptableObject so in Config.GlobalDefaultSystems)
+            {
+                Type soType = so.GetType();
+                GlobalDefaultStorage.RegisterDefault(soType, so);
+            }
         }
 
         private async void HandleBooters()
