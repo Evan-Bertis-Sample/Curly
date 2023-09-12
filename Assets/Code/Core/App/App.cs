@@ -76,7 +76,7 @@ namespace CurlyCore.CurlyApp
 
             Quiter quitterComponent = quit.AddComponent<Quiter>();
 
-            foreach (BooterObject b in _config.Booters)
+            foreach (RuntimeScriptableObject b in _config.Booters)
             {
                 if (b == null) continue;
                 b.OnBoot(this, startingScene);

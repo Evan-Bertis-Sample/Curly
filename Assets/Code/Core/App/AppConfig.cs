@@ -17,7 +17,7 @@ namespace CurlyCore.CurlyApp
     public class AppConfig : ScriptableObject
     {
         [field: Header("Booter Configuration")]
-        [field: SerializeField] public List<BooterObject> Booters {get; private set;} = new List<BooterObject>();
+        [field: SerializeField] public List<RuntimeScriptableObject> Booters {get; private set;} = new List<RuntimeScriptableObject>();
 
         [field: Header("Core Configuration")]
         [field: SerializeField] public SceneMaster SceneMaster {get; private set;}

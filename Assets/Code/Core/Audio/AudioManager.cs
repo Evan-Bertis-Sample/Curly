@@ -20,7 +20,7 @@ using CurlyUtility;
 namespace CurlyCore.Audio
 {
     [CreateAssetMenu(menuName = "Curly/Core/Audio Manager", fileName = "AudioManager")]
-    public class AudioManager : BooterObject
+    public class AudioManager : RuntimeScriptableObject
     {
         [System.Serializable]
         public class SerializableOverrideCache : SerializableDictionary<string, AudioOverride> { }

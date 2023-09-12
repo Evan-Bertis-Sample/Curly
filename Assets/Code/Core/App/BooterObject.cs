@@ -9,7 +9,7 @@ namespace CurlyCore.CurlyApp
     /// <summary>
     /// A wrapper class for the common use pattern of using an IBooter ScriptableObject
     /// </summary>
-    public abstract class BooterObject : ScriptableObject, IBooter, IQuiter
+    public abstract class RuntimeScriptableObject : ScriptableObject, IBooter, IQuiter
     {
         public virtual void OnBoot(App app, Scene scene) {}
         public virtual Task OnBootAsync(App app, Scene scene) { return Task.CompletedTask; }

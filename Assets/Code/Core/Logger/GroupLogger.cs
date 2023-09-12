@@ -13,7 +13,7 @@ using CurlyUtility;
 namespace CurlyCore.Debugging
 {
     [CreateAssetMenu(menuName = "Curly/Core/Logger", fileName = "Logger")]
-    public class GroupLogger : BooterObject
+    public class GroupLogger : RuntimeScriptableObject
     {
         [field: Header("File Logging Configuration")]
         [field: SerializeField] public bool LogToFile { get; private set; }

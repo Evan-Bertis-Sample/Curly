@@ -10,7 +10,7 @@ using CurlyUtility;
 namespace CurlyCore.SceneManagement
 {
     [CreateAssetMenu(menuName = "Curly/Core/Scene Master", fileName = "SceneMaster")]
-    public sealed class SceneMaster : BooterObject
+    public sealed class SceneMaster : RuntimeScriptableObject
     {
         // Configuration
         [field: SerializeField] public string ScenePath;

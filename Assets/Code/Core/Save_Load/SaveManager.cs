@@ -11,7 +11,7 @@ using System.ComponentModel;
 namespace CurlyCore.Saving
 {
     [CreateAssetMenu(menuName = "Curly/Core/Save Manager", fileName = "SaveManager")]
-    public class SaveManager : BooterObject
+    public class SaveManager : RuntimeScriptableObject
     {
         public SaveData CurrentSave { get; private set; }
 

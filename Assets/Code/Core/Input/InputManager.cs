@@ -11,7 +11,7 @@ using CurlyCore.CurlyApp;
 namespace CurlyCore.Input
 {
     [CreateAssetMenu(fileName = "InputManager", menuName = "Curly/Core/Input Manager")]
-    public class InputManager : BooterObject
+    public class InputManager : RuntimeScriptableObject
     {
         [SerializeField] public InputActionAsset MasterActionAsset;
         [InputPath][SerializeField] private string _joinButton;
