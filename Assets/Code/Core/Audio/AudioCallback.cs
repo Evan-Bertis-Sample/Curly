@@ -16,11 +16,13 @@ namespace CurlyCore.Audio
         public Action<AudioSource> OnAudioEnd;
         private AudioSource _source;
         private Coroutine _callbackInvoker;
+        private AudioManager _manager;
 
-        public AudioCallback(AudioSource source)
+        public AudioCallback(AudioSource source, AudioManager manager)
         {
             _source = source;
             _callbackInvoker = App.Instance.CoroutineRunner.StartGlobalCoroutine(WaitForClip(source));
+            _manager = manager;
         }
 
         public void ForceStop()
@@ -29,7 +31,7 @@ namespace CurlyCore.Audio
 
             _source.Stop();
             OnAudioEnd?.Invoke(_source);
-            App.Instance.AudioManager.RestashSource(_source);
+            _manager.RestashSource(_source);
         }
 
         private IEnumerator WaitForClip(AudioSource source)

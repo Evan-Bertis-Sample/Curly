@@ -10,9 +10,11 @@ namespace CurlyCore.SceneManagement.Components
         public string TargetScene;
         public bool UseDefaultTransitions = true;
 
+        [GlobalDefault] private SceneMaster _sceneMaster;
+
         public void TransitionScene()
         {
-            App.Instance.SceneMaster.LoadSceneAsync(TargetScene, UseDefaultTransitions);
+            _sceneMaster.LoadSceneAsync(TargetScene, UseDefaultTransitions);
         }
     }
 }

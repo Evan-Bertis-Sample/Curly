@@ -5,14 +5,20 @@ using UnityEngine;
 using CurlyUtility;
 using CurlyCore.CurlyApp;
 using CurlyCore.Audio;
+using CurlyCore;
+using CurlyCore.Debugging;
 
 public class PlayClipOnStart : MonoBehaviour
 {
     [AudioPath] public string AudioPath;
 
+    [GlobalDefault] private AudioManager _audioManager;
+    [GlobalDefault] private GroupLogger _logger;
+
     private void Start()
     {
-        App.Instance.AudioManager.PlayOneShot(AudioPath, default, null,
+        DependencyInjector.InjectDependencies(this);
+        _audioManager.PlayOneShot(AudioPath, default, null,
         callback =>
         {
             callback.OnAudioStart += source => Log(source, "AUDIO START");
@@ -22,6 +28,6 @@ public class PlayClipOnStart : MonoBehaviour
 
     private void Log(AudioSource source, string message)
     {
-        App.Instance.Logger.Log(CurlyCore.Debugging.LoggingGroupID.APP, message);
+        _logger.Log(CurlyCore.Debugging.LoggingGroupID.APP, message);
     }
 }

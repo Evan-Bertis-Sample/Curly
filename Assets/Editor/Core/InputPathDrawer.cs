@@ -11,6 +11,7 @@ using UnityEditor.Experimental.GraphView;
 using CurlyCore.CurlyApp;
 using CurlyCore.Input;
 using CurlyEditor.Utility;
+using System.Reflection;
 
 namespace CurlyEditor.Core
 {
@@ -52,11 +53,25 @@ namespace CurlyEditor.Core
             }
         }
 
+        private InputManager _manager;
+
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             base.OnGUI(position, property, label);
 
-            if (!App.Instance.InputManager.IsInputAssigned(property.stringValue))
+            if (_manager == null)
+            {
+                // Fetch manager from attribute
+                object targetObject = property.serializedObject.targetObject;
+                FieldInfo fieldInfo = targetObject.GetType().GetField(property.propertyPath, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                if (fieldInfo != null)
+                {
+                    _manager = fieldInfo.GetCustomAttribute<InputPathAttribute>()?.Manager;
+                }
+            }
+
+            if (!_manager.IsInputAssigned(property.stringValue))
             {
                 Rect warningPosition = new Rect(position.x, position.y + _standardPropertyHeight * 1.25f, position.width, _standardPropertyHeight * 1.75f);
                 EditorGUI.HelpBox(warningPosition, $"Input: '{property.stringValue}' is not assigned in Input Manager!", MessageType.Warning);
@@ -65,7 +80,7 @@ namespace CurlyEditor.Core
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            if (App.Instance.InputManager.IsInputAssigned(_propertyValue)) return _standardPropertyHeight;
+            if (_manager.IsInputAssigned(_propertyValue)) return _standardPropertyHeight;
             return _standardPropertyHeight * 3f;
         }
 
@@ -79,8 +94,8 @@ namespace CurlyEditor.Core
 
         private Leaf<InputLeafContent> GenerateBrowserContent()
         {
-            if (App.Instance.InputManager.MasterActionAsset == null) throw new System.Exception("Action map is not defined.");
-            IEnumerable<InputActionMap> actionMaps = App.Instance.InputManager.MasterActionAsset.actionMaps;
+            if (_manager.MasterActionAsset == null) throw new System.Exception("Action map is not defined.");
+            IEnumerable<InputActionMap> actionMaps = _manager.MasterActionAsset.actionMaps;
 
             List<Leaf<InputLeafContent>> children = new List<Leaf<InputLeafContent>>();
 
@@ -89,11 +104,11 @@ namespace CurlyEditor.Core
                 List<InputLeafContent> mapChildren = new List<InputLeafContent>();
                 foreach (InputAction action in map.actions)
                 {
-                    InputLeafContent content = new InputLeafContent() { DisplayName = action.name, Path = $"{map.name}/{action.name}"};
+                    InputLeafContent content = new InputLeafContent() { DisplayName = action.name, Path = $"{map.name}/{action.name}" };
                     mapChildren.Add(content);
                 }
 
-                InputLeafContent mapContent = new InputLeafContent() {DisplayName = map.name, Path = map.name };
+                InputLeafContent mapContent = new InputLeafContent() { DisplayName = map.name, Path = map.name };
                 children.Add(new Leaf<InputLeafContent>(mapContent, mapChildren, null));
             }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using CurlyCore.CurlyApp;
 using UnityEngine;
 
 namespace CurlyCore
@@ -14,7 +15,6 @@ namespace CurlyCore
             {
                 GlobalDefaultAttribute attribute = field.GetCustomAttribute(typeof(GlobalDefaultAttribute)) as GlobalDefaultAttribute;
                 if (attribute == null) continue;
-                if (attribute.UseDefault == false) return;
 
                 var defaultValue = GlobalDefaultStorage.GetDefault(field.FieldType);
 

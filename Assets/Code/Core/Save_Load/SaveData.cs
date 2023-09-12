@@ -11,6 +11,8 @@ namespace CurlyCore.Saving
     {
         public FactDictionary Facts;
 
+        [GlobalDefault] private GroupLogger _logger;
+
         public SaveData()
         {
             Facts = new FactDictionary();
@@ -23,6 +25,7 @@ namespace CurlyCore.Saving
 
         public void Save<T>(string factname, T value)
         {
+            if (_logger == null) DependencyInjector.InjectDependencies(this);
             try
             {
                 T val = value;
@@ -30,19 +33,20 @@ namespace CurlyCore.Saving
             }
             catch
             {
-                App.Instance.Logger.Log(LoggingGroupID.APP, $"Unable to store fact {factname}. Check if this fact is already being stored under a different type");
+                _logger.Log(LoggingGroupID.APP, $"Unable to store fact {factname}. Check if this fact is already being stored under a different type");
             }
         }
 
         public T Load<T>(string factName, T fallback)
         {
+            if (_logger == null) DependencyInjector.InjectDependencies(this);
             try
             {
                 return (T)Facts[factName];
             }
             catch (System.Exception error)
             {
-                App.Instance.Logger.Log(LoggingGroupID.APP, error, LogType.Warning);
+                _logger.Log(LoggingGroupID.APP, error, LogType.Warning);
                 return fallback;
             }
         }

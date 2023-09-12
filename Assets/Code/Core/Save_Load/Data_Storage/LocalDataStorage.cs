@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using CurlyCore.CurlyApp;
+using CurlyCore.Debugging;
 
 namespace CurlyCore.Saving
 {
@@ -15,6 +16,13 @@ namespace CurlyCore.Saving
         [field: SerializeField]
         public string SaveExtension = "curly";
 
+        [GlobalDefault] private GroupLogger _logger;
+
+        public LocalDataStorage()
+        {
+            DependencyInjector.InjectDependencies(this);
+        }
+
         public byte[] RetrieveData(string dataKey)
         {
             string path = CreatePath(dataKey);
@@ -25,7 +33,7 @@ namespace CurlyCore.Saving
         {
             if (Directory.Exists(_SAVE_DIRECTORY) == false)
             {
-                App.Instance.Logger.Log(Debugging.LoggingGroupID.APP, $"Creating Save Directory: {_SAVE_DIRECTORY}");
+                _logger.Log(Debugging.LoggingGroupID.APP, $"Creating Save Directory: {_SAVE_DIRECTORY}");
                 Directory.CreateDirectory(_SAVE_DIRECTORY);
             }
 

@@ -11,6 +11,7 @@ using CurlyCore.CurlyApp;
 using CurlyCore.Audio;
 using CurlyUtility;
 using CurlyEditor.Utility;
+using System.Reflection;
 
 namespace CurlyEditor.Core
 {
@@ -52,9 +53,27 @@ namespace CurlyEditor.Core
             }
         }
 
+        private AudioManager _manager;
+
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            base.OnGUI(position, property, label);
+            if (_manager == null)
+            {
+                // Fetch manager from attribute
+                object targetObject = property.serializedObject.targetObject;
+                FieldInfo fieldInfo = targetObject.GetType().GetField(property.propertyPath, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                if (fieldInfo != null)
+                {
+                    _manager = fieldInfo.GetCustomAttribute<AudioPath>()?.Manager;
+                }
+            }
+        }
+
         protected override void ButtonClicked(Rect buttonPosition)
         {
-            App.Instance.Logger.Log(CurlyCore.Debugging.LoggingGroupID.APP, "Audio Path");
+
             Leaf<AudioLeafContent> content = GenerateContent();
             AudioSearchProvider provider = new AudioSearchProvider(content, UpdateProperty);
             SearchWindowContext searchContext = new SearchWindowContext(GUIUtility.GUIToScreenPoint(Event.current.mousePosition));
@@ -66,7 +85,7 @@ namespace CurlyEditor.Core
         // Need to fix the bug where audioclips are displayed alongside of the folder they are located in
         private Leaf<AudioLeafContent> GenerateContent()
         {
-            List<Leaf<AudioLeafContent>> children = GetChildren(App.Instance.AudioManager.AudioDirectoryRoot);
+            List<Leaf<AudioLeafContent>> children = GetChildren(_manager.AudioDirectoryRoot);
 
             return new Leaf<AudioLeafContent>(null, children);
         }
@@ -82,7 +101,7 @@ namespace CurlyEditor.Core
                 string subdirectory = subdirectories[i].Replace("\\", "/");
                 List<Leaf<AudioLeafContent>> leafChildren = GetChildren(subdirectory);
 
-                AudioOverride over = App.Instance.AudioManager.GetOverride(subdirectory);
+                AudioOverride over = _manager.GetOverride(subdirectory);
 
                 if (over != null && over.IdentifyByFileName)
                 {

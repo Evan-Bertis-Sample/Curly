@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79217946ea5f21040b5d548221e352bc, type: 3}
   m_Name: SaveManager
   m_EditorClassIdentifier: 
+  <DefaultStorage>k__BackingField: Local
+  <DefaultSerializer>k__BackingField: BIN
+  <DefaultEncryptor>k__BackingField: AES

@@ -34,11 +34,6 @@ namespace CurlyCore.CurlyApp
 
         // Fields
         public static string ConfigPath = "Core_Config/AppConfig";
-        public AppConfig Config => _config;
-        public SceneMaster SceneMaster => _config.SceneMaster;
-        public InputManager InputManager => _config.InputManager;
-        public GroupLogger Logger => _config.Logger;
-        public AudioManager AudioManager => _config.AudioManger;
 
         // Coroutine stuff
         public CoroutineRunner CoroutineRunner {get; private set;}
@@ -47,6 +42,7 @@ namespace CurlyCore.CurlyApp
         private App()
         {
             _config = Resources.Load<AppConfig>(App.ConfigPath);
+            RegisterDefaults();
         }
 
         /// <summary>
@@ -54,14 +50,12 @@ namespace CurlyCore.CurlyApp
         /// </summary>
         public Task InitializeGame()
         {
-            Logger.Log(LoggingGroupID.APP, "Initializing Game!");
             if (_config == null)
             {
                 Debug.LogError("Could not find App Config!");
                 return Task.CompletedTask;
             }
 
-            RegisterDefaults();
             HandleBooters();
             DressScene();
             SpawnCoroutineMaster();
@@ -69,9 +63,10 @@ namespace CurlyCore.CurlyApp
             return Task.CompletedTask;
         }
 
-        private void RegisterDefaults()
+        public void RegisterDefaults()
         {
-            foreach(ScriptableObject so in Config.GlobalDefaultSystems)
+            Debug.Log("Registering defaults...");
+            foreach(ScriptableObject so in _config.GlobalDefaultSystems)
             {
                 Type soType = so.GetType();
                 GlobalDefaultStorage.RegisterDefault(soType, so);
@@ -108,7 +103,6 @@ namespace CurlyCore.CurlyApp
             {
                 // Instantiate and put into DDOL scene
                 if (obj == null) continue;
-                Logger.Log(LoggingGroupID.APP, $"Adding {obj.name}");
                 GameObject instance = GameObject.Instantiate(obj, Vector3.zero, Quaternion.identity);
                 GameObject.DontDestroyOnLoad(instance.transform.root.gameObject);
             }

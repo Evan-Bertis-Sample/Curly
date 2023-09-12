@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 394797121}
   - component: {fileID: 394797117}
   - component: {fileID: 394797119}
-  - component: {fileID: 394797120}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -154,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cc7817426a6a8499b3ef1dc70bb0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioPath: Assets/Audio/SoundFX/Footsteps/Grass
+  AudioPath: Assets/Audio/SoundFX/Enviornment/Lightning
 --- !u!114 &394797119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,37 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e3b5ff774e47d4b8c56a8574a4d2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicPath: Assets/Audio/SoundFX/Misc/Polaroid Shutter.mp3
+  MusicPath: Assets/Audio/SoundFX/Enviornment/Rain
   TransitionIn: {fileID: 11400000, guid: 2fba1b2b20c2dd943b24dde3a6be3629, type: 2}
   TransitionOut: {fileID: 11400000, guid: fdbdfb9e75170024784f011a9316803d, type: 2}
   AudioOverride: {fileID: 0}
---- !u!114 &394797120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394797116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2e5ca93ac789aa4db7b527202021e38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <AnimationIn>k__BackingField: {fileID: 0}
-  <AnimatonOut>k__BackingField: {fileID: 0}
-  _onPanelCreated:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPanelTransitionIn:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPanelDelete:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPanelTransitonOut:
-    m_PersistentCalls:
-      m_Calls: []
-  Manager: {fileID: 0}
 --- !u!224 &394797121
 RectTransform:
   m_ObjectHideFlags: 0

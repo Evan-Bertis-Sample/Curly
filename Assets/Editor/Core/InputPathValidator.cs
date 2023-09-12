@@ -8,6 +8,9 @@ using UnityEditor;
 
 using CurlyCore.Input;
 using CurlyCore.CurlyApp;
+using System;
+
+using Object = UnityEngine.Object;
 
 #if UNITY_EDITOR
 namespace CurlyEditor.Core
@@ -20,6 +23,20 @@ namespace CurlyEditor.Core
         [MenuItem("Curly/Tools/Validate InputPaths")]
         public static void ValidateInputPaths()
         {
+            invalidValues.Clear();
+
+            // Prompt the user to select the InputManager
+            InputManagerSelectionWindow.ShowWindow(SelectedInputManagerCallback);
+        }
+
+        private static void SelectedInputManagerCallback(InputManager manager)
+        {
+            if (manager == null)
+            {
+                Debug.LogError("No InputManager selected!");
+                return;
+            }
+
             invalidValues.Clear();
 
             string[] guids = AssetDatabase.FindAssets("t:Object");  // This finds all assets
@@ -36,7 +53,7 @@ namespace CurlyEditor.Core
                 {
                     if (InputPathAttribute.IsDefined(field, typeof(InputPathAttribute)))
                     {
-                        bool isValid = ValidateInputPath(obj, field);
+                        bool isValid = ValidateInputPath(obj, field, manager); // Note: Pass the manager to the validate method
                         if (!isValid)
                         {
                             string invalidValue = (string)field.GetValue(obj);
@@ -63,12 +80,39 @@ namespace CurlyEditor.Core
             }
         }
 
-        private static bool ValidateInputPath(Object obj, FieldInfo field)
+        private static bool ValidateInputPath(Object obj, FieldInfo field, InputManager manager)
         {
             string fieldValue = (string)field.GetValue(obj);
-            return App.Instance.InputManager.IsInputAssigned(fieldValue);
+            return manager.IsInputAssigned(fieldValue);
         }
     }
 
 }
+
+public class InputManagerSelectionWindow : EditorWindow
+{
+    private InputManager selectedInputManager;
+
+    public static void ShowWindow(Action<InputManager> callback)
+    {
+        InputManagerSelectionWindow window = GetWindow<InputManagerSelectionWindow>("Select Input Manager");
+        window.callback = callback;
+    }
+
+    private Action<InputManager> callback;
+
+    void OnGUI()
+    {
+        EditorGUILayout.LabelField("Please select the InputManager to use for validation:");
+
+        selectedInputManager = (InputManager)EditorGUILayout.ObjectField("Input Manager", selectedInputManager, typeof(InputManager), false);
+
+        if (GUILayout.Button("Validate"))
+        {
+            callback?.Invoke(selectedInputManager);
+            Close();
+        }
+    }
+}
+
 #endif

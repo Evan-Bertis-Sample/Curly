@@ -12,9 +12,12 @@ namespace CurlyCore.CurlyApp
     {
         public event Action OnQuit;
 
+        [GlobalDefault] private GroupLogger _logger;
+
         private void OnApplicationQuit()
         {
-            App.Instance.Logger.Log(LoggingGroupID.APP, "Quitting Sequence Started");
+            DependencyInjector.InjectDependencies(this);
+            _logger.Log(LoggingGroupID.APP, "Quitting Sequence Started");
             OnQuit?.Invoke();
         }
     }

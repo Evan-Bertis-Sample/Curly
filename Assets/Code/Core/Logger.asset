@@ -19,48 +19,27 @@ MonoBehaviour:
   <LoggingGroups>k__BackingField:
   - GroupName: App
     LoggingColor: {r: 0.9716981, g: 0.31626022, b: 0.31626022, a: 1}
-    EnableLogging: 0
+    EnableLogging: 1
   - GroupName: Gameplay
     LoggingColor: {r: 0.72156864, g: 0.49803922, b: 0.9137255, a: 1}
     EnableLogging: 1
-  _logContents: 'LOG SESSION (8/10/2023 8:51:52 AM)
+  _logContents: 'LOG SESSION (9/11/2023 9:48:46 PM)
 
     ----------------------------------------
 
     App
-    (08:51:52): test
+    (21:48:46): Test Injection!
 
-    App (08:51:53): Attempting to play one shot sound Assets/Audio/SoundFX/Footsteps/Grass
-
-    App
-    (08:51:53): Found source: Audio Source (0)
-
-    App (08:51:53): Found clip: GrassFootstepE
+    App (21:49:01): Quitting Sequence Started
 
     App
-    (08:51:54): AUDIO START
-
-    App (08:51:54): AUDIO END
-
-    App (08:52:08): Found
-    clip: Polaroid Shutter
-
-    App (08:52:19): Quitting Sequence Started
-
-    App
-    (08:52:19): Finishing Logging Session
-
-    App (08:52:19): Deleting Log File
-    ''D:/Documents/Code/Personal-Projects/curly-unity-starter/Logs/CurlyLogs/prev_session_8-10-2023_8-13-22_AM.txt''
-
-    App
-    (08:52:19): Moving old logging contents to new file
+    (21:49:01): Finishing Logging Session
 
 '
   Groups:
   - GroupName: App
-    LoggingColor: {r: 0.9716981, g: 0.3162602, b: 0.3162602, a: 1}
+    LoggingColor: {r: 0.9716981, g: 0.31626022, b: 0.31626022, a: 1}
     EnableLogging: 1
   - GroupName: Gameplay
-    LoggingColor: {r: 0.7203155, g: 0.4963955, b: 0.9150943, a: 1}
+    LoggingColor: {r: 0.72156864, g: 0.49803922, b: 0.9137255, a: 1}
     EnableLogging: 1

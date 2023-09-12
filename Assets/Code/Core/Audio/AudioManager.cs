@@ -182,7 +182,7 @@ namespace CurlyCore.Audio
             _logger.Log(LoggingGroupID.APP, $"Found clip: {clip.name}");
             source.clip = clip;
             source.Play();
-            AudioCallback callback = new AudioCallback(source);
+            AudioCallback callback = new AudioCallback(source, this);
             callback.OnAudioEnd += RestashSource;
             callback.OnAudioEnd += source => Addressables.Release(clip);
             return callback;

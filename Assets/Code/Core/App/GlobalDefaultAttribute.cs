@@ -6,11 +6,6 @@ namespace CurlyCore
 {
     public class GlobalDefaultAttribute : PropertyAttribute
     {
-        public bool UseDefault;
-
-        public GlobalDefaultAttribute(bool useDefault = true)
-        {
-            UseDefault = useDefault;
-        }
+        
     }
 }

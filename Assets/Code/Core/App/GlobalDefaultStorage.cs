@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CurlyCore.CurlyApp;
 using UnityEngine;
 
 namespace CurlyCore
@@ -16,6 +17,12 @@ namespace CurlyCore
 
         public static object GetDefault(Type type)
         {
+            if (_defaults.Count == 0)
+            {
+                // None of the defaults have been registered through the app -- this is the inspector
+                App.Instance.RegisterDefaults();
+            }
+
             if (_defaults.TryGetValue(type, out object value))
             {
                 return value;
