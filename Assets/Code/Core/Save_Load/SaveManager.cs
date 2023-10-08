@@ -14,11 +14,11 @@ namespace CurlyCore.Saving
     public class SaveManager : RuntimeScriptableObject
     {
         public SaveData CurrentSave { get; private set; }
-
         [field: SerializeField, DataStorageID] public string DefaultStorage {get; private set;}
         [field: SerializeField, SerializerID] public string DefaultSerializer {get; private set;}
         [field: SerializeField, EncryptorID] public string DefaultEncryptor {get; private set;}
 
+        // Runs on boot
         public override void OnBoot(App app, Scene scene)
         {
             SaveData data = new SaveData();
