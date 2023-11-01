@@ -47,7 +47,7 @@ namespace CurlyUtility.DSA
             }
             return CurrentState;
         }
-
+        
         private bool _hasStarted = false; // Have we called OnStateEnter() of the current state yet?
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace CurlyUtility.DSA
 
             return false;
         }
-
+        
         public void OnStateEnter()
         {
             CurrentState?.OnStateExit();
@@ -214,7 +214,6 @@ namespace CurlyUtility.DSA
         {
             return CurrentState.IsReady(); // we do not want to prematurely leave the state machine
         }
-
         /// <summary>
         /// Performs the logic of the StateMachine. Call this whenever you would like to progress the state machine.
         /// This is usually called in the Update() method of a MonoBehaviour.
@@ -261,6 +260,7 @@ namespace CurlyUtility.DSA
                 Debug.LogWarning($"State '{state}' does not have any transitions -- you are stuck forever. Cannot evaluate transitions.");
                 return null; // No transitions to evaluate
             }
+            
             var transitions = _stateMap[state].Keys;
 
             foreach (var transition in transitions)
