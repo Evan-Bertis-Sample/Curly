@@ -74,7 +74,7 @@ namespace CurlyCore.Input
             _playerDevices.Remove(player);
         }
 
-        public InputAction.CallbackContext GetContext(string path, int player)
+        public InputAction.CallbackContext GetContext(string path, int player = 0)
         {
             if (player >= _playerDevices.Count) return default;
             if (_playerDevices[player] == null) return default;
@@ -89,6 +89,50 @@ namespace CurlyCore.Input
 
             return _playerDevices[player].GetStatusByPath(path);
         }
+
+        public T ReadInput<T>(string path, int player = 0) where T : struct
+        {
+            if (player >= _playerDevices.Count) return default;
+            if (_playerDevices[player] == null) return default;
+
+            return GetContext(path, player).ReadValue<T>();
+        }
+
+        public bool IsInputState(string path, ActionStatus.ActionState expectedState, int player = 0)
+        {
+            if (player >= _playerDevices.Count) return false;
+            if (_playerDevices[player] == null) return false;
+
+            return GetActionStatus(path, player).State == expectedState;
+        }
+
+        public bool GetInputDown(string path, int player = 0)
+        {
+            if (player >= _playerDevices.Count) return false;
+            if (_playerDevices[player] == null) return false;
+            
+            var context = GetContext(path, player);
+            if (context.action == null) return false;
+            
+            return context.action.WasPressedThisFrame();
+        }
+
+        public bool GetInputUp(string path, int player = 0)
+        {
+            if (player >= _playerDevices.Count) return false;
+            if (_playerDevices[player] == null) return false;
+
+            return GetContext(path, player).action.WasReleasedThisFrame();
+        }
+
+        public bool GetButtonINput(string path, int player = 0)
+        {
+            if (player >= _playerDevices.Count) return false;
+            if (_playerDevices[player] == null) return false;
+
+            return GetContext(path, player).action.ReadValue<float>() > 0;
+        }
+        
         #region Utilities
         private bool IsInputAssigned(string actionName, string mapName)
         {
@@ -125,22 +169,33 @@ namespace CurlyCore.Input
 
     public class ActionStatus
     {
+        public enum ActionState
+        {
+            NotPerformed,
+            Started,
+            Performed,
+            Canceled
+        }
+
         public InputAction Action { get; private set; }
+        public ActionState State { get; private set; }
         public InputAction.CallbackContext Context { get; private set; }
         public Queue<InputAction.CallbackContext> PastContexts;
         public ActionStatus(InputAction action, int queueLength = 15)
         {
             Action = action;
             PastContexts = new Queue<InputAction.CallbackContext>(queueLength);
-            action.started += UpdateContext;
-            action.performed += UpdateContext;
-            action.canceled += UpdateContext;
+            State = ActionState.NotPerformed;
+            action.started += c => UpdateContext(c, ActionState.Started);
+            action.performed += c => UpdateContext(c, ActionState.Performed);
+            action.canceled += c => UpdateContext(c, ActionState.Canceled);
         }
 
-        private void UpdateContext(InputAction.CallbackContext newContext)
+        private void UpdateContext(InputAction.CallbackContext newContext, ActionState state)
         {
             PastContexts.Enqueue(newContext);
             Context = newContext;
+            State = state;
         }
     }
 }
